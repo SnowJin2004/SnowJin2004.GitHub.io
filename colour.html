@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>路線色 | SNJ2004</title>
+		<style type="text/css">
+			body {
+				font-family: 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', sans-serif;
+				background-color: #f5f5f5;
+			}
+		</style>
+		<style>
+			.toc {
+				display: table;
+				padding: 7px;
+				background-color: #f8f9fa;
+				border: 1px solid #a2a9b1;
+				padding: 5px;
+				margin: 0em 0.25em 1em 0.25em;
+				float: left;
+			}
+
+			.toc .toctitle {
+				direction: ltr;
+				text-align: center;
+			}
+
+			.toc h2 {
+				font-family: sans-serif;
+				font-size: 100%;
+				display: inline;
+				border: 0;
+				padding: 0;
+				font-weight: bold;
+			}
+
+			.line-detail {
+				width: fit-content;
+			}
+
+			.line-detail div {
+				display: inline-block;
+			}
+
+			.line-detail:hover {
+				background-color: var(--line-colour);
+				color: #ffffff;
+				border-radius: 0.25em 0em 0em 0.25em;
+				font-weight: 500;
+			}
+
+			.line-detail.line-other:hover {
+				border-radius: 0.25em;
+			}
+
+			.line-detail .line-name {
+				line-height: 1em;
+				padding-right: 0.25em;
+			}
+
+			.line-colour-code {
+				font-family: "Noto Sans Mono", monospace;
+				display: none;
+			}
+
+			.line-detail .line-name::before {
+				content: "■";
+				display: table-cell;
+				margin-left: -1em;
+				padding-left: 0.25em;
+				padding-right: 0.25em;
+				color: var(--line-colour);
+			}
+
+			.line-detail .line-name:not(:first-child) {
+				padding-left: 1em;
+			}
+
+			.line-detail .line-name:not(:first-child)::before {
+				content: "";
+			}
+
+			.line-detail:hover .line-name::before {
+				color: #ffffff;
+			}
+
+			.line-detail:hover .line-colour-code {
+				display: inline-block;
+				color: var(--line-colour);
+				background-color: #fff;
+			}
+
+			.column {
+				float: left;
+			}
+
+			.tooltip {
+				position: relative;
+			}
+
+			.tooltip .tooltiptext {
+				visibility: hidden;
+				background-color: #f8f9fa;
+				border: 1px solid var(--line-colour);
+				border-radius: 0em 0.25em 0.25em 0em;
+				text-align: center;
+				padding: 0em 0.25em 0em 0.125em;
+				width: max-content;
+				position: absolute;
+				font-size: calc(100% - 0.5px);
+				font-family: 'Noto Sans Mono', monospace;
+				font-weight: 500;
+				z-index: 1;
+				left: 100%;
+				top: 0;
+			}
+
+			.tooltip .tooltiptext .material-icons-outlined {
+				display: inline-block;
+				margin-bottom: 0.2em;
+			}
+
+			.tooltip:hover .tooltiptext {
+				visibility: visible;
+			}
+
+			.tooltip .tooltiptext {
+				color: var(--line-colour);
+				cursor: pointer;
+			}
+
+			.tooltip .tooltiptext:hover {
+				text-decoration: underline 1px;
+			}
+
+			.tooltip .tooltiptext:active {
+				font-weight: 600;
+			}
+			
+			a {
+				text-decoration: none;
+				color: #0645ad;
+				background: none;
+			}
+			
+			
+			a:active {
+				color: #faa700;
+			}
+			
+			a:hover,
+			a:focus {
+				text-decoration: underline;
+			}
+		</style>
+	</head>
+	<body>
+		<nav>
+
+		</nav>
+		<main>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>JRグループ</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #45b035">
+					<span class="line-name">北海道旅客鉄道</span><br>
+					<div class="tooltiptext" onclick="copycode('#45b035')">C=70 M=0 Y=100 K=0</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00833e">
+					<span class="line-name">東日本旅客鉄道</span>
+					<div class="tooltiptext" onclick="copycode('#00833e')">C=90 M=30 Y=100 K=0</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #f08300">
+					<span class="line-name">東海旅客鉄道</span>
+					<div class="tooltiptext" onclick="copycode('#f08300')">C=0 M=60 Y=100 K=0</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #0068b7">
+					<span class="line-name">西日本旅客鉄道</span>
+					<div class="tooltiptext" onclick="copycode('#0068b7')">C=100 M=50 Y=0 K=0</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00a7ea">
+					<span class="line-name">四国旅客鉄道</span>
+					<div class="tooltiptext" onclick="copycode('#00a7ea')">C=90 M=0 Y=0 K=0</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #e83820">
+					<span class="line-name">九州旅客鉄道</span>
+					<div class="tooltiptext" onclick="copycode('#e83820')">C=0 M=90 Y=90 K=0</div>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>新幹線</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #9162a7">
+					<span class="line-name">北海道新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#9162a7')">#9162a7</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #378640">
+					<span class="line-name">東北新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#378640')">#378640</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ff6733">
+					<span class="line-name">山形新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#ff6733')">#ff6733</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #e53194">
+					<span class="line-name">秋田新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#e53194')">#e53194</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #03c13d">
+					<span class="line-name">北陸新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#03c13d')">#03c13d</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ec8c82">
+					<span class="line-name">上越新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#ec8c82')">#ec8c82</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #007dc5">
+					<span class="line-name">東海道新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#007dc5')">#007dc5</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #0b318e">
+					<span class="line-name">山陽新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#0b318e')">#0b318e</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #e83820">
+					<span class="line-name">九州新幹線</span><br>
+					<span class="line-name">西九州新幹線</span>
+					<div class="tooltiptext" onclick="copycode('#e83820')">#e83820</div>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>北海道旅客鉄道</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #487cbc">
+					<span class="line-name">札幌～東室蘭～函館</span><br>
+					<span class="line-name">輪西～室蘭</span><br>
+					<span class="line-name">東森～鹿部</span>
+					<div class="tooltiptext" onclick="copycode('#487cbc')">#487cbc</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #e09c42">
+					<span class="line-name">札幌～旭川～網走</span>
+					<div class="tooltiptext" onclick="copycode('#e09c42')">#e09c42</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #8a483b">
+					<span class="line-name">札幌～旭川～稚内</span>
+					<div class="tooltiptext" onclick="copycode('#8a483b')">#8a483b</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #7fbe41">
+					<span class="line-name">札幌～釧路</span>
+					<div class="tooltiptext" onclick="copycode('#7fbe41')">#7fbe41</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #0098d8">
+					<span class="line-name">新千歳空港</span>
+					<div class="tooltiptext" onclick="copycode('#0098d8')">#0098d8</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #e44550">
+					<span class="line-name">札幌～小樽</span>
+					<div class="tooltiptext" onclick="copycode('#e44550')">#e44550</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #45a35e">
+					<span class="line-name">札幌～北海道医療大学</span>
+					<div class="tooltiptext" onclick="copycode('#45a35e')">#45a35e</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #994a95">
+					<span class="line-name">旭川～富良野</span>
+					<div class="tooltiptext" onclick="copycode('#994a95')">#994a95</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #eb848d">
+					<span class="line-name">釧路～網走</span>
+					<div class="tooltiptext" onclick="copycode('#eb848d')">#eb848d</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ebb1b0">
+					<span class="line-name">滝川～富良野</span>
+					<div class="tooltiptext" onclick="copycode('#ebb1b0')">#ebb1b0</div>
+				</div>
+				<div class="line-detail line-other tooltip" style="--line-colour: #000000">
+					<span class="line-name">岩見沢～苫小牧</span><br>
+					<span class="line-name">苫小牧～鵡川</span>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>西日本旅客鉄道</h2>
+				</div>
+				<div class="column">
+					<div class="line-detail tooltip" style="--line-colour: #0071be">
+						<span class="line-name">北陸線</span><br>
+						<span class="line-name">琵琶湖線</span><br>
+						<span class="line-name">JR京都線</span><br>
+						<span class="line-name">JR神戸線</span><br>
+						<span class="line-name">山陽線（神戸～上郡）</span><br>
+						<span class="line-name">赤穂線（相生～播州赤穂）</span>
+						<div class="tooltiptext" onclick="copycode('#0071be')">#0071be</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a7e3">
+						<span class="line-name">湖西線</span>
+						<div class="tooltiptext" onclick="copycode('#00a7e3')">#00a7e3</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #60ad3b">
+						<span class="line-name">草津線</span>
+						<div class="tooltiptext" onclick="copycode('#60ad3b')">#60ad3b</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #bd7d19">
+						<span class="line-name">奈良線</span>
+						<div class="tooltiptext" onclick="copycode('#bd7d19')">#bd7d19</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #7c86c1">
+						<span class="line-name">嵯峨野線</span><br>
+						<span class="line-name">山陰線</span>
+						<div class="tooltiptext" onclick="copycode('#7c86c1')">#7c86c1</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #3b7293">
+						<span class="line-name">おおさか東線</span>
+						<div class="tooltiptext" onclick="copycode('#3b7293')">#3b7293</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #fcc800">
+						<span class="line-name">JR宝塚線</span><br>
+						<span class="line-name">福知山線</span>
+						<div class="tooltiptext" onclick="copycode('#fcc800')">#fcc800</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #e63082">
+						<span class="line-name">JR東西線</span><br>
+						<span class="line-name">学園都市線</span>
+						<div class="tooltiptext" onclick="copycode('#e63082')">#e63082</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a684">
+						<span class="line-name">加古川線</span>
+						<div class="tooltiptext" onclick="copycode('#00a684')">#00a684</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #b1184b">
+						<span class="line-name">播但線</span>
+						<div class="tooltiptext" onclick="copycode('#b1184b')">#b1184b</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #e9451a">
+						<span class="line-name">姫新線</span>
+						<div class="tooltiptext" onclick="copycode('#e9451a')">#e9451a</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f5a200">
+						<span class="line-name">舞鶴線</span>
+						<div class="tooltiptext" onclick="copycode('#f5a200')">#f5a200</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #e73042">
+						<span class="line-name">大阪環状線</span>
+						<div class="tooltiptext" onclick="copycode('#e73042')">#e73042</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #0b318e">
+						<span class="line-name">JRゆめ咲線</span>
+						<div class="tooltiptext" onclick="copycode('#0b318e')">#0b318e</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a469">
+						<span class="line-name">大和路線</span>
+						<div class="tooltiptext" onclick="copycode('#00a469')">#00a469</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f5a200">
+						<span class="line-name">阪和線</span>
+						<div class="tooltiptext" onclick="copycode('#f5a200')">#f5a200</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #0071be">
+						<span class="line-name">関西空港線</span>
+						<div class="tooltiptext" onclick="copycode('#0071be')">#0071be</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f3a8be">
+						<span class="line-name">和歌山線</span>
+						<div class="tooltiptext" onclick="copycode('#f3a8be')">#f3a8be</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #cf1225">
+						<span class="line-name">万葉まほろば線</span>
+						<div class="tooltiptext" onclick="copycode('#cf1225')">#cf1225</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #4c3a93">
+						<span class="line-name">関西線</span>
+						<div class="tooltiptext" onclick="copycode('#4c3a93')">#4c3a93</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a6bf">
+						<span class="line-name">きのくに線</span>
+						<div class="tooltiptext" onclick="copycode('#00a6bf')">#00a6bf</div>
+					</div>
+					<div class="line-detail line-other tooltip" style="--line-colour: #948f7f">
+						<span class="line-name">和田岬線</span><br>
+						<span class="line-name">羽衣線</span><br>
+						<span class="line-name">紀勢線（和歌山～和歌山市）</span>
+					</div>
+				</div>
+				<div class="column">
+					<div class="line-detail tooltip" style="--line-colour: #b5d100">
+						<span class="line-name">山陽線（岡山～三石）</span>
+						<div class="tooltiptext" onclick="copycode('#b5d100')">#b5d100</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #fbc200">
+						<span class="line-name">津山線</span>
+						<div class="tooltiptext" onclick="copycode('#fbc200')">#fbc200</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f3aaba">
+						<span class="line-name">桃太郎線</span>
+						<div class="tooltiptext" onclick="copycode('#f3aaba')">#f3aaba</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #238e3e">
+						<span class="line-name">伯備線（岡山～新見）</span>
+						<div class="tooltiptext" onclick="copycode('#238e3e')">#238e3e</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f29424">
+						<span class="line-name">山陽線（岡山～福山）</span>
+						<div class="tooltiptext" onclick="copycode('#f29424')">#f29424</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a0e9">
+						<span class="line-name">山陽線（福山～糸崎）</span>
+						<div class="tooltiptext" onclick="copycode('#00a0e9')">#00a0e9</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #413993">
+						<span class="line-name">福塩線（福山～府中）</span>
+						<div class="tooltiptext" onclick="copycode('#413993')">#413993</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #84ccce">
+						<span class="line-name">宇野みなと線</span>
+						<div class="tooltiptext" onclick="copycode('#84ccce')">#84ccce</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #0075be">
+						<span class="line-name">瀬戸大橋線（岡山～児島）</span>
+						<div class="tooltiptext" onclick="copycode('#0075be')">#0075be</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #ea5e60">
+						<span class="line-name">赤穂線（岡山～寒河）</span>
+						<div class="tooltiptext" onclick="copycode('#ea5e60')">#ea5e60</div>
+					</div>
+					<!-- <div class="line-detail line-other tooltip" style="--line-colour: #9fa0a0">
+						<span class="line-name">岡山・そのほか</span>
+					</div> -->
+					<div class="line-detail tooltip" style="--line-colour: #60ad3b">
+						<span class="line-name">山陽線（広島～糸崎）</span>
+						<div class="tooltiptext" onclick="copycode('#60ad3b')">#60ad3b</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #cb342e">
+						<span class="line-name">山陽線（広島～岩国）</span>
+						<div class="tooltiptext" onclick="copycode('#cb342e')">#cb342e</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #947eb8">
+						<span class="line-name">芸備線</span>
+						<div class="tooltiptext" onclick="copycode('#947eb8')">#947eb8</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #d28b0e">
+						<span class="line-name">呉線</span>
+						<div class="tooltiptext" onclick="copycode('#d28b0e')">#d28b0e</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #00a6bf">
+						<span class="line-name">可部線</span>
+						<div class="tooltiptext" onclick="copycode('#00a6bf')">#00a6bf</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #d64170">
+						<span class="line-name">福塩線（塩町～府中）</span>
+						<div class="tooltiptext" onclick="copycode('#d64170')">#d64170</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #0061b0">
+						<span class="line-name">山陽線（岩国～下関）</span>
+						<div class="tooltiptext" onclick="copycode('#0061b0')">#0061b0</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #7b702f">
+						<span class="line-name">山陰線（益田～下関）</span>
+						<div class="tooltiptext" onclick="copycode('#7b702f')">#7b702f</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #009a59">
+						<span class="line-name">岩徳線</span>
+						<div class="tooltiptext" onclick="copycode('#009a59')">#009a59</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #ed6d46">
+						<span class="line-name">山口線</span>
+						<div class="tooltiptext" onclick="copycode('#ed6d46')">#ed6d46</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #b1184b">
+						<span class="line-name">宇部線</span>
+						<div class="tooltiptext" onclick="copycode('#b1184b')">#b1184b</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #6857a3">
+						<span class="line-name">小野田線</span>
+						<div class="tooltiptext" onclick="copycode('#6857a3')">#6857a3</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #d60077">
+						<span class="line-name">美祢線</span>
+						<div class="tooltiptext" onclick="copycode('#d60077')">#d60077</div>
+					</div>
+					<!-- <div class="line-detail line-other tooltip" style="--line-colour: #948f7f">
+						<span class="line-name">広島・そのほか</span>
+					</div> -->
+					<div class="line-detail tooltip" style="--line-colour: #abca43">
+						<span class="line-name">山陰線（米子～城崎温泉）</span>
+						<div class="tooltiptext" onclick="copycode('#abca43')">#abca43</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #b57932">
+						<span class="line-name">因美線</span>
+						<div class="tooltiptext" onclick="copycode('#b57932')">#b57932</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #0461a7">
+						<span class="line-name">境線</span>
+						<div class="tooltiptext" onclick="copycode('#0461a7')">#0461a7</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #e65f27">
+						<span class="line-name">山陰線（安来～益田）</span>
+						<div class="tooltiptext" onclick="copycode('#e65f27')">#e65f27</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #f5bc1e">
+						<span class="line-name">木次線</span>
+						<div class="tooltiptext" onclick="copycode('#f5bc1e')">#f5bc1e</div>
+					</div>
+					<div class="line-detail tooltip" style="--line-colour: #458f4a">
+						<span class="line-name">伯備線（新見～米子）</span>
+						<div class="tooltiptext" onclick="copycode('#458f4a')">#458f4a</div>
+					</div>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>東京地下鉄</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ff9500">
+					<span class="line-name">銀座線</span>
+					<div class="tooltiptext" onclick="copycode('#ff9500')">#ff9500</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #f62e36">
+					<span class="line-name">丸ノ内線</span>
+					<div class="tooltiptext" onclick="copycode('#f62e36')">#f62e36</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #b5b5ac">
+					<span class="line-name">日比谷線</span>
+					<div class="tooltiptext" onclick="copycode('#b5b5ac')">#b5b5ac</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #009bbf">
+					<span class="line-name">東西線</span>
+					<div class="tooltiptext" onclick="copycode('#009bbf')">#009bbf</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00bb85">
+					<span class="line-name">千代田線</span>
+					<div class="tooltiptext" onclick="copycode('#00bb85')">#00bb85</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #c1a470">
+					<span class="line-name">有楽町線</span>
+					<div class="tooltiptext" onclick="copycode('#c1a470')">#c1a470</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #8f76d6">
+					<span class="line-name">半蔵門線</span>
+					<div class="tooltiptext" onclick="copycode('#8f76d6')">#8f76d6</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00ac9b">
+					<span class="line-name">南北線</span>
+					<div class="tooltiptext" onclick="copycode('#00ac9b')">#00ac9b</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #9c5e31">
+					<span class="line-name">副都心線</span>
+					<div class="tooltiptext" onclick="copycode('#9c5e31')">#9c5e31</div>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>大阪市高速電気軌道</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #dc2715">
+					<span class="line-name">御堂筋線</span>
+					<div class="tooltiptext" onclick="copycode('#dc2715')">#dc2715</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ab1c87">
+					<span class="line-name">谷町線</span>
+					<div class="tooltiptext" onclick="copycode('#ab1c87')">#ab1c87</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #0074be">
+					<span class="line-name">四つ橋線</span>
+					<div class="tooltiptext" onclick="copycode('#0074be')">#0074be</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00a63d">
+					<span class="line-name">中央線</span>
+					<div class="tooltiptext" onclick="copycode('#00a63d')">#00a63d</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #ec75a9">
+					<span class="line-name">千日前線</span>
+					<div class="tooltiptext" onclick="copycode('#ec75a9')">#ec75a9</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #b34422">
+					<span class="line-name">堺筋線</span>
+					<div class="tooltiptext" onclick="copycode('#b34422')">#b34422</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #bcd400">
+					<span class="line-name">長堀鶴見緑地線</span>
+					<div class="tooltiptext" onclick="copycode('#bcd400')">#bcd400</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #f4a000">
+					<span class="line-name">今里筋線</span>
+					<div class="tooltiptext" onclick="copycode('#f4a000')">#f4a000</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #00a7e3">
+					<span class="line-name">ニュートラム</span>
+					<div class="tooltiptext" onclick="copycode('#00a7e3')">#00a7e3</div>
+				</div>
+			</div>
+			<div class="toc">
+				<div class="toctitle">
+					<h2>南海電気鉄道</h2>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #0077ce">
+					<span class="line-name">南海線</span>
+					<div class="tooltiptext" onclick="copycode('#0077ce')">#0077ce</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #594bac">
+					<span class="line-name">空港線</span>
+					<div class="tooltiptext" onclick="copycode('#594bac')">#594bac</div>
+				</div>
+				<div class="line-detail tooltip" style="--line-colour: #dc2715">
+					<span class="line-name">高野線</span>
+					<div class="tooltiptext" onclick="copycode('#dc2715')">#dc2715</div>
+				</div>
+			</div>
+			<script src="js/test.js"></script>
+		</main>
+		<script>
+			function copycode(colour) {
+				// 使用 navigator.clipboard.writeText() 直接将文本写入剪贴板
+				navigator.clipboard.writeText(colour)
+				// .then(function() {
+				// 	// 成功复制时的回调
+				// 	alert("'" + colour + "' has been copied to clipboard!");
+				// })
+				// .catch(function(err) {
+				// 	// 复制失败时的回调
+				// 	console.error('Unable to copy to clipboard', err);
+				// });
+			}
+		</script>
+	</body>
+</html>

@@ -1,0 +1,72 @@
+.led-top {
+	background-color: var(--line_colour);
+}
+
+.led-top>div {
+	background-color: #fff;
+}
+
+.led-set {
+	image-rendering: pixelated;
+	display: block;
+	max-height: 500px;
+	max-width: calc(100%);
+}
+
+.led-article {
+	width: calc(50% - 24px);
+	padding: 10px;
+	display: inline-block;
+}
+
+.led-shanghai {
+	font-family: "Arial", "黑体";
+	display: inline-flex;
+}
+
+.led-shanghai div.led-block {
+	background-color: var(--line_colour);
+	display: inline-block;
+	font-size: 2.5em;
+	text-align: center;
+	line-height: 1em;
+	width: 1em;
+	height: 1em;
+}
+
+.led-shanghai div.led-text {
+	display: inline-block;
+	margin-right: 0.5em;
+}
+
+.led-shanghai div.led-text div:nth-child(1) {
+	font-size: 1.5em;
+	margin-left: 0.125em;
+}
+
+.led-shanghai div.led-text div:nth-child(2) {
+	font-size: 0.5em;
+	margin-left: 0.5em;
+	margin-top: -0.25em;
+}
+
+.led-shanghai-text {
+	background-color: var(--line_colour) !important;
+	font-family: "Arial", "黑体";
+	display: inline-block;
+}
+
+.led-shanghai-text div.led-text div:nth-child(1) {
+	text-align: center;
+	font-size: 1.5em;
+	margin-left: 0.125em;
+	margin-right: 0.125em;
+}
+
+.led-shanghai-text div.led-text div:nth-child(2) {
+	text-align: center;
+	font-size: 0.5em;
+	margin-left: 0.5em;
+	margin-top: -0.25em;
+	margin-right: 0.5em;
+}
