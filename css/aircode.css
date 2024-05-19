@@ -1,0 +1,160 @@
+.airline {
+	font-family: 'Fira Code', 'Noto Sans Mono', monospace;
+	white-space: pre;
+}
+
+.airline::before,
+.airport::before {
+	content: '';
+	background-size: 1em;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -2.5px;
+	background-repeat: no-repeat;
+}
+
+.AF::before {
+	background-image: url('../footprint/airicon/AF.svg');
+}
+
+.AF:hover::before {
+	background-image: url('../footprint/airicon/AF-negr.svg');
+}
+
+.AM::before {
+	background-image: url('../footprint/airicon/AM.svg');
+}
+
+.AM:hover::before {
+	background-image: url('../footprint/airicon/AM-negr.svg');
+}
+
+.CA::before {
+	background-image: url('../footprint/airicon/CA.svg');
+}
+
+.CA:hover::before {
+	background-image: url('../footprint/airicon/CA-negr.svg');
+}
+
+.CZ::before {
+	background-image: url('../footprint/airicon/CZ.svg');
+}
+
+.CZ:hover::before {
+	background-image: url('../footprint/airicon/CZ-negr.svg');
+}
+
+.DL::before {
+	background-image: url('../footprint/airicon/DL.svg');
+}
+
+.DL:hover::before {
+	background-image: url('../footprint/airicon/DL-negr.svg');
+}
+
+.EY::before {
+	background-image: url('../footprint/airicon/EY.svg');
+}
+
+.EY:hover::before {
+	background-image: url('../footprint/airicon/EY-negr.svg');
+}
+
+.FM::before {
+	background-image: url('../footprint/airicon/FM.svg');
+}
+
+.FM:hover::before {
+	background-image: url('../footprint/airicon/FM-negr.svg');
+}
+
+.HO::before {
+	background-image: url('../footprint/airicon/HO.svg');
+}
+
+.HO:hover::before {
+	background-image: url('../footprint/airicon/HO-negr.svg');
+}
+
+.KL::before {
+	background-image: url('../footprint/airicon/KL.svg');
+}
+
+.KL:hover::before {
+	background-image: url('../footprint/airicon/KL-negr.svg');
+}
+
+.MF::before {
+	background-image: url('../footprint/airicon/MF.svg');
+}
+
+.MF:hover::before {
+	background-image: url('../footprint/airicon/MF-negr.svg');
+}
+
+.MU::before {
+	background-image: url('../footprint/airicon/MU.svg');
+}
+
+.MU:hover::before {
+	background-image: url('../footprint/airicon/MU-negr.svg');
+}
+
+.QF::before {
+	background-image: url('../footprint/airicon/QF.svg');
+}
+
+.QF:hover::before {
+	background-image: url('../footprint/airicon/QF-negr.svg');
+}
+
+.U2::before {
+	background-image: url('../footprint/airicon/U2.svg');
+}
+
+.U2:hover::before {
+	background-image: url('../footprint/airicon/U2-negr.svg');
+}
+
+.VS::before {
+	background-image: url('../footprint/airicon/VS.svg');
+}
+
+.VS:hover::before {
+	background-image: url('../footprint/airicon/VS-negr.svg');
+}
+
+.ZQ::before {
+	background-image: url('../footprint/airicon/ZQ.svg');
+}
+
+.ZQ:hover::before {
+	background-image: url('../footprint/airicon/ZQ-negr.svg');
+}
+
+.AMS::before {
+	background-image: url('../footprint/airicon/AMS.svg');
+}
+
+.CAN::before {
+	background-image: url('../footprint/airicon/CAN.svg');
+}
+
+.GLA::before {
+	background-image: url('../footprint/airicon/GLA.svg');
+}
+
+.LGW::before {
+	background-image: url('../footprint/airicon/LGW.svg');
+}
+
+.SHA::before,
+.PVG::before {
+	background-image: url('../footprint/airicon/SHA.svg');
+}
+
+.SIN::before {
+	background-image: url('../footprint/airicon/SIN.svg');
+}
