@@ -1,0 +1,42 @@
+.operator {
+	font-family: 'Fira Code', 'Noto Sans Mono', monospace;
+	white-space: pre;
+}
+
+.operator::before {
+	content: '';
+	background-size: 1em;
+	display: inline-block;
+	width: 1em;
+	height: 1em;
+	vertical-align: -2.5px;
+	background-repeat: no-repeat;
+}
+
+.CR::before {
+	background-image: url('../footprint/railicon/China-Railway.svg');
+}
+
+.NR::before {
+	background-image: url('../footprint/railicon/National-Rail.svg');
+}
+
+.CR-SH::before {
+	background-image: url('../footprint/railicon/CR-SH.png');
+}
+
+.CR-TY::before {
+	background-image: url('../footprint/railicon/CR-TY.png');
+}
+
+.NR-NT::before {
+	background-image: url('../footprint/railicon/NR-NT.svg');
+}
+
+.NR-TP::before {
+	background-image: url('../footprint/railicon/NR-TP.svg');
+}
+
+.NR-VT::before {
+	background-image: url('../footprint/railicon/NR-VT.svg');
+}

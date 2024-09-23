@@ -158,3 +158,21 @@
 .SIN::before {
 	background-image: url('../footprint/airicon/SIN.svg');
 }
+
+@media screen and (max-width: 500px) {
+	.airport::before {
+		content: none;
+	}
+
+	.airline {
+		white-space: nowrap;
+	}
+
+	tr>*:first-child {
+		display: none;
+	}
+
+	tr>*:first-child {
+		display: none;
+	}
+}

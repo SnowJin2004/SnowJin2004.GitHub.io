@@ -1,3 +1,7 @@
+html {
+	scroll-behavior: smooth;
+}
+
 main section {
 	max-width: 50rem;
 	margin: 1.25rem auto;
@@ -7,13 +11,17 @@ main section {
 	border-radius: 5px;
 }
 
+main section#toc ul {
+	column-count: 2;
+}
+
 main.multi {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-around;
 }
 
-main.multi section, {
+main.multi section {
 	flex: 0 1 calc(50% - 1.25rem);
 	max-width: 400px;
 	margin: 0.625rem;
@@ -62,5 +70,9 @@ main a[target="_blank"]:not(.banner) {
 @media (max-width: 480px) {
 	:root {
 		--rem: 24px;
+	}
+
+	main section#toc ul {
+		column-count: 1;
 	}
 }
