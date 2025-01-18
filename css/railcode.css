@@ -1,8 +1,4 @@
-.operator {
-	font-family: 'Fira Code', 'Noto Sans Mono', monospace;
-	white-space: pre;
-}
-
+.operator::after,
 .operator::before {
 	content: '';
 	background-size: 1em;
@@ -13,30 +9,51 @@
 	background-repeat: no-repeat;
 }
 
-.CR::before {
-	background-image: url('../footprint/railicon/China-Railway.svg');
+td:has(.operator) {
+	font-family: 'Noto Sans Mono', monospace;
+	white-space: pre;
 }
 
-.NR::before {
-	background-image: url('../footprint/railicon/National-Rail.svg');
+[class*='CR-']::before {
+	background-image: url('../footprint/railicon/CR.svg');
 }
 
-.CR-SH::before {
+.CR-SH::after {
 	background-image: url('../footprint/railicon/CR-SH.png');
 }
 
-.CR-TY::before {
+.CR-TY::after {
 	background-image: url('../footprint/railicon/CR-TY.png');
 }
 
-.NR-NT::before {
+[class*='NR-']::before {
+	background-image: url('../footprint/railicon/NR.svg');
+}
+
+.NR-NT::after {
 	background-image: url('../footprint/railicon/NR-NT.svg');
 }
 
-.NR-TP::before {
+.NR-SR::after {
+	background-image: url('../footprint/railicon/NR-SR.svg');
+}
+
+.NR-TP::after {
 	background-image: url('../footprint/railicon/NR-TP.svg');
 }
 
-.NR-VT::before {
+.NR-VT::after {
 	background-image: url('../footprint/railicon/NR-VT.svg');
+}
+
+@media screen and (max-width: 500px) {
+	.table-wrap {
+		overflow-y: auto;
+	}
+
+	.wikitable {
+		overflow: auto hidden;
+		width: max-content;
+		margin-bottom: 0;
+	}
 }

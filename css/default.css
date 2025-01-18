@@ -1,0 +1,71 @@
+:root {
+	--text_colour: #202122;
+	--grey_1: #a2a9b1;
+	--grey_2: #eaecf0;
+	--grey_3: #f8f9fa;
+	--bg_colour: #f6f6f6;
+}
+
+body {
+	background-color: var(--bg_colour);
+	margin: 0;
+	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+	color: var(--text_colour);
+	font-size: 1em;
+}
+
+main {
+    padding: 20px 24px 24px 24px;
+}
+
+h1.multilang span {
+	padding: 0;
+	display: inline-table;
+	margin: 0;
+}
+
+h1.multilang span:not(:last-child)::after {
+	content: "";
+	width: 0.125em;
+	height: 1.25em;
+	background-color: var(--text_colour);
+	margin: 0 0.325em;
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
+a.multilang span {
+	padding: 0;
+	display: inline-table;
+	margin: 0;
+}
+
+a.multilang span:not(:last-child)::after {
+	content: "|";
+	font-size: 1.125em;
+	margin: 0 0.25em;
+	display: inline-block;
+	vertical-align: text-bottom;
+}
+
+.multilang *:lang(zh-Hans) {
+	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+}
+
+.multilang *:lang(ja) {
+	font-family: 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
+}
+
+.multilang *:lang(en) {
+	font-family: 'Roboto', 'Noto Sans', sans-serif;
+}
+
+ruby rt {
+	user-select: none;
+}
+
+@media (max-width: 480px) {
+    main {
+        padding: 20px 10px 24px 10px;
+    }
+}
