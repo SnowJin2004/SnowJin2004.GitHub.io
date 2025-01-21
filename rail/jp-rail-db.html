@@ -18,6 +18,8 @@
 	<link rel="stylesheet" href="../css/crumb.css">
 	<link rel="stylesheet" href="../css/section.css">
 	<style>
+		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Noto+Sans+SC:wght@100..900&family=Noto+Sans+TC:wght@100..900&family=Noto+Sans+KR:wght@100..900&display=swap');
+
 		.accordion section {
 			padding: 0.5rem 1rem;
 		}
@@ -90,11 +92,11 @@
 			content: "";
 			width: 0.125em;
 			height: 1.125em;
-			/* background-color: #a2a9b1; */
+			background-color: #a2a9b1;
 			background-color: rgba(from var(--line_colour) r g b / 0.625);
-			margin: 0 0.325em;
+			margin: 0.1875em 0.325em;
 			display: inline-block;
-			vertical-align: text-bottom;
+			vertical-align: bottom;
 		}
 
 		.panel {
@@ -168,27 +170,27 @@
 
 		.panel table *:lang(ja),
 		.accordion-btn *:lang(ja) {
-			font-family: "Noto Sans CJK JP";
+			font-family: "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
 		}
 
 		.panel table *:lang(en),
 		.accordion-btn *:lang(en) {
-			font-family: "Inter Variable", "Roboto";
+			font-family: "Inter Variable", "Inter", "Roboto", sans-serif;
 		}
 
 		.panel table *:lang(zh-Hans),
 		.accordion-btn *:lang(zh-Hans) {
-			font-family: "Noto Sans CJK SC";
+			font-family: "Noto Sans SC", "Noto Sans CJK SC", sans-serif;
 		}
 
 		.panel table *:lang(zh-Hant),
 		.accordion-btn *:lang(zh-Hant) {
-			font-family: "Noto Sans CJK TC";
+			font-family: "Noto Sans TC", "Noto Sans CJK TC", sans-serif;
 		}
 
 		.panel table *:lang(ko),
 		.accordion-btn *:lang(ko) {
-			font-family: "Noto Sans CJK KR";
+			font-family: "Noto Sans KR", "Noto Sans CJK KR", sans-serif;
 		}
 
 		.panel table *:lang(zh-Latn),
@@ -203,16 +205,24 @@
 		}
 
 		td span.full {
-			margin-left: -0.75em;
+			margin-left: -0.5em;
 		}
 
 		td.en span.full {
-			font-family: "Noto Sans", "Noto Sans Regular", "Noto Sans JP", "Noto Sans CJK JP Regular";
+			font-family: "Inter Variable", "Inter", "Noto Sans JP", "Noto Sans CJK JP Regular";
 		}
 
 
-		.panel table td span.vs1::after {
-			content: "\FE00";
+		.panel table td span.vs17::after {
+			content: "\E0100";
+		}
+
+		.panel table td span.vs18::after {
+			content: "\E0101";
+		}
+
+		.panel table td span.vs19::after {
+			content: "\E0102";
 		}
 
 		.panel table td.link {
@@ -274,6 +284,7 @@
 		}
 
 		@media (min-width: 480px) {
+
 			.panel table tr:hover,
 			.panel table tr:hover td:first-child,
 			.panel table tr:hover td:last-child {
@@ -305,7 +316,7 @@
 				margin-left: 3rem;
 				font-size: 0.875rem;
 				line-height: 0.875rem;
-			}	
+			}
 
 			.panel table td:last-child {
 				position: initial;
@@ -325,7 +336,7 @@
 				display: none;
 			}
 
-			.panel table td:first-child:not(:has(svg)) + td:nth-of-type(2) {
+			.panel table td:first-child:not(:has(svg))+td:nth-of-type(2) {
 				padding: 0.5em 0.75em;
 			}
 
@@ -384,7 +395,7 @@
 				<li><a href="../rail.html">铁道</a></li>
 				<li><a href="">日本铁道路线·站名数据库(暂) | 日本鉄道路線・駅名データベース(仮)</a></li>
 			</ul>
-		</div>	  
+		</div>
 		<div class="accordion">
 			<section style="--line_colour: #007dc5;">
 				<button class="accordion-btn" onclick="toggleAccordion(event, 'Shinkansen-Tokaido')">

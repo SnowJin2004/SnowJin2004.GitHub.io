@@ -1,21 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-  <defs>
-    <style>
-      .w {
-        fill: #fff;
-      }
+  <style>
+    .w {
+      fill: #fff;
+    }
 
-      .b {
-        fill: #231815;
-      }
+    .b {
+      fill: #231815;
+    }
 
-      .l {
-        fill: #cf3366;
-        <!-- DIC-N936 -->
-      }
-    </style>
-  </defs>
+    .l {
+      fill: #cf3366;
+      <!-- DIC-N936 -->
+    }
+  </style>
   <symbol id="E" viewBox="0 0 100 100">
     <circle class="l" cx="50" cy="50" r="50"/>
     <circle class="w" cx="50" cy="50" r="27.15"/>
