@@ -1,0 +1,7 @@
+*:lang(zh-Hans) {
+	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+}
+
+*:lang(en) {
+	font-family: 'Roboto', sans-serif;
+}

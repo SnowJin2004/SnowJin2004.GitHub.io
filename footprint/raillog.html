@@ -1,165 +1,451 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<meta charset="utf-8">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<title>铁路轨迹 | SNJ2004</title>
-		<style type="text/css">
-			body {
-				font-family: 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', sans-serif;
-				background-color: #f5f5f5;
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>铁路轨迹 | SNJ2004</title>
+	<style type="text/css">
+		body {
+			font-family: 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', sans-serif;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/default.css">
+	<link rel="stylesheet" href="../css/wikipedia.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/crumb.css">
+	<link rel="stylesheet" href="../css/railcode.css">
+	<style>
+		td {
+			vertical-align: text-top;
+		}
+
+		td:lang(zh-CN) {
+			font-family: "Noto Sans CJK SC", "Noto Sans SC";
+		}
+
+		td:lang(en) {
+			font-family: "Noto Sans", "Roboto";
+		}
+	</style>
+	<script src="https://unpkg.com/@panzoom/panzoom@4.6.0/dist/panzoom.min.js"></script>
+	<style>
+		.panzoom-window {
+			position: relative;
+		}
+
+		.panzoom-parent {
+			position: relative;
+			overflow: hidden;
+			user-select: none;
+			touch-action: none;
+			width: 100%;
+    		height: 500px;
+			background-color: #f8f9fa;
+			border: 1px solid #a2a9b1;
+			border-collapse: collapse;
+			display: flex;
+			align-items: start;
+			justify-content: center;
+		}
+
+		.pz-fineprint {
+			position: absolute;
+			z-index: 1;
+			bottom: 1px;
+			left: 1px;
+			background-color: #f8f9fa;
+			font-size: 0.75em;
+			padding-left: 0.25em;
+			padding-right: 0.25em;
+		}
+
+		.panzoom {
+			/* width: auto;
+            height: auto; */
+			width: auto;
+			height: auto;
+			cursor: move;
+		}
+
+		.panzoom img {
+			display: block;
+			/* width: 100%;
+    		height: 100%; */
+		}
+
+		.flex {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.flex>.table-wrap {
+			overflow-x: scroll;
+		}
+
+		.flex>.table-wrap>.wikitable {
+			word-break: keep-all;
+			width: max-content;
+		}
+
+		.flex>div {
+			max-width: calc(50% - 5px);
+		}
+
+		.panzoom-wrap {
+			position: relative;
+		}
+
+		.pz-controls {
+			position: absolute;
+			left: 1em;
+			top: 1em;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.pz-controls>button {
+			cursor: pointer;
+			background-color: #f8f9fa;
+			color: #202122;
+			border: 1px solid #a2a9b1;
+			border-collapse: collapse;
+			width: 2.5em;
+			height: 2.5em;
+			border-radius: 50%;
+		}
+
+		.pz-controls>button>img {
+			width: 1em;
+			height: 1em;
+			vertical-align: middle;
+		}
+
+		.pz-controls>button:active>img {
+			transform: translate(1px, 1px);
+		}
+
+		.panzoom-note {
+			margin-top: -1px;
+			border: 1px solid #a2a9b1;
+			display: flex;
+			width: 100%;
+		}
+
+		.panzoom-note img.pz-legend {
+			max-height: 10em;
+		}
+
+		.panzoom-note div.pz-note {
+			margin: 0.5em 1em;
+		}
+
+		@media screen and (max-width: 1000px) {
+			.flex>div {
+				max-width: unset;
+				width: 100% !important;
 			}
 
-			iframe {
-				background-color: #f8f9fa;
-				color: #202122;
-				border: 1px solid #a2a9b1;
-				border-collapse: collapse
+			.panzoom-wrap {
+				margin-top: 1em;
 			}
-		</style>
-		<link rel="stylesheet" href="../css/wikipedia.css">
-		<link rel="stylesheet" href="../css/header.css">
-		<link rel="stylesheet" href="../css/crumb.css">
-		<link rel="stylesheet" href="../css/aircode.css">
-		<link rel="stylesheet" href="../css/railcode.css">
-		<style>
-			td {
-				vertical-align: text-top;
+		}
+
+		@media (max-width: 480px) {
+			.panzoom-parent {
+				height: 500px;
 			}
-			
-			main {
-				padding: 20px 24px 24px 24px;
+
+			.panzoom-note {
+				flex-direction: column;
 			}
-			
-			td:lang(zh-CN) {
-				font-family: "Noto Sans CJK SC", "Noto Sans SC";
+
+			.panzoom-note img.pz-legend {
+				width: fit-content;
+				align-self: center;
 			}
-			
-			td:lang(en) {
-				font-family: "Noto Sans";
-			}
-		</style>
-	</head>
-	<body>
-		<header>
-			<nav>
-				<ul>
-					<li id="icon">
-						<img src="../img/Barrier.png">
-						<img src="../img/SNJ2004.svg">
-					</li>
-					<li><a href="../index.html">首页</a></li>
-					<li><a href="../rail.html">铁道</a></li>
-					<li><a href="../footprint.html">足迹</a></li>
-					<li><a href="../sakuhin.html">作品</a></li>
-				</ul>
-			</nav>
-		</header>
-		<main>
-			<div id="crumbs">
-				<ul>
-					<li><a href="../index.html">首页</a></li>
-					<li><a href="../footprint.html">足迹</a></li>
-					<li><a href="">铁路足迹</a></li>
-				</ul>
+		}
+
+		.tabs {
+			display: flex;
+			gap: 0;
+		}
+
+		.tab {
+			padding: 0 0.5em;
+			background: var(--grey_2);
+			border: 1px solid var(--grey_1);
+			cursor: pointer;
+			border-radius: 5px 5px 0 0;
+			margin-bottom: -1px;
+		}
+
+		.tab:nth-child(n+2) {
+			margin-left: -1px;
+		}
+
+		.tab.active {
+			background: var(--grey_1);
+			border: 1px solid var(--grey_1);
+			color: #fff;
+		}
+	</style>
+	<script>
+
+	</script>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li id="icon">
+					<img src="../img/Barrier.png">
+					<img src="../img/SNJ2004.svg">
+				</li>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../rail.html">铁道</a></li>
+				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="../sakuhin.html">作品</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div id="crumbs">
+			<ul>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="">铁路足迹</a></li>
+			</ul>
+		</div>
+		<div class="flex">
+			<div class="table-wrap">
+				<p>并未记录全部车次。</p>
+				<table class="wikitable">
+					<thead>
+						<tr>
+							<th>列车号</th>
+							<th>自</th>
+							<th>至</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>G8252</div>
+							</td>
+							<td lang="zh-CN">上海西</td>
+							<td lang="zh-CN">苏州</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>G8255</div>
+							</td>
+							<td lang="zh-CN">苏州</td>
+							<td lang="zh-CN">上海西</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-TY">
+									<i></i><div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>Z196</div>
+											<div>Z197</div>
+											<div>Z196</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="zh-CN">上海</td>
+							<td lang="zh-CN">太原</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-TY">
+									<i></i><div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>Z198</div>
+											<div>Z195</div>
+											<div>Z198</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="zh-CN">太原</td>
+							<td lang="zh-CN">上海</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>Y701</div>
+							</td>
+							<td lang="zh-CN">上海西</td>
+							<td lang="zh-CN">嘉兴</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>Y702</div>
+							</td>
+							<td lang="zh-CN">嘉兴</td>
+							<td lang="zh-CN">上海西</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>G6</div>
+							</td>
+							<td lang="zh-CN">上海虹桥</td>
+							<td lang="zh-CN">南京南</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator CR-SH"><i></i>G7027</div>
+							</td>
+							<td lang="zh-CN">南京</td>
+							<td lang="zh-CN">上海西</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-TP">
+									<i></i>TP<div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>1M92</div>
+											<div>8049</div>
+											<div>1M92</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="en-GB">Glasgow Central</td>
+							<td lang="en-GB">Manchester Piccadilly</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-NT">
+									<i></i>NT<div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>2L70</div>
+											<div>9920</div>
+											<div>2L70</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="en-GB">Manchester Victoria</td>
+							<td lang="en-GB">Wigan Wallgate</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-VT">
+									<i></i>VT<div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>1S90</div>
+											<div>6261</div>
+											<div>1S90</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="en-GB">Wigan North Western</td>
+							<td lang="en-GB">Glasgow Central</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-SR">
+									<i></i>SR<div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>1A81</div>
+											<div>0251</div>
+											<div>1A81</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="en-GB">Glasgow Queen Street</td>
+							<td lang="en-GB">Dundee</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-SR">
+									<i></i>SR<div class="text-roller iln">
+										<div class="text-roller-container rows-2">
+											<div>1T82</div>
+											<div>0265</div>
+											<div>1T82</div>
+										</div>
+									</div>
+								</div>
+							</td>
+							<td lang="en-GB">Dundee</td>
+							<td lang="en-GB">Glasgow Queen Street</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
-			<p>仅记录对车次列车。</p>
-			<table class="wikitable">
-				<thead>
-					<tr>
-						<th></th>
-						<th>列车号</th>
-						<th title="From">自</th>
-						<th title="To">至</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">G8252</td>
-						<td lang="zh-CN" title="Shanghaixi">上海西</td>
-						<td lang="zh-CN" title="Suzhou">苏州</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">G8255</td>
-						<td lang="zh-CN" title="Suzhou">苏州</td>
-						<td lang="zh-CN" title="Shanghaixi">上海西</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-TY">Z196</td>
-						<td lang="zh-CN" title="Shanghai">上海</td>
-						<td lang="zh-CN" title="Taiyuan">太原</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-TY">Z198</td>
-						<td lang="zh-CN" title="Taiyuan">太原</td>
-						<td lang="zh-CN" title="Shanghai">上海</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">S1613</td>
-						<td lang="zh-CN" title="Shanghainan">上海南</td>
-						<td lang="zh-CN" title="Jinshanwei">金山卫</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">S1024</td>
-						<td lang="zh-CN" title="Jinshanwei">金山卫</td>
-						<td lang="zh-CN" title="Shanghainan">上海南</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">Y701</td>
-						<td lang="zh-CN" title="Shanghaixi">上海西</td>
-						<td lang="zh-CN" title="Jiaxing">嘉兴</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">Y702</td>
-						<td lang="zh-CN" title="Jiaxing">嘉兴</td>
-						<td lang="zh-CN" title="Shanghaixi">上海西</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">G6</td>
-						<td lang="zh-CN" title="Shanghai Hongqiao">上海虹桥</td>
-						<td lang="zh-CN" title="Nanjingnan">南京南</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">G7027</td>
-						<td lang="zh-CN" title="Nanjing">南京</td>
-						<td lang="zh-CN" title="Shanghaixi">上海西</td>
-					</tr>
-					<tr>
-						<td><span class="operator CR"></span></td>
-						<td><span class="operator CR-SH">S1626</td>
-						<td lang="zh-CN" title="Tinglin">亭林</td>
-						<td lang="zh-CN" title="Shanghainan">上海南</td>
-					</tr>
-					<tr>
-						<td><span class="operator NR"></span></td>
-						<td><span class="operator NR-TP">TP8049</td>
-						<td lang="en-GB">Glasgow Central</td>
-						<td lang="en-GB">Manchester Piccadilly</td>
-					</tr>
-					<tr>
-						<td><span class="operator NR"></span></td>
-						<td><span class="operator NR-NT">NT9920</td>
-						<td lang="en-GB">Manchester Victoria</td>
-						<td lang="en-GB">Wigan Wallgate</td>
-					</tr>
-					<tr>
-						<td><span class="operator NR"></span></td>
-						<td><span class="operator NR-VT">VT6261</td>
-						<td lang="en-GB">Wigan North Western</td>
-						<td lang="en-GB">Glasgow Central</td>
-					</tr>
-				</tbody>
-			</table>
-		</main>
-	</body>
+			<div class="panzoom-wrap">
+				<div class="tabs">
+					<div class="tab active" data-image="img/fp-CR.webp" id="CR">中国铁路</div>
+					<div class="tab" data-image="img/fp-NR.webp" id="NR">英国铁路</div>
+					<div class="tab" data-image="img/fp-NR-London.webp" id="NR-ld">伦敦近郊</div>
+				</div>
+				<div class="panzoom-window">
+					<div class="pz-fineprint">以OpenStreetMap为底图描绘</div>
+					<div class="panzoom-parent">
+						<div id="panzoom-element" class="panzoom">
+							<img id="panzoom-image" src="img/fp-CR.webp" width="100%" height="100%">
+						</div>
+					</div>
+					<div class="pz-controls">
+						<button id="zoomIn">
+							<img src="../img/icon/plus.svg">
+						</button>
+						<button id="zoomOut">
+							<img src="../img/icon/minus.svg">
+						</button>
+						<button id="reset">
+							<img src="../img/icon/rotate.svg">
+						</button>
+					</div>
+				</div>
+				<div class="panzoom-note">
+					<img src="img/fp-Legend.png" class="pz-legend">
+					<div class="pz-note">出现bug时请双击重置键。<br>放大时可能卡顿。</div>
+				</div>
+			</div>
+		</div>
+
+		<script>
+			// Select the element to apply panzoom
+			const elem = document.getElementById('panzoom-element');
+
+			// Initialize Panzoom
+			const panzoom = Panzoom(elem, {
+				maxScale: 10,
+				contain: 'outside',
+				startScale: 1
+			});
+
+			// Attach event listeners
+			document.getElementById('zoomIn').addEventListener('click', () => panzoom.zoomIn());
+			document.getElementById('zoomOut').addEventListener('click', () => panzoom.zoomOut());
+			document.getElementById('reset').addEventListener('click', () => panzoom.reset());
+
+			// Enable mouse wheel zooming
+			elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
+		</script>
+		<script>
+			document.querySelectorAll('.tab').forEach(tab => {
+				tab.addEventListener('click', function () {
+					document.getElementById('panzoom-image').src = this.dataset.image;
+
+					document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+					this.classList.add('active');
+					panzoom.reset();
+				});
+			});
+		</script>
+	</main>
+</body>
+
 </html>

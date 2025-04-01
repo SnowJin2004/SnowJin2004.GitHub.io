@@ -1,0 +1,26 @@
+<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <style>
+      .st1 {
+        fill: url(#grad);
+      }
+
+      .st2 {
+        clip-path: url(#clippath);
+      }
+    </style>
+    <clipPath id="clippath">
+      <path d="M17.96829,90h72.02973l.00197-80L17.96829,90ZM10,35.9981v32.09471L90,10,10,35.9981ZM10,10v17.00644L90,10H10Z"/>
+    </clipPath>
+    <linearGradient id="grad" x1="-364.38772" y1="344.75487" x2="-362.48698" y2="344.75487" gradientTransform="translate(-28964.28606 -27400.06828) rotate(-179.99998) scale(79.62196 -79.62196)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f39325"/>
+      <stop offset=".12474" stop-color="#f28f25"/>
+      <stop offset=".23561" stop-color="#f08425"/>
+      <stop offset=".28005" stop-color="#f07e26"/>
+      <stop offset="1" stop-color="#f07e26"/>
+    </linearGradient>
+  </defs>
+  <g class="st2">
+    <rect class="st1" x="-171.65006" y="-101.06377" width="220.6213" height="302.12756" transform="translate(-73.97101 -28.12148) rotate(-60.00002)"/>
+  </g>
+</svg>

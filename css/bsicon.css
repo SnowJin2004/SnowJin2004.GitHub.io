@@ -1,0 +1,92 @@
+.bsicon-section {
+	max-width: calc(50rem + 40px);
+	margin: 1.25rem auto;
+}
+
+.bsicon-section>article {
+	width: max-content;
+	break-inside: avoid;
+	background-color: #fff;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	border-radius: 5px;
+	height: fit-content;
+	flex-grow: 1;
+}
+
+.bsicon-section>article h3 {
+	color: #fff;
+	text-align: center;
+	padding: 0.25rem;
+	margin: 0%;
+	border-radius: 5px 5px 0 0;
+}
+
+.bsicon-section>article table {
+	padding: 10px;
+	empty-cells: show;
+	display: block;
+}
+
+.bsicon-section>article table tr {
+	white-space: nowrap;
+	text-align: center;
+	line-height: 0;
+}
+
+.bsicon-section>article td {
+	border-collapse: collapse;
+}
+
+.bsicon-section>article td.overlap {
+	width: 1.5em;
+	height: 1.5em;
+	position: relative;
+	padding: 0;
+}
+
+.bsicon-section>article table img {
+	width: 1.5em;
+	height: 1.5em;
+}
+
+.bsicon-section>article td.overlap img {
+	position: absolute;
+	width: 1.5em;
+	height: 1.5em;
+	top: 0;
+	left: 0;
+}
+
+.bsicon-section>article table td.dbl {
+	font-size: 0.75em;
+	line-height: 1em;
+}
+
+.bsicon-section>article table td.label-r {
+	text-align: left;
+	padding-left: 3px;
+}
+
+.bsicon-section>article table td.label-l {
+	text-align: right;
+	padding-right: 3px;
+}
+
+.bsicon-section>article table td[class*='label-'].annot {
+	font-size: 0.75em;
+}
+
+abbr[title] {
+	text-decoration: underline;
+	text-decoration-color: var(--grey_1);
+}
+
+@media screen and (max-width: 800px) {
+	.bsicon-section>article {
+		width: 100%;
+	}
+
+	.bsicon-section>article>table {
+		overflow-x: auto;
+	}
+}

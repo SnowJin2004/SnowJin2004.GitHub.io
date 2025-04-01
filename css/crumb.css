@@ -1,72 +1,91 @@
+/* Special Thanks to: Martin */
+
+:root {
+	--line-height: 1.625em;
+}
+
+@-moz-document url-prefix() {
+
+	/* 在这里添加只对Firefox生效的样式 */
+	#crumbs ul {
+		padding: 0 0 12px 0 !important;
+	}
+}
+
 #crumbs ul {
+	display: flex;
+	overflow-x: auto;
+	padding: 0;
 	margin: 0;
 }
 
 #crumbs ul li {
-	display: inline-block;
 	list-style-type: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 10px;
+	height: var(--line-height);
+	padding: 0 0.5em;
+	background-color: var(--grey_2);
+	position: relative;
+}
+
+#crumbs ul li:not(:last-child)::after {
+	content: '';
+	position: absolute;
+	width: calc(0.5 * var(--line-height) + 1px);
+	height: 100%;
+	background: var(--grey_2);
+	right: calc(-0.5 * var(--line-height));
+	z-index: 10;
+	clip-path: polygon(100% 50%, 1px 0, 0 0, 0 100%, 1px 100%);
+}
+
+#crumbs ul li:not(:last-child)::before {
+	content: '';
+	position: absolute;
+	width: calc(0.5 * var(--line-height) + 1px);
+	height: 100%;
+	background: var(--grey_2);
+	left: calc(-0.5 * var(--line-height));
+	z-index: 10;
+	clip-path: polygon(calc(100% - 1px) 50%, 0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#crumbs ul li:first-child::before {
+	background: var(--grey_1);
+	clip-path: circle(calc(0.5 * var(--line-height)) at right center);
+}
+
+#crumbs ul li:first-child::after {
+	background: var(--grey_1);
+}
+
+#crumbs ul li:first-child {
+	background-color: var(--grey_1);
+	color: #fff;
+	padding: 0 0.5em 0 0;
+	margin: 0 10px 0 calc(0.5 * var(--line-height));
+}
+
+#crumbs ul li:last-child {
+	background-color: transparent;
+	color: #000;
 }
 
 #crumbs ul li a {
+	color: inherit;
+	text-decoration: inherit;
 	display: block;
-	
-	height: 20px;
-	background: #eaecf0;
-	text-align: center;
-	padding: 5px 2.5px 0px 17.5px;
-	position: relative;
-	margin: 0 5px 0 0;
-	line-height: 1em;
-	font-size: 15px;
-	text-decoration: none;
-	color: #000;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
-#crumbs ul li a:after {
-	content: "";
-	border-top: 12.5px solid transparent;
-	border-bottom: 12.5px solid transparent;
-	border-left: 12.5px solid #eaecf0;
-	position: absolute;
-	right: -12.5px;
-	top: 0;
-	z-index: 5;
-}
-
-#crumbs ul li a:before {
-	content: "";
-	border-top: 12.5px solid #eaecf0;
-	border-bottom: 12.5px solid #eaecf0;
-	border-left: 12.5px solid #f6f6f6;
-	position: absolute;
-	left: 0;
-	top: 0;
-}
-
-#crumbs ul li:first-child a {
-	border-top-left-radius: 12.5px;
-	border-bottom-left-radius: 12.5px;
-	padding-left: 7.5px;
-	background: #a2a9b1;
-	color: #fff;
-}
-
-#crumbs ul li:first-child a:before,
-#crumbs ul li:last-child a:before {
-	display: none;
-}
-
-#crumbs ul li:first-child a::after {
-	border-left: 12.5px solid #a2a9b1;
-}
-
-
-#crumbs ul li:last-child a {
-	background-color: transparent;
-	color: #000;
-	padding-left: 12.5px;
-}
-
-#crumbs ul li:last-child a:after {
-	display: none;
+@media screen and (max-width: 800px) {
+    #crumbs ul li {
+		max-width: 7em;
+	}
 }

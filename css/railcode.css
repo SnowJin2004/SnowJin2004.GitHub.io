@@ -1,9 +1,10 @@
 .operator {
-	font-family: 'Fira Code', 'Noto Sans Mono', monospace;
-	white-space: pre;
+	font-family: 'Noto Sans Mono', monospace;
+	align-items: center;
 }
 
-.operator::before {
+.operator>i::after,
+.operator>i::before {
 	content: '';
 	background-size: 1em;
 	display: inline-block;
@@ -13,30 +14,46 @@
 	background-repeat: no-repeat;
 }
 
-.CR::before {
-	background-image: url('../footprint/railicon/China-Railway.svg');
+[class*='CR-']>i::before {
+	background-image: url('../img/transp/rail/operator/CR.svg');
 }
 
-.NR::before {
-	background-image: url('../footprint/railicon/National-Rail.svg');
+.CR-SH>i::after {
+	background-image: url('../img/transp/rail/operator/CR-SH.png');
 }
 
-.CR-SH::before {
-	background-image: url('../footprint/railicon/CR-SH.png');
+.CR-TY>i::after {
+	background-image: url('../img/transp/rail/operator/CR-TY.png');
 }
 
-.CR-TY::before {
-	background-image: url('../footprint/railicon/CR-TY.png');
+[class*='NR-']>i::before {
+	background-image: url('../img/transp/rail/operator/NR.svg');
 }
 
-.NR-NT::before {
-	background-image: url('../footprint/railicon/NR-NT.svg');
+.NR-NT>i::after {
+	background-image: url('../img/transp/rail/operator/NR-NT.svg');
 }
 
-.NR-TP::before {
-	background-image: url('../footprint/railicon/NR-TP.svg');
+.NR-SR>i::after {
+	background-image: url('../img/transp/rail/operator/NR-SR.svg');
 }
 
-.NR-VT::before {
-	background-image: url('../footprint/railicon/NR-VT.svg');
+.NR-TP>i::after {
+	background-image: url('../img/transp/rail/operator/NR-TP.svg');
+}
+
+.NR-VT>i::after {
+	background-image: url('../img/transp/rail/operator/NR-VT.svg');
+}
+
+@media screen and (max-width: 500px) {
+	.table-wrap {
+		overflow-y: auto;
+	}
+
+	.wikitable {
+		overflow: auto hidden;
+		width: max-content;
+		margin-bottom: 0;
+	}
 }

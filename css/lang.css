@@ -1,0 +1,99 @@
+.nb {
+	font-family: 'Noto Sans Mono', 'Noto Sans Mono CJK SC Regular', monospace;
+	text-align: left;
+}
+
+.ja {
+	font-family: "Noto Sans JP", "Noto Sans CJK JP Regular";
+}
+
+.en {
+	font-family: "Noto Sans", "Noto Sans Regular";
+}
+
+.sc {
+	font-family: "Noto Sans SC", "Noto Sans CJK SC Regular";
+}
+
+.tc {
+	font-family: "Noto Sans TC", "Noto Sans CJK TC Regular";
+}
+
+.kr {
+	font-family: "Noto Sans KR", "Noto Sans CJK KR Regular";
+}
+
+.py {
+	font-family: "华文细黑";
+}
+
+.hd {
+	font-family: 'Noto Sans Mono', 'Noto Sans Mono CJK JP Regular', monospace;
+	font-size: calc(80%);
+	/* display: none; */
+}
+
+.set {
+	transform: skew(-10deg);
+}
+
+.na::after {
+	content: 'N/A';
+	color: #aaa;
+	font-size: 80%;
+}
+
+.nb.na {
+	text-align: center;	
+}
+
+.nb.na::after {
+	content: 'N/A';
+	color: #aaa;
+	font-size: 100%;
+}
+
+.none {
+	padding-left: calc(6.4px + 1em) !important;
+}
+
+#body a {
+	color: #000000;
+}
+
+#body a:active {
+	color: #000000;
+}
+
+#body a:hover {
+	opacity: 50%;
+}
+
+#body a:visited {
+	color: #000000;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+tr:hover {
+	background: #eaf3ff;
+}
+
+td span:not(.vs1) {
+	font-size: 1ex;
+}
+
+td span.vs1::after {
+	content: "\FE00";
+}
+
+td span.full {
+	margin-left: -0.75em;
+	
+}
+
+td.en span.full {
+	font-family: "Noto Sans", "Noto Sans Regular", "Noto Sans JP", "Noto Sans CJK JP Regular";
+}
