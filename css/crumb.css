@@ -11,6 +11,9 @@
 		padding: 0 0 12px 0 !important;
 	}
 }
+#crumbs {
+	margin-bottom: 1em;
+}
 
 #crumbs ul {
 	display: flex;

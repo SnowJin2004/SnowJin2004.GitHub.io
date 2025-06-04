@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>站名牌 | SNJ2004</title>
+	<style type="text/css">
+		body {
+			font-family: 'Roboto', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+			background-color: #f5f5f5;
+		}
+	</style>
+	<link rel="preconnect" href="https://rsms.me/">
+	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
+	<link rel="stylesheet" href="../css/default.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/wikipedia.css">
+	<link rel="stylesheet" href="../css/crumb.css">
+	<link rel="stylesheet" href="../css/section.css">
+	<link rel="stylesheet" href="../css/m10l.css">
+	<style>
+		/* General Styles */
+		body {
+			font-family: 'Roboto', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+			background-color: #f5f5f5;
+		}
+
+		main>section li {
+			margin: 0 !important;
+		}
+
+		/* Operator Section */
+		article.operator {
+			display: flex;
+			flex-direction: column;
+			margin-top: 0.5em;
+			gap: 1em;
+		}
+
+		.station-title {
+			color: var(--line-colour);
+			font-weight: 500;
+		}
+
+		.station-card {
+			display: flex;
+			flex-direction: column;
+			gap: 0.25em;
+			width: calc(100% - 32px);
+		}
+
+		.station-ekimeihyo {
+			display: flex;
+			justify-content: flex-start;
+			gap: 0.5em;
+			flex-wrap: wrap;
+			/* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
+			filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+		}
+
+		/* .station-ekimeihyo>img {
+			max-width: 100%;
+    		max-height: 5em;
+		} */
+
+		.station-section:last-child>ul>li {
+			height: 100% !important;
+			border-radius: 0 0 2.5px 2.5px;
+		}
+
+		/* Line and Station Section */
+		.line-section,
+		.station-section {
+			display: flex;
+			gap: 0.5em;
+			min-height: 20px;
+		}
+
+		.station-line {
+			display: flex;
+			position: relative;
+			list-style: none;
+			padding-left: 0;
+		}
+
+		.station-section:last-of-type .line {
+			height: calc(100% + 10px);
+		}
+
+		.line {
+			background-color: var(--line-colour);
+		}
+
+		.line.line-icon>span {
+			position: relative;
+			display: block;
+		}
+
+		.line.line-stop::before {
+			background-color: #fff;
+			border-radius: 100%;
+			content: "";
+			display: block;
+			position: absolute;
+			border-color: var(--line-colour);
+		}
+
+		.line:first-of-type {
+			margin-left: 0;
+		}
+
+		.line.line-end {
+			height: 0 !important;
+		}
+
+		.station-ekimeihyo::-webkit-scrollbar {
+			height: 0.5rem;
+			width: 0.5rem;
+		}
+
+		.station-ekimeihyo::-webkit-scrollbar-track {
+			background: var(--grey_2);
+		}
+
+		.station-ekimeihyo::-webkit-scrollbar-thumb {
+			background: var(--grey_1);
+		}
+
+		.station-ekimeihyo::-webkit-scrollbar-thumb:hover {
+			background: var(--line-colour);
+		}
+
+		@media (max-width: 480px) {
+			.station-ekimeihyo::-webkit-scrollbar {
+				height: 0.25rem;
+				width: 0.25rem;
+			}
+		}
+
+		/* Desktop Styles */
+		@media screen and (min-width: 951px) {
+			.station-line {
+				margin: 10px 16.25px 0 16.25px;
+			}
+
+			.line {
+				height: calc(100% + 1em + 10px);
+				width: 5px;
+			}
+
+			.line.line-stop::before {
+				border-style: solid;
+				border-width: 3px;
+				height: 9px;
+				width: 9px;
+				margin-left: -5px;
+				margin-top: -7.5px;
+			}
+
+			.station-name-main {
+				font-size: 20px;
+			}
+
+			.line.line-icon>span>img,
+			.line.line-icon>span>svg {
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: -10px;
+				left: -7.5px;
+			}
+
+			div.op-title {
+				display: flex;
+				align-items: center;
+				height: 37.5px;
+				gap: 0.5em;
+			}
+
+			div.op-title>img {
+				width: 37.5px;
+				height: 37.5px;
+			}
+
+			div.op-title>span {
+				font-size: 1.5em;
+				font-weight: 500;
+			}
+		}
+
+		/* Mobile Styles */
+		@media screen and (max-width: 950px) {
+			.line-section-name {
+				margin-bottom: 24px;
+				font-size: 25px;
+				font-weight: 550;
+			}
+
+			.station-ekimeihyo {
+				overflow-x: auto;
+			}
+
+			.station-line {
+				margin: 10px 10px 0 10px;
+			}
+
+			.line.line-icon>span>img,
+			.line.line-icon>span>svg {
+				height: 20px;
+				width: 20px;
+				position: absolute;
+				top: -10px;
+				left: -7.5px;
+			}
+
+			.line.line-stop::before,
+			.line.bubunteisha::before {
+				border-style: solid;
+				border-width: 3px;
+				height: 6px;
+				width: 6px;
+				margin-left: -4px;
+				margin-top: -6.25px;
+			}
+
+			.line {
+				border-width: 2px;
+				height: calc(100% + 24px);
+				margin-left: 10px;
+				width: 4px;
+			}
+
+			.line.chokutsu-end>span::after,
+			.line.chokutsu-end>span::before,
+			.line.chokutsu-start>span::after,
+			.line.chokutsu-start>span::before {
+				width: 4px;
+			}
+
+			.line.chokutsu-end>span::before {
+				top: 0;
+			}
+
+			div.op-title {
+				display: flex;
+				align-items: center;
+				height: 30px;
+				gap: 0.5em;
+			}
+
+			div.op-title>img {
+				width: 25px;
+				height: 25px;
+			}
+
+			div.op-title>span {
+				font-size: 1.5em;
+				font-weight: 500;
+			}
+		}
+
+		/* Mobile-Specific Station Images */
+		@media (max-width: 480px) {
+		}
+	</style>
+	<style>
+		:root {
+			--scale-factor: 20;
+		}
+
+		img.scale {
+			/* initial size before calculation */
+			width: 0px;
+			height: 0px;
+		}
+
+		img.default {
+			max-height: 5em;
+			max-width: 100%;
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li id="icon">
+					<img src="../img/Barrier.png">
+					<img src="../img/SNJ2004.svg">
+				</li>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../rail.html">铁道</a></li>
+				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="../sakuhin.html">作品</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div id="crumbs">
+			<ul>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../sakuhin.html">作品</a></li>
+				<li><a href="">站名牌</a></li>
+			</ul>
+		</div>
+		<section id="toc">
+			<h1>站名牌</h1>
+			<ul>
+				<li><a href="#NetworkRail">Network Rail</a></li>
+				<li><a href="#NR-CH">Chiltern Railways</a></li>
+				<li><a href="#NR-VT">Avanti West Coast</a></li>
+				<li><a href="#NR-SR">ScotRail</a></li>
+				<li><a href="#SPT">Strathclyde Partnership for Transport</a></li>
+			</ul>
+		</section>
+		<section id="NetworkRail" class="m10l">
+			<div class="op-title">
+				<img src="../img/transp/rail/operator/NetworkRail.svg" />
+				<span lang="en-GB">Network Rail</span>
+			</div>
+			<article class="operator" style="--line-colour: #ec6608;">
+				<div class="line-section">
+					<ul class="station-line">
+						<li class="line line-icon"><span>
+								<svg fill="var(--line-colour)">
+									<use xlink:href="../img/icon/railway.svg#NR"></use>
+								</svg>
+							</span>
+						</li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">A-Z</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Glasgow Central</div>
+						<div class="station-ekimeihyo">
+							<img class="default" loading="lazy" src="img/ekimeihyo/NetworkRail-GLC.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Manchester Piccadilly</div>
+						<div class="station-ekimeihyo">
+							<img class="default" loading="lazy" src="img/ekimeihyo/NetworkRail-MCV.png">
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section id="NR-CH" class="m10l">
+			<div class="op-title">
+				<img src="../img/transp/rail/operator/NR-CH.svg" />
+				<span lang="en-GB">Chiltern Railways</span>
+			</div>
+			<article class="operator" style="--line-colour: #1c2d47;">
+				<div class="line-section">
+					<ul class="station-line">
+						<li class="line line-icon"><span>
+								<svg fill="var(--line-colour)">
+									<use xlink:href="../img/icon/railway.svg#NR"></use>
+								</svg>
+							</span>
+						</li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">A-Z</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Bicester Village</div>
+						<div class="station-ekimeihyo">
+							<img class="default" loading="lazy" src="img/ekimeihyo/NR-CH_BIT-for.png">
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section id="NR-VT" class="m10l">
+			<div class="op-title">
+				<img src="../img/transp/rail/operator/NR-VT.svg" />
+				<span lang="en-GB">Avanti West Coast</span>
+			</div>
+			<article class="operator" style="--line-colour: #fa4616;">
+				<div class="line-section">
+					<ul class="station-line">
+						<li class="line line-icon"><span>
+								<svg fill="var(--line-colour)">
+									<use xlink:href="../img/icon/railway.svg#NR"></use>
+								</svg>
+							</span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">A-Z</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Wigan North Western</div>
+						<div class="station-ekimeihyo">
+							<img class="default" loading="lazy" src="img/ekimeihyo/NR-VT_WGN.png">
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section id="NR-SR" class="m10l">
+			<div class="op-title">
+				<img src="../img/transp/rail/operator/NR-SR.svg" />
+				<span lang="en-GB">ScotRail</span>
+			</div>
+			<article class="operator" style="--line-colour: #0e2d6d;">
+				<div class="line-section">
+					<ul class="station-line">
+						<li class="line line-icon"><span>
+								<svg fill="var(--line-colour)">
+									<use xlink:href="../img/icon/railway.svg#NR"></use>
+								</svg>
+							</span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">A-Z</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Ayr</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_AYR-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Barnhill</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BNL-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Balloch</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BHC-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BHC-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Clydebank</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_CYK-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_CYK-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Exhibition Centre</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_EXG-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Glasgow Central</div>
+						<div class="station-ekimeihyo">
+							<img class="default" loading="lazy" src="img/ekimeihyo/NR-SR_GLC-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Paisley Gilmour Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PYG-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PYG-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Partick</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PTK-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PTK-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Pitlochry</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PIT-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PIT-gla-ncn.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Westerton</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_WES-gla.png">
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<section id="SPT" class="m10l">
+			<div class="op-title">
+				<img src="../img/transp/rail/operator/SPT.svg" />
+				<span lang="en-GB">Strathclyde Partnership for Transport</span>
+			</div>
+			<article class="operator" style="--line-colour: #fa6200;">
+				<div class="line-section">
+					<ul class="station-line">
+						<li class="line line-icon"><span>
+								<img src="../img/transp/rail/line/GlasgowSubway.svg" />
+							</span>
+						</li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Glasgow Subway</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Govan</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_01-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_01-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Partick</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_02-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_02-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Kelvinhall</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_03-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_03-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Hillhead</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_04-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_04-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Kelvinbridge</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_05-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_05-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">St. George’s Cross</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_06-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_06-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Cowcaddens</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_07-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_07-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Buchanan Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_08-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_08-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">St. Enoch</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_09-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_09-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Bridge Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_10-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_10-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">West Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_11-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_11-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Shields Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_12-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_12-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Kinning Street</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_13-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_13-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Cessnock</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_14-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_14-Inner.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Ibrox</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_15-Outer.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/SPT_15-Inner.png">
+						</div>
+					</div>
+				</div>
+			</article>
+		</section>
+		<script>
+			document.addEventListener("DOMContentLoaded", () => {
+				const scaleFactor = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--scale-factor')) || 1;
+				const images = document.querySelectorAll('img.scale');
+
+				images.forEach(img => {
+					// Wait for the image to load to get its natural size
+					if (img.complete) {
+						scaleImage(img);
+					} else {
+						img.onload = () => scaleImage(img);
+					}
+				});
+
+				function scaleImage(img) {
+					const originalWidth = img.naturalWidth;
+					const originalHeight = img.naturalHeight;
+
+					img.style.width = (originalWidth / scaleFactor) + 'px';
+					img.style.height = (originalHeight / scaleFactor) + 'px';
+				}
+			});
+		</script>
+	</main>
+</body>
+
+</html>

@@ -62,10 +62,6 @@
 	.led-section>article {
 		width: 100%;
 	}
-	
-	.led-section>article>div {
-		max-height: calc(100vh - 2em);
-	}
 
 	.led-section>article div::-webkit-scrollbar {
 		height: 0.25rem;

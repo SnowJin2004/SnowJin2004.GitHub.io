@@ -13,8 +13,7 @@
 		iframe {
 			background-color: #f8f9fa;
 			color: #202122;
-			border: 1px solid #a2a9b1;
-			border-collapse: collapse
+			border: none;
 		}
 	</style>
 	<link rel="stylesheet" href="../css/default.css">
@@ -27,15 +26,51 @@
 			vertical-align: top;
 		}
 
-		.wikitable>tr>th, .wikitable>tr>td, .wikitable>*>tr>th, .wikitable>*>tr>td {
-			line-height: 22.5px;
-			box-sizing: border-box;
+		.flex {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			flex-wrap: wrap;
+			gap: 10px;
 		}
-		
-		.text-roller {
-			display: block;
+
+		.flex>.table-wrap {
+			overflow: auto;
+		}
+
+		.flex>.table-wrap>.wikitable {
+			word-break: keep-all;
+			width: max-content;
+		}
+
+		.flex>div {
+			width: calc(50% - 5px);
+		}
+
+		@media screen and (max-width: 1000px) {
+			.flex>div {
+				max-width: unset;
+				width: 100% !important;
+			}
+
+			.google-wrap {
+				height: 90vh;
+			}
 		}
 	</style>
+	<style>
+		.leaflet-popup-content>* {
+			font-family: 'Roboto', 'Noto Sans', sans-serif;
+		}
+	</style>
+	<link rel="stylesheet" href="http://unpkg.com/leaflet@1.4.0/dist/leaflet.css" />
+	<script src="http://unpkg.com/leaflet@1.4.0/dist/leaflet.js"></script>
+	<script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.2.0/maptiler-sdk.umd.min.js"></script>
+    <script src="https://cdn.maptiler.com/leaflet-maptilersdk/v4.0.2/leaflet-maptilersdk.umd.min.js"></script>
+	<script src='//unpkg.com/leaflet-arc/bin/leaflet-arc.min.js'></script>
+	<script src="../js/L.KML.js"></script>
+	<script src='../js/leaflet.ChineseTmsProviders.js'></script>
 </head>
 
 <body>
@@ -61,162 +96,265 @@
 				<li><a href="">空中足迹</a></li>
 			</ul>
 		</div>
-		<div class="table-wrap">
-			<table class="wikitable">
-				<thead>
-					<tr>
-						<th>承运</th>
-						<th>航班号</th>
-						<th>自</th>
-						<th>至</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td><div class="airline MU">MU</div></td>
-						<td><div class="airline MU">MU 567</div><div class="airline QF">QF 4091</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-						<td><div class="airport SIN">新加坡/樟宜</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline MU">MU</div></td>
-						<td><div class="airline MU">MU 546</div><div class="airline HO">HO 3546</div></td>
-						<td><div class="airport SIN">新加坡/樟宜</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline CA">CA</div></td>
-						<td><div class="airline CA">CA 847</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline U2">U2</div></td>
-						<td><div class="airline U2">EZY 863</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline ZQ">ZQ</div></td>
-						<td>
-							<div class="airline KL">KL 1472</div>
-							<div class="text-roller blk">
-								<div class="text-roller-container rows-5">
-									<div class="airline AM">AM 6645</div>
-									<div class="airline DL">DL 9296</div>
-									<div class="airline EY">EY 7294</div>
-									<div class="airline VS">VS 7032</div>
-									<div class="airline MF">MF 9636</div>
-									<div class="airline AM">AM 6645</div>
-								</div>
-							</div>
-						</td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-						<td><div class="airport AMS">阿姆斯特丹/史基普</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline KL">KL</div></td>
-						<td>
-							<div class="airline KL">KL 895</div>
-							<div class="text-roller blk">
-								<div class="text-roller-container rows-2">
-									<div class="airline AF">AF 8447</div>
-									<div class="airline MU">MU 1552</div>
-									<div class="airline AF">AF 8447</div>
-								</div>
-							</div>
-						</td>
-						<td><div class="airport AMS">阿姆斯特丹/史基普</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline FM">FM</div></td>
-						<td><div class="airline FM">FM 9307</div><div class="airline MU">MU 8419</div></td>
-						<td><div class="airport SHA">上海/虹桥</div></td>
-						<td><div class="airport CAN">广州/白云</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline CZ">CZ</div></td>
-						<td><div class="airline CZ">CZ 3595</div></td>
-						<td><div class="airport CAN">广州/白云</div></td>
-						<td><div class="airport SHA">上海/虹桥</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline MU">MU</div></td>
-						<td><div class="airline MU">MU 771</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-						<td><div class="airport AMS">阿姆斯特丹/史基普</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline ZQ">ZQ</div></td>
-						<td>
-							<div class="airline KL">KL 1471</div>
-							<div class="text-roller blk">
-								<div class="text-roller-container rows-5">
-									<div class="airline MU">MU 1797</div>
-									<div class="airline DL">DL 9281</div>
-									<div class="airline EY">EY 7391</div>
-									<div class="airline VS">VS 6971</div>
-									<div class="airline MF">MF 9633</div>
-									<div class="airline MU">MU 1797</div>
-								</div>
-							</div>
-						</td>
-						<td><div class="airport AMS">阿姆斯特丹/史基普</div></td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline U2">U2</div></td>
-						<td><div class="airline U2">EZY 868</div></td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline U2">U2</div></td>
-						<td><div class="airline U2">EZY 869</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline BA">BA</div></td>
-						<td>
-							<div class="airline BA">BA 1481</div>
-							<div class="text-roller blk">
-								<div class="text-roller-container rows-3">
-									<div class="airline AA">AA 6472</div>
-									<div class="airline IB">IB 7737</div>
-									<div class="airline QR">QR 6253</div>
-									<div class="airline AA">AA 6472</div>
-								</div>
-							</div>
-						</td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline MU">MU</div></td>
-						<td><div class="airline MU">MU 202</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline MU">MU</div></td>
-						<td><div class="airline MU">MU 201</div></td>
-						<td><div class="airport PVG">上海/浦东</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-					</tr>
-					<tr>
-						<td><div class="airline U2">U2</div></td>
-						<td><div class="airline U2">EZY 863</div></td>
-						<td><div class="airport LGW">伦敦/盖特维克</div></td>
-						<td><div class="airport GLA">格拉斯哥</div></td>
-					</tr>
-				</tbody>
-			</table>
+		<div class="flex">
+			<div class="table-wrap">
+				<table class="wikitable">
+					<thead>
+						<tr>
+							<th>承运</th>
+							<th>航班号</th>
+							<th>自</th>
+							<th>至</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td><div class="airline MU">MU 567</div><div class="airline QF">QF 4091</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport SIN">新加坡/樟宜</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td><div class="airline MU">MU 546</div><div class="airline HO">HO 3546</div></td>
+							<td><div class="airport SIN">新加坡/樟宜</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline CA">CA</div></td>
+							<td><div class="airline CA">CA 847</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline U2">U2</div></td>
+							<td><div class="airline U2">EZY 863</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline ZQ">ZQ</div></td>
+							<td>
+								<div class="airline KL">KL 1472</div>
+								<div class="airline AM">AM 6645</div>
+								<div class="airline DL">DL 9296</div>
+								<div class="airline EY">EY 7294</div>
+								<div class="airline VS">VS 7032</div>
+								<div class="airline MF">MF 9636</div>
+							</td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline KL">KL</div></td>
+							<td>
+								<div class="airline KL">KL 895</div>
+								<div class="airline AF">AF 8447</div>
+								<div class="airline MU">MU 1552</div>
+							</td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline FM">FM</div></td>
+							<td><div class="airline FM">FM 9307</div><div class="airline MU">MU 8419</div></td>
+							<td><div class="airport SHA">上海/虹桥</div></td>
+							<td><div class="airport CAN">广州/白云</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline CZ">CZ</div></td>
+							<td><div class="airline CZ">CZ 3595</div></td>
+							<td><div class="airport CAN">广州/白云</div></td>
+							<td><div class="airport SHA">上海/虹桥</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td><div class="airline MU">MU 771</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline ZQ">ZQ</div></td>
+							<td>
+								<div class="airline KL">KL 1471</div>
+								<div class="airline MU">MU 1797</div>
+								<div class="airline DL">DL 9281</div>
+								<div class="airline EY">EY 7391</div>
+								<div class="airline VS">VS 6971</div>
+								<div class="airline MF">MF 9633</div>
+							</td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline U2">U2</div></td>
+							<td><div class="airline U2">EZY 868</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline U2">U2</div></td>
+							<td><div class="airline U2">EZY 869</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline BA">BA</div></td>
+							<td>
+								<div class="airline BA">BA 1481</div>
+								<div class="airline AA">AA 6472</div>
+								<div class="airline IB">IB 7737</div>
+								<div class="airline QR">QR 6253</div>
+							</td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td><div class="airline MU">MU 202</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td><div class="airline MU">MU 201</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline U2">U2</div></td>
+							<td><div class="airline U2">EZY 863</div></td>
+							<td><div class="airport LGW">伦敦/盖特威克</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline T3">T3</div></td>
+							<td>
+								<div class="airline KL">KL 940</div>
+								<div class="airline AM-2">AM 6408</div>
+								<div class="airline AF">AF 8337</div>
+								<div class="airline BT">BT 6048</div>
+								<div class="airline DL">DL 9520</div>
+								<div class="airline AZ">AZ 3748</div>
+								<div class="airline VS">VS 6985</div>
+								<div class="airline MF">MF 9764</div>
+							</td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline MU">MU</div></td>
+							<td>
+								<div class="airline MU">MU 772</div>
+							</td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline HO">HO</div></td>
+							<td>
+								<div class="airline HO">HO 1355</div>
+							</td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport DPS">登巴萨/伊·古斯蒂·伍拉·莱-巴厘</div></td>
+						</tr>
+						<tr>
+							<td><div class="airline HO">HO</div></td>
+							<td>
+								<div class="airline HO">HO 1356</div>
+							</td>
+							<td><div class="airport DPS">登巴萨/伊·古斯蒂·伍拉·莱-巴厘</div></td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="airline"></div>
+								<div class="airline"></div>
+								<div class="airline KL">KL</div>
+							</td>
+							<td>
+								<div class="airline KL">KL 896</div>
+								<div class="airline AF">AF 8448</div>
+								<div class="airline MU">MU 1551</div>
+							</td>
+							<td><div class="airport PVG">上海/浦东</div></td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+						</tr>
+						<tr>
+							<td>
+								<div class="airline"></div>
+								<div class="airline KL">KL</div>
+							</td>
+							<td>
+								<div class="airline KL">KL 945</div>
+								<div class="airline MU">MU 1631</div>
+							</td>
+							<td><div class="airport AMS">阿姆斯特丹/史基浦</div></td>
+							<td><div class="airport GLA">格拉斯哥</div></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="google-wrap">
+				<div id="map"></div>
+			</div>
 		</div>
-		<p>↓此窗口为Google 地图，可能无法显示。</p>
-		<!-- <iframe src="https://www.google.com/maps/d/embed?mid=1d2CbGr0rod5ljBh479S9UToWvQFREj8&ehbc=2E312F&noprof=1" width="100%" height="550px"></iframe> -->
 	</main>
+	<script type="text/javascript">
+		const mtLayer = L.maptiler.maptilerLayer({
+            apiKey: "VZpKyiwtn3lKpsQyX1q3",
+            style: "0196a77a-0a22-7d58-aaf2-16585ce4913c",
+        });
+
+		L.tileLayer.chinaProvider(
+			'TianDiTu.Normal.Map',
+			{
+				key: '8a02160efdc4bb503d909f300c56348e',
+				maxZoom:18,
+				minZoom:3,
+			});
+
+		var TianDiTuM = L.tileLayer.chinaProvider('TianDiTu.Normal.Map', {
+				maxZoom: 18,
+				minZoom: 3
+			}),
+			TianDiTuA = L.tileLayer.chinaProvider('TianDiTu.Normal.Annotion', {
+				maxZoom: 18,
+				minZoom: 3
+			});
+
+		var TianDiTu = L.layerGroup([TianDiTuM, TianDiTuA]),
+			MapTiler = mtLayer;
+		
+		var baseLayers = {
+			"天地图": TianDiTu,
+			"MapTiler": MapTiler,
+		}
+		
+		var overlayLayers = {
+		
+		}
+		
+		var map = L.map("map", {
+			layers: [TianDiTu]
+		});
+		
+		L.control.layers(baseLayers, overlayLayers).addTo(map);
+
+		fetch('../asset/flight.kml')
+			.then(res => res.text())
+			.then(kmltext => {
+				// Create new kml overlay
+				const parser = new DOMParser();
+				const kml = parser.parseFromString(kmltext, 'text/xml');
+				const track = new L.KML(kml);
+				map.addLayer(track);
+
+				// Adjust map to show the kml
+				const bounds = track.getBounds();
+				map.fitBounds(bounds);
+			});
+	</script>
 </body>
 
 </html>

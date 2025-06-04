@@ -1,3 +1,13 @@
+.wikitable {
+	margin: 0;
+}
+
+td>div {
+	display: flex;
+	height: 22.5px;
+	align-items: center;
+}
+
 .operator {
 	font-family: 'Noto Sans Mono', monospace;
 	align-items: center;

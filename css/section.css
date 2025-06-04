@@ -54,7 +54,6 @@ div.sakuhin-thubnail {
 
 div.sakuhin-thubnail img {
 	width: 840px;
-	margin-top: 15px;
 	background-color: var(--sec_color);
 	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 	border-radius: 5px;

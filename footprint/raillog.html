@@ -74,27 +74,6 @@
     		height: 100%; */
 		}
 
-		.flex {
-			display: -webkit-flex;
-			display: flex;
-			-webkit-justify-content: space-between;
-			justify-content: space-between;
-			flex-wrap: wrap;
-		}
-
-		.flex>.table-wrap {
-			overflow-x: scroll;
-		}
-
-		.flex>.table-wrap>.wikitable {
-			word-break: keep-all;
-			width: max-content;
-		}
-
-		.flex>div {
-			max-width: calc(50% - 5px);
-		}
-
 		.panzoom-wrap {
 			position: relative;
 		}
@@ -135,6 +114,27 @@
 			width: 100%;
 		}
 
+		.flex {
+			display: -webkit-flex;
+			display: flex;
+			-webkit-justify-content: space-between;
+			justify-content: space-between;
+			flex-wrap: wrap;
+		}
+
+		.flex>.table-wrap {
+			overflow: auto;
+		}
+
+		.flex>.table-wrap>.wikitable {
+			word-break: keep-all;
+			width: max-content;
+		}
+
+		.flex>div {
+			max-width: calc(50% - 5px);
+		}
+
 		.panzoom-note img.pz-legend {
 			max-height: 10em;
 		}
@@ -155,7 +155,7 @@
 		}
 
 		@media (max-width: 480px) {
-			.panzoom-parent {
+			/* .panzoom-parent {
 				height: 500px;
 			}
 
@@ -166,6 +166,12 @@
 			.panzoom-note img.pz-legend {
 				width: fit-content;
 				align-self: center;
+			} */
+
+			/* Hidden due to performance issue */
+
+			.panzoom-wrap {
+				display: none;
 			}
 		}
 
@@ -193,9 +199,6 @@
 			color: #fff;
 		}
 	</style>
-	<script>
-
-	</script>
 </head>
 
 <body>
@@ -223,7 +226,6 @@
 		</div>
 		<div class="flex">
 			<div class="table-wrap">
-				<p>并未记录全部车次。</p>
 				<table class="wikitable">
 					<thead>
 						<tr>
@@ -237,148 +239,99 @@
 							<td>
 								<div class="operator CR-SH"><i></i>G8252</div>
 							</td>
-							<td lang="zh-CN">上海西</td>
-							<td lang="zh-CN">苏州</td>
+							<td lang="zh-CN"><div>上海西</div></td>
+							<td lang="zh-CN"><div>苏州</div></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G8255</div>
 							</td>
-							<td lang="zh-CN">苏州</td>
-							<td lang="zh-CN">上海西</td>
+							<td lang="zh-CN"><div>苏州</div></td>
+							<td lang="zh-CN"><div>上海西</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator CR-TY">
-									<i></i><div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>Z196</div>
-											<div>Z197</div>
-											<div>Z196</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator CR-TY"><i></i>Z196</div>
+								<div class="operator"><i></i>Z197</div>
 							</td>
-							<td lang="zh-CN">上海</td>
-							<td lang="zh-CN">太原</td>
+							<td lang="zh-CN"><div>上海</div></td>
+							<td lang="zh-CN"><div>太原</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator CR-TY">
-									<i></i><div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>Z198</div>
-											<div>Z195</div>
-											<div>Z198</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator CR-TY"><i></i>Z198</div>
+								<div class="operator"><i></i>Z195</div>
 							</td>
-							<td lang="zh-CN">太原</td>
-							<td lang="zh-CN">上海</td>
+							<td lang="zh-CN"><div>太原</div></td>
+							<td lang="zh-CN"><div>上海</div></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>Y701</div>
 							</td>
-							<td lang="zh-CN">上海西</td>
-							<td lang="zh-CN">嘉兴</td>
+							<td lang="zh-CN"><div>上海西</div></td>
+							<td lang="zh-CN"><div>嘉兴</div></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>Y702</div>
 							</td>
-							<td lang="zh-CN">嘉兴</td>
-							<td lang="zh-CN">上海西</td>
+							<td lang="zh-CN"><div>嘉兴</div></td>
+							<td lang="zh-CN"><div>上海西</div></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G6</div>
 							</td>
-							<td lang="zh-CN">上海虹桥</td>
-							<td lang="zh-CN">南京南</td>
+							<td lang="zh-CN"><div>上海虹桥</div></td>
+							<td lang="zh-CN"><div>南京南</div></td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G7027</div>
 							</td>
-							<td lang="zh-CN">南京</td>
-							<td lang="zh-CN">上海西</td>
+							<td lang="zh-CN"><div>南京</div></td>
+							<td lang="zh-CN"><div>上海西</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator NR-TP">
-									<i></i>TP<div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>1M92</div>
-											<div>8049</div>
-											<div>1M92</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator NR-TP"><i></i>TP1M92</div>
+								<div class="operator"><i></i>TP8049</div>
 							</td>
-							<td lang="en-GB">Glasgow Central</td>
-							<td lang="en-GB">Manchester Piccadilly</td>
+							<td lang="en-GB"><div>Glasgow Central</div></td>
+							<td lang="en-GB"><div>Manchester Piccadilly</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator NR-NT">
-									<i></i>NT<div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>2L70</div>
-											<div>9920</div>
-											<div>2L70</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator NR-NT"><i></i>NT2L70</div>
+								<div class="operator"><i></i>NT9920</div>
 							</td>
-							<td lang="en-GB">Manchester Victoria</td>
-							<td lang="en-GB">Wigan Wallgate</td>
+							<td lang="en-GB"><div>Manchester Victoria</div></td>
+							<td lang="en-GB"><div>Wigan Wallgate</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator NR-VT">
-									<i></i>VT<div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>1S90</div>
-											<div>6261</div>
-											<div>1S90</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator NR-VT"><i></i>VT1S90</div>
+								<div class="operator"><i></i>VT6261</div>
 							</td>
-							<td lang="en-GB">Wigan North Western</td>
-							<td lang="en-GB">Glasgow Central</td>
+							<td lang="en-GB"><div>Wigan North Western</div></td>
+							<td lang="en-GB"><div>Glasgow Central</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator NR-SR">
-									<i></i>SR<div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>1A81</div>
-											<div>0251</div>
-											<div>1A81</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator NR-SR"><i></i>SR1A81</div>
+								<div class="operator"><i></i>SR0251</div>
 							</td>
-							<td lang="en-GB">Glasgow Queen Street</td>
-							<td lang="en-GB">Dundee</td>
+							<td lang="en-GB"><div>Glasgow Queen Street</div></td>
+							<td lang="en-GB"><div>Dundee</div></td>
 						</tr>
 						<tr>
 							<td>
-								<div class="operator NR-SR">
-									<i></i>SR<div class="text-roller iln">
-										<div class="text-roller-container rows-2">
-											<div>1T82</div>
-											<div>0265</div>
-											<div>1T82</div>
-										</div>
-									</div>
-								</div>
+								<div class="operator NR-SR"><i></i>SR1T82</div>
+								<div class="operator"><i></i>SR0265</div>
 							</td>
-							<td lang="en-GB">Dundee</td>
-							<td lang="en-GB">Glasgow Queen Street</td>
+							<td lang="en-GB"><div>Dundee</div></td>
+							<td lang="en-GB"><div>Glasgow Queen Street</div></td>
 						</tr>
 					</tbody>
 				</table>

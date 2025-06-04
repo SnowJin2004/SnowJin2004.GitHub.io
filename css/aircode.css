@@ -1,6 +1,40 @@
+.table-wrap::-webkit-scrollbar {
+	height: 0.5rem;
+	width: 0.5rem;
+}
+
+.table-wrap::-webkit-scrollbar-track {
+	background: var(--grey_2);
+}
+
+.table-wrap::-webkit-scrollbar-thumb {
+	background: var(--grey_1);
+}
+
+.table-wrap::-webkit-scrollbar-thumb:hover {
+	background: #df0000;
+}
+
+.wikitable {
+	margin: 0;
+}
+
+.google-wrap>iframe,
+.google-wrap>div {
+	width: 100%;
+	height: 100%;
+}
+
+td>div {
+	display: flex;
+	height: 22.5px;
+	align-items: center;
+}
+
 .airline {
 	font-family: 'Noto Sans Mono', monospace;
 	white-space: pre;
+	line-height: 20px;
 }
 
 .airline::before,
@@ -10,7 +44,6 @@
 	display: inline-block;
 	width: 1em;
 	height: 1em;
-	vertical-align: -2px;
 	background-repeat: no-repeat;
 }
 
@@ -26,8 +59,20 @@
 	background-image: url('../img/transp/air/AM.svg');
 }
 
+.AM-2::before {
+	background-image: url('../img/transp/air/AM-2.svg');
+}
+
+.AZ::before {
+	background-image: url('../img/transp/air/AZ.svg');
+}
+
 .BA::before {
 	background-image: url('../img/transp/air/BA.svg');
+}
+
+.BT::before {
+	background-image: url('../img/transp/air/BT.svg');
 }
 
 .CA::before {
@@ -78,6 +123,10 @@
 	background-image: url('../img/transp/air/QR.svg');
 }
 
+.T3::before {
+	background-image: url('../img/transp/air/T3.svg');
+}
+
 .U2::before {
 	background-image: url('../img/transp/air/U2.svg');
 }
@@ -98,6 +147,10 @@
 	background-image: url('../img/transp/air/CAN.svg');
 }
 
+.DPS::before {
+	background-image: url('../img/transp/air/DPS.svg');
+}
+
 .GLA::before {
 	background-image: url('../img/transp/air/GLA.svg');
 }
@@ -115,7 +168,13 @@
 	background-image: url('../img/transp/air/SIN.svg');
 }
 
-@media screen and (max-width: 500px) {
+@media (min-width: 1001px) {
+	.table-wrap, .google-wrap {
+		height: calc(100vh - 3.125rem - 2.625em - 45px);
+	}
+}
+
+@media (max-width: 500px) {
 	.table-wrap {
 		overflow-y: auto;
 	}
@@ -124,5 +183,20 @@
 		overflow: auto hidden;
 		width: max-content;
 		margin-bottom: 0;
+	}
+}
+
+@media (max-width: 480px) {
+	.table-wrap::-webkit-scrollbar {
+		height: 0.25rem;
+		width: 0.25rem;
+	}
+}
+
+@media (max-width: calc(100vh - 3.125rem - 5em)) {
+	.google-wrap>iframe {
+		width: 100%;
+		height: 80vh;
+		/* aspect-ratio: 1/1; */
 	}
 }

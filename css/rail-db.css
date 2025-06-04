@@ -53,7 +53,8 @@
 	line-height: initial;
 }
 
-.accordion-btn svg {
+.accordion-btn svg,
+.accordion-btn img {
 	height: 1.5em;
 	width: 1.5em;
 	vertical-align: top;
@@ -135,10 +136,11 @@
 	align-content: center;
 }
 
-.panel table svg {
+.panel table svg,
+.panel table img {
 	height: 1.5em;
 	width: 1.5em;
-	vertical-align: middle;
+	vertical-align: bottom;
 }
 
 .panel table *:lang(ja),
@@ -287,7 +289,8 @@ td.set::after {
 		padding: 0.5rem 0.5rem 0.5rem 0.25rem;
 	}
 
-	.accordion-btn div svg {
+	.accordion-btn div svg,
+	.accordion-btn div img {
 		font-size: 1.75rem;
 		float: left;
 	}

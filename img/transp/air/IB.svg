@@ -1,4 +1,29 @@
-<svg version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
-	<path d="m24.118 65.787c17.457-17.609 42.353-27.324 58.899-27.78l-5.6167 14.725c-6.6793 15.787-18.368 27.324-67.4 27.324l14.118-14.269" fill="#d7192d"/>
-	<path d="m41.271 48.482 15.939-16.091c7.5901-7.5901 10.626-12.448 32.789-12.448l-3.6432 9.5636c-15.028 1.6698-30.057 8.1973-45.237 19.127" fill="#fcd100"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_图层_1" data-name="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 100 100">
+  <!-- Generator: Adobe Illustrator 29.1.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 142)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#_未命名的渐变_2);
+      }
+
+      .st1 {
+        fill: url(#_未命名的渐变_3);
+      }
+    </style>
+    <linearGradient id="_未命名的渐变_2" data-name="未命名的渐变 2" x1="10" y1="59.1" x2="83" y2="59.1" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#a81518"/>
+      <stop offset=".2" stop-color="#b5111c"/>
+      <stop offset=".5" stop-color="#da0828"/>
+      <stop offset="1" stop-color="#da0828"/>
+    </linearGradient>
+    <linearGradient id="_未命名的渐变_3" data-name="未命名的渐变 3" x1="41.2" y1="34.2" x2="90" y2="34.2" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#f08100"/>
+      <stop offset=".4" stop-color="#f7a700"/>
+      <stop offset=".8" stop-color="#ffd000"/>
+      <stop offset="1" stop-color="#ffd000"/>
+    </linearGradient>
+  </defs>
+  <path class="st0" d="M83,38.1c-16.5.5-41.5,10.2-58.9,27.7l-14.1,14.3h0c49.1,0,60.6-11.5,67.4-27.2l5.7-14.8h0Z"/>
+  <path class="st1" d="M90,19.9c-22.2,0-25.2,4.9-32.9,12.5l-15.9,16.1c15.1-10.8,30.2-17.4,45.2-19.1l3.7-9.5Z"/>
 </svg>
