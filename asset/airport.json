@@ -1,0 +1,69 @@
+[
+	{
+		"iata": "LGW",
+		"icao": "EGKK",
+		"lat": 51.148333,
+		"lng": -0.19,
+		"name": "London/Gatwick",
+		"timezone": "UTC/UTC +1",
+		"color": "#004489"
+	},
+	{
+		"iata": "GLA",
+		"icao": "EGPF",
+		"lat": 55.871667,
+		"lng": -4.433333,
+		"name": "Glasgow",
+		"timezone": "UTC/UTC +1",
+		"color": "#213368"
+	},
+	{
+		"iata": "AMS",
+		"icao": "EHAM",
+		"lat": 52.308333,
+		"lng": 4.763333,
+		"name": "Amsterdam/Schiphol",
+		"timezone": "UTC +1/UTC +2"
+	},
+	{
+		"iata": "DPS",
+		"icao": "WADD",
+		"lat": -8.746667,
+		"lng": 115.168333,
+		"name": "Denpasar/I Gusti Ngurah Rai – Bali",
+		"timezone": "UTC +8"
+	},
+	{
+		"iata": "SIN",
+		"icao": "WSSS",
+		"lat": 1.36,
+		"lng": 103.99,
+		"name": "Singapore/Changi",
+		"timezone": "UTC +8"
+	},
+	{
+		"iata": "CAN",
+		"icao": "ZGGG",
+		"lat": 23.393333,
+		"lng": 113.308333,
+		"name": "Guangzhou/Baiyun",
+		"timezone": "UTC +8"
+	},
+	{
+		"iata": "PVG",
+		"icao": "ZSPD",
+		"lat": 31.145,
+		"lng": 121.793333,
+		"name": "Shanghai/Pudong",
+		"timezone": "UTC +8",
+		"icon": "SHA"
+	},
+	{
+		"iata": "SHA",
+		"icao": "ZSSS",
+		"lat": 31.196667,
+		"lng": 121.335,
+		"name": "Shanghai/Hongqiao",
+		"timezone": "UTC +8"
+	}
+]
