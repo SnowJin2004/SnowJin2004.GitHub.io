@@ -1,10 +1,14 @@
 const map = L.map('map', { worldCopyJump: true }).setView([35, 57.5], 3);
+
 const mtLayer = L.maptiler.maptilerLayer({
 	apiKey: "VZpKyiwtn3lKpsQyX1q3",
 	style: "0196a77a-0a22-7d58-aaf2-16585ce4913c",
 }).addTo(map);
 
 const flightPolylineMap = {}; // Define flightPolylineMap globally to store flight data
+
+const dynamicStyle = document.createElement("style");
+document.head.appendChild(dynamicStyle);
 
 function toLatLng(coords) {
 	if (!Array.isArray(coords) || coords.length === 0) return [];
@@ -20,23 +24,21 @@ fetch('../asset/airport.json')
 	.then(response => response.json())
 	.then(airports => {
 		const airportMarkerMap = {};
-		const dynamicStyle = document.createElement("style");
-		document.head.appendChild(dynamicStyle);
 
 		function setAirportActive(iata) {
 			dynamicStyle.textContent = iata
 				? `.airport { font-weight: 350; color: var(--grey_1); }
-                    .${iata} { font-weight: 600; color: inherit; }`
+                    .${iata} { font-weight: 450; color: inherit; }`
 				: '';
 
 			// Update flight polyline transparency based on active airport
 			Object.values(flightPolylineMap).forEach(({ polyline, from, to }) => {
 				if (iata && (from === iata || to === iata)) {
-					polyline.setStyle({ opacity: 1 }); // Show associated flights
+					polyline.setStyle({ opacity: 1 });
 				} else if (iata) {
-					polyline.setStyle({ opacity: 0.25 }); // Hide unrelated flights
+					polyline.setStyle({ opacity: 0.25 });
 				} else {
-					polyline.setStyle({ opacity: 1 }); // Reset all flights to full opacity
+					polyline.setStyle({ opacity: 1 });
 				}
 			});
 		}
@@ -78,7 +80,6 @@ fetch('../asset/airport.json')
 	})
 	.catch(error => console.error('Error loading airport data:', error));
 
-
 const airlineColors = {
 	"BA": "#0032a0",
 	"CA": "#d51b1b",
@@ -99,10 +100,27 @@ function snake() {
 fetch('../asset/flight.json')
 	.then(response => response.json())
 	.then(flights => {
+		function setFlightActive(flightId) {
+			dynamicStyle.textContent = flightId
+				? `.wikitable tr td:nth-child(2) { font-weight: 350; color: var(--grey_1); }
+                   .wikitable tr[data-id="${flightId}"] td:nth-child(2) { font-weight: 450; color: inherit; }`
+				: '';
+
+			Object.entries(flightPolylineMap).forEach(([id, { polyline }]) => {
+				if (flightId && id === flightId) {
+					polyline.setStyle({ opacity: 1 });
+				} else if (flightId) {
+					polyline.setStyle({ opacity: 0.25 });
+				} else {
+					polyline.setStyle({ opacity: 1 });
+				}
+			});
+		}
+
 		flights.forEach(flight => {
 			const latlngs = toLatLng(flight.coords);
-
 			const color = airlineColors[flight.airline] || 'gray';
+			const flightId = flight.id;
 
 			const popup = `
                         <h2>${flight.number}</h2>
@@ -118,8 +136,7 @@ fetch('../asset/flight.json')
 			const polyline = L.Wrapped.wrappedPolyline(latlngs, { color: color, weight: 5 }).addTo(map);
 			polyline.bindPopup(popup);
 
-			// Store flight data in flightPolylineMap
-			flightPolylineMap[flight.number + flight.date] = { polyline, from: flight.from, to: flight.to };
+			flightPolylineMap[flightId] = { polyline, from: flight.from, to: flight.to };
 
 			polyline.on('mouseover', () => {
 				polyline.setStyle({ weight: 7.5 });
@@ -127,6 +144,10 @@ fetch('../asset/flight.json')
 
 			polyline.on('mouseout', () => {
 				polyline.setStyle({ weight: 5 });
+			});
+
+			polyline.on('click', () => {
+				setFlightActive(flightId);
 			});
 
 			// polyline.on('click', () => {
@@ -142,6 +163,18 @@ fetch('../asset/flight.json')
 			// 	}
 			// });
 		});
+
+		document.querySelectorAll('.wikitable tr[data-id]').forEach(row => {
+			const flightId = row.getAttribute('data-id');
+			const td = row.querySelector('td:nth-child(2)');
+			if (td) {
+				td.addEventListener('click', () => {
+					setFlightActive(flightId);
+				});
+			}
+		});
+
+		map.on("click", () => setFlightActive(null));
 	})
 	.catch(error => console.error('Error loading flight data:', error));
 
@@ -151,7 +184,6 @@ fetch('../asset/flightOOC.json')
 		flights.forEach(flight => {
 			if (flight.length === 2) {
 				const [startRaw, endRaw] = flight;
-
 				const start = [startRaw[1], startRaw[0]];
 				const end = [endRaw[1], endRaw[0]];
 

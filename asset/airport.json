@@ -2,20 +2,18 @@
 	{
 		"iata": "LGW",
 		"icao": "EGKK",
-		"lat": 51.148333,
-		"lng": -0.19,
+		"lat": 51.148056,
+		"lng": -0.190278,
 		"name": "London/Gatwick",
-		"timezone": "UTC/UTC +1",
-		"color": "#004489"
+		"timezone": "UTC/UTC +1"
 	},
 	{
 		"iata": "GLA",
 		"icao": "EGPF",
-		"lat": 55.871667,
-		"lng": -4.433333,
+		"lat": 55.871944,
+		"lng": -4.433056,
 		"name": "Glasgow",
-		"timezone": "UTC/UTC +1",
-		"color": "#213368"
+		"timezone": "UTC/UTC +1"
 	},
 	{
 		"iata": "AMS",
@@ -36,8 +34,8 @@
 	{
 		"iata": "SIN",
 		"icao": "WSSS",
-		"lat": 1.36,
-		"lng": 103.99,
+		"lat": 1.359211,
+		"lng": 103.989375,
 		"name": "Singapore/Changi",
 		"timezone": "UTC +8"
 	},

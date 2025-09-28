@@ -55,8 +55,8 @@
 			justify-content: flex-start;
 			gap: 0.5em;
 			flex-wrap: wrap;
-			/* box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); */
 			filter: drop-shadow(0 0 5px rgba(0, 0, 0, 0.1));
+			overflow: auto;
 		}
 
 		/* .station-ekimeihyo>img {
@@ -266,7 +266,7 @@
 	</style>
 	<style>
 		:root {
-			--scale-factor: 20;
+			--scale-factor: 30;
 		}
 
 		img.scale {
@@ -339,9 +339,24 @@
 						<li class="line line-stop"><span></span></li>
 					</ul>
 					<div class="station-card">
+						<div class="station-title">Edinburgh Waverley</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_RIS-EDB.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_SNP-EDB-outr.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_RIB-EDB-outl.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_RIB-EDB-outr.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
 						<div class="station-title">Glasgow Central</div>
 						<div class="station-ekimeihyo">
-							<img class="default" loading="lazy" src="img/ekimeihyo/NetworkRail-GLC.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_RIS-GLC.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NetworkRail_RIB-GLC.png">
 						</div>
 					</div>
 				</div>
@@ -444,9 +459,22 @@
 						<li class="line line-stop"><span></span></li>
 					</ul>
 					<div class="station-card">
+						<div class="station-title">Anderston</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-AND-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_FSB-AND-lgr.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_FSB-AND-lglr.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
 						<div class="station-title">Ayr</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_AYR-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-AYR-gla.png">
 						</div>
 					</div>
 				</div>
@@ -457,7 +485,7 @@
 					<div class="station-card">
 						<div class="station-title">Barnhill</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BNL-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-BNL-gla.png">
 						</div>
 					</div>
 				</div>
@@ -468,8 +496,20 @@
 					<div class="station-card">
 						<div class="station-title">Balloch</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BHC-for.png">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_BHC-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-BHC-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-BHC-gla.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Charing Cross</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-CHC-for-outl.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-CHC-for-outr.png">
 						</div>
 					</div>
 				</div>
@@ -480,8 +520,8 @@
 					<div class="station-card">
 						<div class="station-title">Clydebank</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_CYK-for.png">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_CYK-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-CYK-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-CYK-gla.png">
 						</div>
 					</div>
 				</div>
@@ -492,7 +532,7 @@
 					<div class="station-card">
 						<div class="station-title">Exhibition Centre</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_EXG-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-EXG-gla.png">
 						</div>
 					</div>
 				</div>
@@ -503,7 +543,7 @@
 					<div class="station-card">
 						<div class="station-title">Glasgow Central</div>
 						<div class="station-ekimeihyo">
-							<img class="default" loading="lazy" src="img/ekimeihyo/NR-SR_GLC-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_FSB-GLC-gla-lglr.png">
 						</div>
 					</div>
 				</div>
@@ -514,8 +554,8 @@
 					<div class="station-card">
 						<div class="station-title">Paisley Gilmour Street</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PYG-for.png">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PYG-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PYG-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PYG-gla.png">
 						</div>
 					</div>
 				</div>
@@ -526,8 +566,8 @@
 					<div class="station-card">
 						<div class="station-title">Partick</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PTK-for.png">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PTK-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PTK-for.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PTK-gla.png">
 						</div>
 					</div>
 				</div>
@@ -538,8 +578,19 @@
 					<div class="station-card">
 						<div class="station-title">Pitlochry</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PIT-gla.png">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_PIT-gla-ncn.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PIT-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-PIT-gla-ncn.png">
+						</div>
+					</div>
+				</div>
+				<div class="station-section">
+					<ul class="station-line">
+						<li class="line line-stop"><span></span></li>
+					</ul>
+					<div class="station-card">
+						<div class="station-title">Wemyss Bay</div>
+						<div class="station-ekimeihyo">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-WMS.png">
 						</div>
 					</div>
 				</div>
@@ -550,7 +601,7 @@
 					<div class="station-card">
 						<div class="station-title">Westerton</div>
 						<div class="station-ekimeihyo">
-							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_WES-gla.png">
+							<img class="scale" loading="lazy" src="img/ekimeihyo/NR-SR_SNS-WES-gla.png">
 						</div>
 					</div>
 				</div>

@@ -14,7 +14,10 @@
 	<link rel="stylesheet" href="../css/wikipedia.css">
 	<link rel="stylesheet" href="../css/header.css">
 	<link rel="stylesheet" href="../css/crumb.css">
+	<link rel="stylesheet" href="../css/footprint.css">
 	<link rel="stylesheet" href="../css/railcode.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 	<style>
 		td {
 			vertical-align: text-top;
@@ -26,177 +29,6 @@
 
 		td:lang(en) {
 			font-family: "Noto Sans", "Roboto";
-		}
-	</style>
-	<script src="https://unpkg.com/@panzoom/panzoom@4.6.0/dist/panzoom.min.js"></script>
-	<style>
-		.panzoom-window {
-			position: relative;
-		}
-
-		.panzoom-parent {
-			position: relative;
-			overflow: hidden;
-			user-select: none;
-			touch-action: none;
-			width: 100%;
-    		height: 500px;
-			background-color: #f8f9fa;
-			border: 1px solid #a2a9b1;
-			border-collapse: collapse;
-			display: flex;
-			align-items: start;
-			justify-content: center;
-		}
-
-		.pz-fineprint {
-			position: absolute;
-			z-index: 1;
-			bottom: 1px;
-			left: 1px;
-			background-color: #f8f9fa;
-			font-size: 0.75em;
-			padding-left: 0.25em;
-			padding-right: 0.25em;
-		}
-
-		.panzoom {
-			/* width: auto;
-            height: auto; */
-			width: auto;
-			height: auto;
-			cursor: move;
-		}
-
-		.panzoom img {
-			display: block;
-			/* width: 100%;
-    		height: 100%; */
-		}
-
-		.panzoom-wrap {
-			position: relative;
-		}
-
-		.pz-controls {
-			position: absolute;
-			left: 1em;
-			top: 1em;
-			display: flex;
-			flex-direction: column;
-		}
-
-		.pz-controls>button {
-			cursor: pointer;
-			background-color: #f8f9fa;
-			color: #202122;
-			border: 1px solid #a2a9b1;
-			border-collapse: collapse;
-			width: 2.5em;
-			height: 2.5em;
-			border-radius: 50%;
-		}
-
-		.pz-controls>button>img {
-			width: 1em;
-			height: 1em;
-			vertical-align: middle;
-		}
-
-		.pz-controls>button:active>img {
-			transform: translate(1px, 1px);
-		}
-
-		.panzoom-note {
-			margin-top: -1px;
-			border: 1px solid #a2a9b1;
-			display: flex;
-			width: 100%;
-		}
-
-		.flex {
-			display: -webkit-flex;
-			display: flex;
-			-webkit-justify-content: space-between;
-			justify-content: space-between;
-			flex-wrap: wrap;
-		}
-
-		.flex>.table-wrap {
-			overflow: auto;
-		}
-
-		.flex>.table-wrap>.wikitable {
-			word-break: keep-all;
-			width: max-content;
-		}
-
-		.flex>div {
-			max-width: calc(50% - 5px);
-		}
-
-		.panzoom-note img.pz-legend {
-			max-height: 10em;
-		}
-
-		.panzoom-note div.pz-note {
-			margin: 0.5em 1em;
-		}
-
-		@media screen and (max-width: 1000px) {
-			.flex>div {
-				max-width: unset;
-				width: 100% !important;
-			}
-
-			.panzoom-wrap {
-				margin-top: 1em;
-			}
-		}
-
-		@media (max-width: 480px) {
-			/* .panzoom-parent {
-				height: 500px;
-			}
-
-			.panzoom-note {
-				flex-direction: column;
-			}
-
-			.panzoom-note img.pz-legend {
-				width: fit-content;
-				align-self: center;
-			} */
-
-			/* Hidden due to performance issue */
-
-			.panzoom-wrap {
-				display: none;
-			}
-		}
-
-		.tabs {
-			display: flex;
-			gap: 0;
-		}
-
-		.tab {
-			padding: 0 0.5em;
-			background: var(--grey_2);
-			border: 1px solid var(--grey_1);
-			cursor: pointer;
-			border-radius: 5px 5px 0 0;
-			margin-bottom: -1px;
-		}
-
-		.tab:nth-child(n+2) {
-			margin-left: -1px;
-		}
-
-		.tab.active {
-			background: var(--grey_1);
-			border: 1px solid var(--grey_1);
-			color: #fff;
 		}
 	</style>
 </head>
@@ -239,173 +71,244 @@
 							<td>
 								<div class="operator CR-SH"><i></i>G8252</div>
 							</td>
-							<td lang="zh-CN"><div>上海西</div></td>
-							<td lang="zh-CN"><div>苏州</div></td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
+							<td lang="zh-CN">
+								<div>苏州</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G8255</div>
 							</td>
-							<td lang="zh-CN"><div>苏州</div></td>
-							<td lang="zh-CN"><div>上海西</div></td>
+							<td lang="zh-CN">
+								<div>苏州</div>
+							</td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-TY"><i></i>Z196</div>
 								<div class="operator"><i></i>Z197</div>
 							</td>
-							<td lang="zh-CN"><div>上海</div></td>
-							<td lang="zh-CN"><div>太原</div></td>
+							<td lang="zh-CN">
+								<div>上海</div>
+							</td>
+							<td lang="zh-CN">
+								<div>太原</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-TY"><i></i>Z198</div>
 								<div class="operator"><i></i>Z195</div>
 							</td>
-							<td lang="zh-CN"><div>太原</div></td>
-							<td lang="zh-CN"><div>上海</div></td>
+							<td lang="zh-CN">
+								<div>太原</div>
+							</td>
+							<td lang="zh-CN">
+								<div>上海</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>Y701</div>
 							</td>
-							<td lang="zh-CN"><div>上海西</div></td>
-							<td lang="zh-CN"><div>嘉兴</div></td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
+							<td lang="zh-CN">
+								<div>嘉兴</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>Y702</div>
 							</td>
-							<td lang="zh-CN"><div>嘉兴</div></td>
-							<td lang="zh-CN"><div>上海西</div></td>
+							<td lang="zh-CN">
+								<div>嘉兴</div>
+							</td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G6</div>
 							</td>
-							<td lang="zh-CN"><div>上海虹桥</div></td>
-							<td lang="zh-CN"><div>南京南</div></td>
+							<td lang="zh-CN">
+								<div>上海虹桥</div>
+							</td>
+							<td lang="zh-CN">
+								<div>南京南</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>G7027</div>
 							</td>
-							<td lang="zh-CN"><div>南京</div></td>
-							<td lang="zh-CN"><div>上海西</div></td>
+							<td lang="zh-CN">
+								<div>南京</div>
+							</td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator NR-TP"><i></i>TP1M92</div>
 								<div class="operator"><i></i>TP8049</div>
 							</td>
-							<td lang="en-GB"><div>Glasgow Central</div></td>
-							<td lang="en-GB"><div>Manchester Piccadilly</div></td>
+							<td lang="en-GB">
+								<div>Glasgow Central</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Piccadilly</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator NR-NT"><i></i>NT2L70</div>
 								<div class="operator"><i></i>NT9920</div>
 							</td>
-							<td lang="en-GB"><div>Manchester Victoria</div></td>
-							<td lang="en-GB"><div>Wigan Wallgate</div></td>
+							<td lang="en-GB">
+								<div>Manchester Victoria</div>
+							</td>
+							<td lang="en-GB">
+								<div>Wigan Wallgate</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator NR-VT"><i></i>VT1S90</div>
 								<div class="operator"><i></i>VT6261</div>
 							</td>
-							<td lang="en-GB"><div>Wigan North Western</div></td>
-							<td lang="en-GB"><div>Glasgow Central</div></td>
+							<td lang="en-GB">
+								<div>Wigan North Western</div>
+							</td>
+							<td lang="en-GB">
+								<div>Glasgow Central</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator NR-SR"><i></i>SR1A81</div>
 								<div class="operator"><i></i>SR0251</div>
 							</td>
-							<td lang="en-GB"><div>Glasgow Queen Street</div></td>
-							<td lang="en-GB"><div>Dundee</div></td>
+							<td lang="en-GB">
+								<div>Glasgow Queen Street</div>
+							</td>
+							<td lang="en-GB">
+								<div>Dundee</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator NR-SR"><i></i>SR1T82</div>
 								<div class="operator"><i></i>SR0265</div>
 							</td>
-							<td lang="en-GB"><div>Dundee</div></td>
-							<td lang="en-GB"><div>Glasgow Queen Street</div></td>
+							<td lang="en-GB">
+								<div>Dundee</div>
+							</td>
+							<td lang="en-GB">
+								<div>Glasgow Queen Street</div>
+							</td>
 						</tr>
 						<tr>
 							<td>
 								<div class="operator CR-SH"><i></i>Y701</div>
 							</td>
-							<td lang="zh-CN"><div>上海西</div></td>
-							<td lang="zh-CN"><div>嘉兴</div></td>
+							<td lang="zh-CN">
+								<div>上海西</div>
+							</td>
+							<td lang="zh-CN">
+								<div>嘉兴</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-TP"><i></i>TP1M64</div>
+								<div class="operator"><i></i>TP8017</div>
+							</td>
+							<td lang="en-GB">
+								<div>Glasgow Central</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Piccadilly</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-EM"><i></i>EM1R58</div>
+								<div class="operator"><i></i>EM9258</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Piccadilly</div>
+							</td>
+							<td lang="en-GB">
+								<div>Liverpool Lime Street</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-NT"><i></i>NT2O99</div>
+								<div class="operator"><i></i>NT7063</div>
+							</td>
+							<td lang="en-GB">
+								<div>Liverpool Lime Street</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Oxford Road</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-NT"><i></i>NT2A95</div>
+								<div class="operator"><i></i>NT7407</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Piccadilly</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Airportn</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-NT"><i></i>NT1N62</div>
+								<div class="operator"><i></i>NT9308</div>
+							</td>
+							<td lang="en-GB">
+								<div>Manchester Airport</div>
+							</td>
+							<td lang="en-GB">
+								<div>Preston</div>
+							</td>
+						</tr>
+						<tr>
+							<td>
+								<div class="operator NR-VT"><i></i>VT1S52</div>
+								<div class="operator"><i></i>VT6080</div>
+							</td>
+							<td lang="en-GB">
+								<div>Preston</div>
+							</td>
+							<td lang="en-GB">
+								<div>Glasgow Central</div>
+							</td>
 						</tr>
 					</tbody>
 				</table>
 			</div>
-			<div class="panzoom-wrap">
-				<div class="tabs">
-					<div class="tab active" data-image="img/fp-CR.webp" id="CR">中国铁路</div>
-					<div class="tab" data-image="img/fp-NR.webp" id="NR">英国铁路</div>
-					<div class="tab" data-image="img/fp-NR-London.webp" id="NR-ld">伦敦近郊</div>
-				</div>
-				<div class="panzoom-window">
-					<div class="pz-fineprint">以OpenStreetMap为底图描绘</div>
-					<div class="panzoom-parent">
-						<div id="panzoom-element" class="panzoom">
-							<img id="panzoom-image" src="img/fp-CR.webp" width="100%" height="100%">
-						</div>
-					</div>
-					<div class="pz-controls">
-						<button id="zoomIn">
-							<img src="../img/icon/plus.svg">
-						</button>
-						<button id="zoomOut">
-							<img src="../img/icon/minus.svg">
-						</button>
-						<button id="reset">
-							<img src="../img/icon/rotate.svg">
-						</button>
-					</div>
-				</div>
-				<div class="panzoom-note">
-					<img src="img/fp-Legend.png" class="pz-legend">
-					<div class="pz-note">出现bug时请双击重置键。<br>放大时可能卡顿。</div>
-				</div>
+			<div class="leaflet-wrap">
+				<div id="map"></div>
 			</div>
 		</div>
-
-		<script>
-			// Select the element to apply panzoom
-			const elem = document.getElementById('panzoom-element');
-
-			// Initialize Panzoom
-			const panzoom = Panzoom(elem, {
-				maxScale: 10,
-				contain: 'outside',
-				startScale: 1
-			});
-
-			// Attach event listeners
-			document.getElementById('zoomIn').addEventListener('click', () => panzoom.zoomIn());
-			document.getElementById('zoomOut').addEventListener('click', () => panzoom.zoomOut());
-			document.getElementById('reset').addEventListener('click', () => panzoom.reset());
-
-			// Enable mouse wheel zooming
-			elem.parentElement.addEventListener('wheel', panzoom.zoomWithWheel);
-		</script>
-		<script>
-			document.querySelectorAll('.tab').forEach(tab => {
-				tab.addEventListener('click', function () {
-					document.getElementById('panzoom-image').src = this.dataset.image;
-
-					document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-					this.classList.add('active');
-					panzoom.reset();
-				});
-			});
-		</script>
 	</main>
+	<script src="../js/raillog.js"></script>
 </body>
 
 </html>

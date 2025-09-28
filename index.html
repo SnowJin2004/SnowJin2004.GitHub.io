@@ -8,7 +8,6 @@
 	<link rel="shortcut icon" href="/img/Barrier.png" type="image/png" />
 	<link rel="icon" href="/favicon.ico">
 	<link rel="icon" href="/img/Barrier.png" type="image/png" />
-	<link rel="manifest" href="/site.webmanifest">
 	<link rel="stylesheet" href="css/default.css">
 	<link rel="stylesheet" href="css/wikipedia.css">
 	<link rel="stylesheet" href="css/header.css">
@@ -37,13 +36,13 @@
 			transition: .125s ease-in-out;
 		}
 
-		#links img {
+		/* #links img {
 			height: 2.5em;
 			width: 2.5em;
 			vertical-align: middle;
 			border-radius: 12.5%;
 			box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-		}
+		} */
 
 		#links span {
 			margin-left: 0.5em;
@@ -62,9 +61,21 @@
 			font-weight: 600;
 		}
 
-		#links a:hover img {
+		/* #links a:hover img {
 			box-shadow: 0 0 10px rgba(0, 0, 0, 0.25)
-		}
+		} */
+		#links img {
+        height: 2.5em;
+        width: 2.5em;
+        vertical-align: middle;
+        border-radius: 12.5%;
+        box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    
+    /* Enhance the hover effect with a more prominent shadow */
+    #links a:hover img {
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.25), 0 0 25px rgba(0, 0, 0, 0.1);
+    }
 	</style>
 </head>
 
@@ -88,7 +99,7 @@
 			<h1>个人简介</h1>
 			<article>
 				我是SnowJin2004，简作SNJ<wbr>2004或SNJ。<br>
-				上海人，念大二，人在英国。
+				上海人，念大三，人在英国。
 			</article>
 		</section>
 		<section>

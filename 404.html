@@ -19,16 +19,22 @@
 				color: #df0000;
 			}
 
-			h1 {
+			main h1 {
 				font-size: 140px;
 				margin-bottom: 0;
 				font-weight: 500;
 			}
 
-			p {
+			main p {
 				font-size: 40px;
-				margin-top: 0;
+				margin: 0;
 				font-weight: 500;
+			}
+
+			main a {
+				display: inline-block;
+				font-size: 20px;
+				margin-top: 1em;
 			}
 		</style>
 	</head>
@@ -49,7 +55,10 @@
 		</header>
 		<main>
 			<h1>404</h1>
-			<p>Page Not Found</p>
+			<div>
+				<p>Page Not Found</p>
+				<a href="javascript:history.back();">返回上一页</a>
+			</div>
 		</main>
 	</body>
 </html>
