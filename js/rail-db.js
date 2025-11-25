@@ -279,17 +279,21 @@ function attachLoadMore(root, stations, id) {
     const btn = root.querySelector(".load-more button");
     if (!btn) return;
 
+	const tableContainer = root.querySelector('.table-container');
+
     btn.addEventListener("click", () => {
-        const start = parseInt(root.dataset.start, 10);
+        const start = parseInt(tableContainer.dataset.start, 10);
         const moreHtml = makeTable(stations, id, start, 100);
         const tmp = document.createElement("div");
         tmp.innerHTML = moreHtml;
 
         // 确保 tbody 存在
         const newRows = tmp.querySelectorAll("tbody tr");
-        const tbody = root.querySelector("tbody");
+        const tbody = tableContainer.querySelector("tbody");
         if (tbody && newRows.length > 0) {
             tbody.append(...newRows);
+			root.style.maxHeight = root.classList.contains("open") ? `calc(${root.scrollHeight}px + 0.5rem)` : 0;
+			tableContainer.dataset.start = (start + 100).toString(10);
         }
 
         // 更新按钮状态
@@ -304,15 +308,6 @@ function attachLoadMore(root, stations, id) {
             attachLoadMore(root, stations, id);
         }
     });
-    // 确保 IntersectionObserver 只在按钮存在时工作
-    let observer = new IntersectionObserver(entries => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting && btn) {
-                btn.click();
-            }
-        });
-    });
-    observer.observe(btn);
 	console.log(root.querySelector(".load-more button"));
 }
 
