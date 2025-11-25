@@ -1,13 +1,28 @@
 :root {
 	--sec_color: #fff;
+	/* New Variables for UI */
+	--theme_colour: #df0000;
+	--text_colour: #202122;
+	--grey_1: #a2a9b1; /* Border/inactive tab */
+	--grey_2: #eaecf0; /* Light background/disabled input */
+	--grey_3: #f8f9fa; /* Very light background/hovered input */
+	--bg_colour: #f6f6f6; /* Main body background */
+	--input_padding: 0.5rem 0.75rem;
+	--border_radius_sm: 3px;
+	color-scheme: only light;
 }
 
 html {
 	scroll-behavior: smooth;
 }
 
+article.main {
+	max-width: 52.5rem;
+	margin: auto;
+}
+
 main section {
-	max-width: 50rem;
+	/* max-width: 50rem; */
 	margin: 1.25rem auto;
 	padding: 1.25rem;
 	background-color: var(--sec_color);
@@ -60,10 +75,152 @@ div.sakuhin-thubnail img {
 }
 
 .banner img {
-	max-width: 100%;
+	max-width: 50%;
 }
 
-/* Section Width */
+/* --- Tab UI Styles --- */
+
+/* Tab Container */
+.tabs {
+	display: flex;
+	border-bottom: 1px solid var(--grey_1);
+	margin-bottom: 1.25rem;
+	overflow-x: auto; /* For mobile scrollability */
+}
+
+/* Individual Tab */
+.tab-link {
+	padding: 0.75rem 1.25rem;
+	cursor: pointer;
+	text-decoration: none;
+	color: var(--text_colour);
+	border: 1px solid transparent;
+	border-radius: 0.25em 0.25em 0 0;
+	border-bottom: none;
+	background-color: transparent;
+	transition: background-color 0.3s, color 0.3s;
+	flex-grow: 1; /* Tabs grow to fill space */
+	text-align: center;
+}
+
+.tab-link:hover {
+	background-color: var(--grey_3) !important;
+	color: var(--theme_colour);
+}
+
+/* Active Tab */
+.tab-link.active {
+	border-color: var(--grey_1) var(--grey_1) var(--sec_color) var(--grey_1);
+	background-color: var(--sec_color);
+	color: var(--theme_colour);
+	font-weight: 500;
+}
+
+/* Tab Content */
+.tab-content {
+	padding: 0.5rem 0;
+}
+
+/* Hide inactive content */
+.tab-content:not(.active) {
+	display: none;
+}
+
+/* --- Input UI Styles --- */
+
+/* Basic Input and Textarea Styling */
+
+/* Focus State */
+
+
+/* Button Styling (Submit/General) */
+input[type="submit"],
+button {
+	display: inline-block;
+	padding: var(--input_padding);
+	border: none;
+	border-radius: var(--border_radius_sm);
+	cursor: pointer;
+	font-weight: bold;
+	text-align: center;
+	color: var(--sec_color); /* White text on theme color */
+	background-color: var(--theme_colour);
+	transition: background-color 0.3s, opacity 0.3s;
+	margin-right: 0.5rem;
+}
+
+input[type="submit"]:hover,
+button:hover {
+	background-color: color-mix(in srgb, var(--theme_colour) 80%, #000); /* Slightly darker on hover */
+}
+
+/* Disabled State */
+input:disabled,
+button:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: var(--grey_2);
+	color: var(--grey_1);
+}
+
+input, textarea, select {
+	font-size: 0.875em;
+	font-family: inherit;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"],
+input[type="number"],
+textarea,
+select {
+	box-sizing: border-box;
+	padding: 0 0.5em;
+	border: 1px solid var(--grey_1);
+	border-radius: 5px;
+	height: 2em;
+	background-color: #fff;
+	box-shadow: 0 0 2.5px rgba(0, 0, 0, 0.05);
+	color: var(--text_colour);
+	background-color: var(--sec_color);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+input[type="number"]:focus,
+textarea:focus {
+	border-color: var(--theme_colour);
+	outline: none;
+	box-shadow: 0 0 5px rgba(223, 0, 0, 0.5);
+}
+
+input::placeholder {
+	color: var(--grey_1);
+}
+
+input {
+	margin-left: auto;
+	padding: 6px 10px;
+	border: 1px solid var(--grey_1);
+	border-radius: 5px;
+}
+
+select:focus,
+input:focus {
+	border-color: var(--theme_colour);
+	box-shadow: 0 0 5px var(--theme_colour);
+	outline: none;
+}
+
+input {
+	flex: 1;
+	min-width: 200px;
+}
+
+
+/* --- Media Queries (Existing) --- */
 @media (max-width: 860px) {
 	main section {
 		margin: 0.75rem auto;
@@ -73,7 +230,7 @@ div.sakuhin-thubnail img {
 	main > *:first-child {
 		margin-top: 0;
 	}
-	
+
 	div.sakuhin-thubnail img {
 		max-width: 100%;
 	}
@@ -88,53 +245,13 @@ div.sakuhin-thubnail img {
 	main section#toc ul {
 		column-count: 1;
 	}
-}
-
-/* Tab Buttons Container */
-.tab-container {
-	display: flex;
-	justify-content: center;
-	gap: 1.25rem;
-	margin-bottom: 1.25rem;
-	border-bottom: 2px solid #ddd;
-}
-
-/* Individual Tab Button */
-.tab-button {
-	padding: 0.625rem 1.25rem;
-	background-color: #f5f5f5;
-	border: none;
-	border-radius: 5px 5px 0 0;
-	cursor: pointer;
-	transition: background-color 0.3s ease, color 0.3s ease;
-	color: #333;
-	font-weight: bold;
-	box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-/* Active Tab */
-.tab-button.active {
-	background-color: var(--sec_color);
-	color: #000;
-	border-bottom: 2px solid var(--sec_color);
-}
-
-/* Hover and Focus States */
-.tab-button:hover,
-.tab-button:focus {
-	background-color: #ddd;
-	color: #000;
-}
-
-/* Responsive Tabs */
-@media (max-width: 480px) {
-	.tab-container {
-		flex-direction: column;
-		align-items: center;
+	
+	/* Adjustments for mobile tabs */
+	.tabs {
+		flex-wrap: nowrap; /* Prevent tabs from wrapping, allow horizontal scroll */
 	}
-
-	.tab-button {
-		width: 100%;
-		text-align: center;
+	
+	.tab-link {
+		flex-shrink: 0; /* Tabs won't shrink below content */
 	}
 }

@@ -49,7 +49,7 @@
 			},
 			{
 				"station_id": "JRC-Shizuoka",
-				"names": {"ja": "静岡","en": "Shizuoka","zh-Hans": "静冈","zh-Hant": "静岡","ko": "시즈오카","ja-Hira": "しずおか","zh-Latn": "Jìnggāng"},
+				"names": {"ja": "静岡","en": "Shizuoka","zh-Hans": "静冈","zh-Hant": "靜岡","ko": "시즈오카","ja-Hira": "しずおか","zh-Latn": "Jìnggāng"},
 				"set": [ "zh-Hans","zh-Hant","ko"],
 				"link": "https://railway.jr-central.co.jp/station-guide/shinkansen/shizuoka/index.html"
 			},
