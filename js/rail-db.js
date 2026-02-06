@@ -233,13 +233,24 @@ function compareChineseStrokeStations(stA, stB) {
 const COLS = ['station_icon_xlink', 'ja', 'en', 'zh-Hans', 'zh-Hant', 'ko', 'ja-Hira', 'zh-Latn', 'link'];
 
 // 【核心修改】makeRow 函数，用于根据 set 属性添加 class
-function makeRow(st) {
+function makeRow(st, line_dab_xlink) {
     const isSet = st.set || [];
     
 	return `<tr>` + COLS.map(k => {
 		if (k === "station_icon_xlink") {
-			if (!st.station_icon_xlink) return "<td></td>";
-			return `<td><svg><use xlink:href="${st.station_icon_xlink}"></use></svg></td>`;
+			let iconLink = st.station_icon_xlink; // 优先级 1: 车站自有图标
+
+			if (!iconLink) {
+				// 检查当前是否为“按站名分类”模式 (line_dab_xlink 为 undefined)
+				if (typeof line_dab_xlink === 'undefined') {
+					// 优先级 2: “按站名分类”模式下，使用附加的线路 dab_xlink 作为后备
+					iconLink = st._fallback_dab_xlink;
+				}
+				// 否则 (在“按线路分类”模式下)，不使用任何后备图标。
+			}
+
+			if (!iconLink) return "<td></td>";
+			return `<td><svg><use xlink:href="${iconLink}"></use></svg></td>`;
 		}
 		if (k === "link") return `<td class="link"><a${st.link ? ` href="${st.link}" target="_blank"` : ""}></a></td>`;
         
@@ -258,24 +269,25 @@ function makeRow(st) {
 	}).join("") + `</tr>`;
 }
 
-// 批量加载的逻辑不变
-function makeTable(stations, id, start = 0, batch = 100) {
+function makeTable(stations, id, start = 0, batch = 100, line_dab_xlink) {
     if (stations.length === 0) {
         return `<div class="table-container" data-id="${id}" data-start="0"><div>源数据为空，请联系网站管理员。</div></div>`;
     }
     const slice = stations.slice(start, start + batch);
-    const rows = slice.map(makeRow).join("");
+    // 将 line_dab_xlink 传递给 makeRow
+    const rows = slice.map(st => makeRow(st, line_dab_xlink)).join("");
     const more = start + batch < stations.length;
     let moreHtml = more ? `<div class="load-more"><button data-id="${id}">加载更多 (${stations.length - start - batch})</button></div>` : "";
 
-    return `<div class="table-container" data-id="${id}" data-start="${start + batch}">
+    // 修复点: 将 fallback_dab_xlink 替换为 line_dab_xlink
+    return `<div class="table-container" data-id="${id}" data-start="${start + batch}" data-dab-xlink="${line_dab_xlink || ''}">
                 <table class="station-table"><tbody>${rows}</tbody></table>
                 ${moreHtml}
             </div>`;
 }
 
 /* ==== Lazy load attach (Unchanged) ==== */
-function attachLoadMore(root, stations, id) {
+function attachLoadMore(root, stations, id, line_dab_xlink) {
     const btn = root.querySelector(".load-more button");
     if (!btn) return;
 
@@ -283,7 +295,8 @@ function attachLoadMore(root, stations, id) {
 
     btn.addEventListener("click", () => {
         const start = parseInt(tableContainer.dataset.start, 10);
-        const moreHtml = makeTable(stations, id, start, 100);
+        // 调用 makeTable 时传递 line_dab_xlink
+        const moreHtml = makeTable(stations, id, start, 100, line_dab_xlink);
         const tmp = document.createElement("div");
         tmp.innerHTML = moreHtml;
 
@@ -305,10 +318,9 @@ function attachLoadMore(root, stations, id) {
 
         // 重新绑定事件监听器
         if (newButton) {
-            attachLoadMore(root, stations, id);
+            attachLoadMore(root, stations, id, line_dab_xlink);
         }
     });
-	console.log(root.querySelector(".load-more button"));
 }
 
 /**
@@ -426,9 +438,10 @@ function renderLines(stationQuery, lineQuery) {
                 <span lang="ko">${line.names?.ko || line.names?.['ko-text'] || ""}</span>
             </div>`;
 
-        const panel = document.createElement("div");
-        panel.className = "panel";
-        panel.innerHTML = makeTable(filteredStations, `line-${line.line_id}`, 0, 100);
+		const panel = document.createElement("div");
+		panel.className = "panel";
+		// 保持传递 line.dab_xlink，以便 makeRow 知道它是线路模式
+		panel.innerHTML = makeTable(filteredStations, `line-${line.line_id}`, 0, 100, line.dab_xlink);
 
         const shouldOpen = stationQuery && filteredStations.length > 0;
         if (shouldOpen) {
@@ -448,7 +461,7 @@ function renderLines(stationQuery, lineQuery) {
         sect.appendChild(panel);
         c.appendChild(sect);
 
-        attachLoadMore(panel, filteredStations, `line-${line.line_id}`);
+        attachLoadMore(panel, filteredStations, `line-${line.line_id}`, line.dab_xlink);
     });
 
     if (stationQuery && c.children.length === 0) {
@@ -470,10 +483,13 @@ function renderIndex(query) {
     const uniqueStationsMap = new Map();
 
     RAILWAY_DATA.forEach(line => {
+        const lineDabXlink = line.dab_xlink; // 获取线路的 dab_xlink
         (line.stations || []).forEach(st => {
             const stationId = st.station_id || st.id || st.names?.ja || JSON.stringify(st.names);
 
             if (!uniqueStationsMap.has(stationId)) {
+                // 将线路的 dab_xlink 附加到车站对象上，以备后用
+                st._fallback_dab_xlink = lineDabXlink;
                 uniqueStationsMap.set(stationId, st);
             }
         });
@@ -574,6 +590,8 @@ function renderIndex(query) {
 		btn.innerHTML = `<div class="badge">${badgeContent}</div>`;
 
 		const panel = document.createElement("div"); panel.className = "panel";
+		// 按站名分类时，makeTable 不传递 fallback_dab_xlink。
+		// 在这种模式下，makeRow 将不再依赖外部传递，而是从车站对象本身获取。
 		panel.innerHTML = makeTable(stationList, `idx-${k}`, 0, 100);
 
 		const shouldOpen = currentQuery && stationList.length > 0;
@@ -589,6 +607,7 @@ function renderIndex(query) {
 			panel.style.maxHeight = panel.classList.contains("open") ? `calc(${panel.scrollHeight}px + 0.5rem)` : 0;
 		};
 		sect.appendChild(btn); sect.appendChild(panel); c.appendChild(sect);
+		// 按站名分类时，attachLoadMore 不传递 fallback_dab_xlink
 		attachLoadMore(panel, stationList, `idx-${k}`);
 	});
 

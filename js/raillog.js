@@ -4,7 +4,7 @@ const fpNR = L.tileLayer('', {});
 const CRbounds = [[-800, -840], [80, 70]];
 const CRimage = L.imageOverlay('img/fp-CR.webp', CRbounds);
 
-const NRbounds = [[790, -480], [-140, 180]];
+const NRbounds = [[910, -480], [-140, 180]];
 const NRimage = L.imageOverlay('img/fp-NR.webp', NRbounds);
 
 const map = L.map('map', {
@@ -20,19 +20,26 @@ const options = {
 };
 
 const NRenlargeImages = [
-	// [-Y, X]
+	// [左上，右下]，[-Y, X]
 	{
-		url: 'img/fp-NR-London.webp',
-		bounds: [[65, -110], [-110, 105]],
-		overlay: null // Placeholder for the overlay instance
-	},{
-		url: 'img/fp-NR-Manchester.webp',
-		bounds: [[336.25, -277.65], [278.75, -175]],
+		url: 'img/fp-NR-ayr.webp',
+		bounds: [[629.6713, -433.601], [596.5142, -407.4585]],
 		overlay: null
-	},
-	{
-		url: 'img/fp-NR-Glasgow.webp',
-		bounds: [[718.75, -448.75], [605, -285]],
+	},{
+		url: 'img/fp-NR-chatham.webp',
+		bounds: [[-0.4409, 33.8183], [-26.6665, 60.0581]],
+		overlay: null
+	},{
+		url: 'img/fp-NR-gartforth.webp',
+		bounds: [[360.497, -138.3309], [334.8301, -112.3375]],
+		overlay: null
+	},{
+		url: 'img/fp-NR-glasgow.webp',
+		bounds: [[714.8301, -457.5284], [640.4809, -277.7091]],
+		overlay: null
+	},{
+		url: 'img/fp-NR-manchester.webp',
+		bounds: [[345.4182, -284.8592], [268.1239, -179.4929]],
 		overlay: null
 	}
 ];

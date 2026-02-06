@@ -147,6 +147,7 @@
 	border: 0;
 	border-bottom: 1px solid var(--grey_1);
 	width: max-content;
+	min-width: 100%;
 }
 
 .panel th {
@@ -408,12 +409,4 @@ td.set::after {
 .load-more {
 	text-align: center;
 	margin: 8px;
-}
-
-.load-more button {
-	padding: 6px 12px;
-	border-radius: 8px;
-	border: 1px solid #d7dbe6;
-	background: #fff;
-	cursor: pointer;
 }

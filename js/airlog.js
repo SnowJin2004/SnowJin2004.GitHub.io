@@ -1,4 +1,4 @@
-const map = L.map('map', { worldCopyJump: true }).setView([35, 57.5], 3);
+const map = L.map('map', { worldCopyJump: true }).setView([35, 57.5], 3).setMinZoom(3);
 
 const mtLayer = L.maptiler.maptilerLayer({
 	apiKey: "VZpKyiwtn3lKpsQyX1q3",
@@ -28,7 +28,7 @@ fetch('../asset/airport.json')
 		function setAirportActive(iata) {
 			dynamicStyle.textContent = iata
 				? `.airport { font-weight: 350; color: var(--grey_1); }
-                    .${iata} { font-weight: 450; color: inherit; }`
+					.airport[data-airport-id="${iata}"] { font-weight: 450; color: inherit; }`
 				: '';
 
 			// Update flight polyline transparency based on active airport
@@ -36,7 +36,7 @@ fetch('../asset/airport.json')
 				if (iata && (from === iata || to === iata)) {
 					polyline.setStyle({ opacity: 1 });
 				} else if (iata) {
-					polyline.setStyle({ opacity: 0.25 });
+					polyline.setStyle({ opacity: 0.2 });
 				} else {
 					polyline.setStyle({ opacity: 1 });
 				}
@@ -45,7 +45,7 @@ fetch('../asset/airport.json')
 
 		airports.forEach(airport => {
 			const icon = L.icon({
-				iconUrl: `../img/transp/air/${airport.icon ?? airport.iata}.png`,
+				iconUrl: `../img/transp/air/airport/${airport.icon ?? airport.iata}.png`,
 				iconSize: [32, 32],
 				iconAnchor: [16, 16],
 				popupAnchor: [0, -24]
@@ -68,7 +68,7 @@ fetch('../asset/airport.json')
 
 		document.querySelectorAll(".airport").forEach(el => {
 			el.addEventListener("click", () => {
-				const iata = [...el.classList].find(cls => cls !== "airport");
+				const iata = el.getAttribute('data-airport-id');
 				const marker = airportMarkerMap[iata];
 				if (marker) {
 					map.flyTo(marker.getLatLng(), 7, { animate: true, duration: 1 });
@@ -90,6 +90,7 @@ const airlineColors = {
 	"MU": "#d1161b",
 	"T3": "#262262",
 	"U2": "#fe6600",
+	"UX": "#006fde",
 	"ZQ": "#b8193f"
 };
 
@@ -103,14 +104,14 @@ fetch('../asset/flight.json')
 		function setFlightActive(flightId) {
 			dynamicStyle.textContent = flightId
 				? `.wikitable tr td:nth-child(2) { font-weight: 350; color: var(--grey_1); }
-                   .wikitable tr[data-id="${flightId}"] td:nth-child(2) { font-weight: 450; color: inherit; }`
+                   .wikitable tr[data-flight-id="${flightId}"] td:nth-child(2) { font-weight: 450; color: inherit; }`
 				: '';
 
 			Object.entries(flightPolylineMap).forEach(([id, { polyline }]) => {
 				if (flightId && id === flightId) {
 					polyline.setStyle({ opacity: 1 });
 				} else if (flightId) {
-					polyline.setStyle({ opacity: 0.25 });
+					polyline.setStyle({ opacity: 0.2 });
 				} else {
 					polyline.setStyle({ opacity: 1 });
 				}
@@ -164,8 +165,8 @@ fetch('../asset/flight.json')
 			// });
 		});
 
-		document.querySelectorAll('.wikitable tr[data-id]').forEach(row => {
-			const flightId = row.getAttribute('data-id');
+		document.querySelectorAll('.wikitable tr[data-flight-id]').forEach(row => {
+			const flightId = row.getAttribute('data-flight-id');
 			const td = row.querySelector('td:nth-child(2)');
 			if (td) {
 				td.addEventListener('click', () => {
@@ -187,7 +188,7 @@ fetch('../asset/flightOOC.json')
 				const start = [startRaw[1], startRaw[0]];
 				const end = [endRaw[1], endRaw[0]];
 
-				L.Polyline.Arc(start, end, { color: "#fff", weight: 5, zIndexOffset: -100 }).addTo(map);
+				L.Polyline.Arc(start, end, { color: "#fff", weight: 5, opacity: 0.5 }).addTo(map).bringToBack();
 			} else {
 				console.warn("Invalid flight format:", flight);
 			}

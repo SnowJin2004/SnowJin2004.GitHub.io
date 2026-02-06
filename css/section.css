@@ -146,7 +146,6 @@ button {
 	color: var(--sec_color); /* White text on theme color */
 	background-color: var(--theme_colour);
 	transition: background-color 0.3s, opacity 0.3s;
-	margin-right: 0.5rem;
 }
 
 input[type="submit"]:hover,

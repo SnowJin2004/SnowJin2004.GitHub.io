@@ -8,6 +8,14 @@
 		"timezone": "UTC/UTC +1"
 	},
 	{
+		"iata": "LHR",
+		"icao": "EGLL",
+		"lat": 51.4775,
+		"lng": -0.461389,
+		"name": "London/Heathrow",
+		"timezone": "UTC/UTC +1"
+	},
+	{
 		"iata": "GLA",
 		"icao": "EGPF",
 		"lat": 55.871944,
@@ -22,6 +30,23 @@
 		"lng": 4.763333,
 		"name": "Amsterdam/Schiphol",
 		"timezone": "UTC +1/UTC +2"
+	},
+	{
+		"iata": "BCN",
+		"icao": "LEBL",
+		"lat": 41.296944,
+		"lng": 2.078333,
+		"name": "Barcelona/Josep Tarradellas-El Prat",
+		"timezone": "UTC +1"
+	},
+	{
+		"iata": "PMI",
+		"icao": "LEPA",
+		"lat": 39.551667,
+		"lng": 2.738889,
+		"name": "Palma de Mallorca",
+		"timezone": "UTC +1",
+		"icon": "BCN"
 	},
 	{
 		"iata": "DPS",
