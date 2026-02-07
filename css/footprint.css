@@ -58,6 +58,10 @@ td>div {
 	height: 100%;
 }
 
+.valign {
+    margin-top: calc((var(--line) - 1) * 22.5px);
+}
+
 @media screen and (max-width: 1000px) {
 	.flex>div {
 		max-width: unset;

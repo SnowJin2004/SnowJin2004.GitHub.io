@@ -1,5 +1,7 @@
-.wikitable {
-	margin: 0;
+.leaflet-wrap>iframe,
+.leaflet-wrap>div {
+	width: 100%;
+	height: 100%;
 }
 
 td>div {
@@ -44,6 +46,10 @@ td>div {
 	background-image: url('../img/transp/rail/operator/NR-NT.svg');
 }
 
+.NR-EM>i::after {
+	background-image: url('../img/transp/rail/operator/NR-EM.svg');
+}
+
 .NR-SR>i::after {
 	background-image: url('../img/transp/rail/operator/NR-SR.svg');
 }
@@ -54,16 +60,4 @@ td>div {
 
 .NR-VT>i::after {
 	background-image: url('../img/transp/rail/operator/NR-VT.svg');
-}
-
-@media screen and (max-width: 500px) {
-	.table-wrap {
-		overflow-y: auto;
-	}
-
-	.wikitable {
-		overflow: auto hidden;
-		width: max-content;
-		margin-bottom: 0;
-	}
 }

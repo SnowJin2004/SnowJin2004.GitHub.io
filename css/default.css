@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
 
 :root {
+	--theme_colour: #df0000;
 	--text_colour: #202122;
 	--grey_1: #a2a9b1;
 	--grey_2: #eaecf0;
@@ -25,48 +26,28 @@ main {
 	padding: 20px 24px 24px 24px;
 }
 
-h1.multilang span {
-	padding: 0;
-	display: inline-table;
-	margin: 0;
-}
-
-h1.multilang span:not(:last-child)::after {
-	content: "";
-	width: 0.125em;
-	height: 1.125em;
-	background-color: var(--text_colour);
-	margin: 0 0.325em;
-	display: inline-block;
-	vertical-align: -15%;
-}
-
-a.multilang span {
-	padding: 0;
-	display: inline-table;
-	margin: 0;
-}
-
-a.multilang span:not(:last-child)::after {
-	content: "";
-	width: 0.1em;
-	height: 1.125em;
-	background-color: #0645ad;
-	margin: 0 0.325em;
-	display: inline-block;
-	vertical-align: -15%;
-}
-
-.multilang *:lang(zh-Hans) {
-	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
-}
-
-.multilang *:lang(ja) {
+.multilang:lang(ja) {
 	font-family: 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
 }
 
-.multilang *:lang(en) {
+.multilang:lang(en) {
 	font-family: 'Roboto', 'Noto Sans', sans-serif;
+}
+
+.multilang {
+	font-size: 75%;
+}
+
+.multilang {
+	color: var(--grey_1);
+}
+
+a>.multilang {
+	color: inherit;
+}
+
+span.multilang {
+	margin-left: 0.25em;
 }
 
 ruby rt {

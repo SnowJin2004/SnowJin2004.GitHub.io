@@ -2,9 +2,15 @@
 	margin: 0px 40px;
 }
 
+header {
+	position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
 nav ul {
 	background-color: #df0000;
-	list-style-type: none;
+	list-style: none;
 	margin: 0;
 	padding: 0;
 	left: 0;
@@ -20,7 +26,6 @@ nav ul {
 	display: -webkit-flex;
 	display: flex;
 }
-
 
 nav li>* {
 	display: block;
