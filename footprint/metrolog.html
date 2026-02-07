@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>地铁轨迹 | SNJ2004</title>
+	<style type="text/css">
+		body {
+			font-family: 'Noto Sans CJK SC', 'Noto Sans SC', 'Noto Sans', sans-serif;
+		}
+	</style>
+	<link rel="stylesheet" href="../css/default.css">
+	<link rel="stylesheet" href="../css/wikipedia.css">
+	<link rel="stylesheet" href="../css/header.css">
+	<link rel="stylesheet" href="../css/crumb.css">
+	<link rel="stylesheet" href="../css/footprint.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+	<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+	<style>
+		td {
+			vertical-align: text-top;
+		}
+
+		td:lang(zh-CN) {
+			font-family: "Noto Sans CJK SC", "Noto Sans SC";
+		}
+
+		td:lang(en) {
+			font-family: "Noto Sans", "Roboto";
+		}
+	</style>
+</head>
+
+<body>
+	<header>
+		<nav>
+			<ul>
+				<li id="icon">
+					<img src="../img/Barrier.png">
+					<img src="../img/SNJ2004.svg">
+				</li>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../rail.html">铁道</a></li>
+				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="../sakuhin.html">作品</a></li>
+			</ul>
+		</nav>
+	</header>
+	<main>
+		<div id="crumbs">
+			<ul>
+				<li><a href="../index.html">首页</a></li>
+				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="">地铁足迹</a></li>
+			</ul>
+		</div>
+		<div class="flex">
+			<div class="table-wrap">
+				<table class="wikitable">
+					<thead>
+						<tr>
+							<th>国家</th>
+							<th>城市</th>
+							<th>已乘</th>
+							<th>总里程</th>
+							<th>完乘率</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td rowspan="5">中国</td>
+							<td>上海</td>
+							<td></td>
+							<td>906</td>
+							<td></td>
+						</tr>
+						<tr>
+							<td>嘉兴</td>
+						</tr>
+						<tr>
+							<td>苏州</td>
+						</tr>
+						<tr>
+							<td>南京</td>
+						</tr>
+						<tr>
+							<td>广州</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="leaflet-wrap">
+				<div id="map"></div>
+			</div>
+		</div>
+	</main>
+	<script src="../js/metrolog.js"></script>
+</body>
+
+</html>
