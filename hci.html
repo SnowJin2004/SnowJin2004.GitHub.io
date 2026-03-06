@@ -77,6 +77,28 @@
             border-radius: 8px;
             font-size: 14px;
         }
+
+		#key {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+		/* Mobile devices */
+		@media (max-width: 480px) {
+			#ui {
+				gap: 5px;
+			}
+
+			.button {
+				padding: 5px 10px;
+				font-size: 12px;
+			}
+		}
     </style>
 </head>
 
@@ -94,6 +116,14 @@
     </div>
 
     <div id="status">Status: Idle</div>
+
+	<div id="key">
+		<div>← Back</div>
+		<div>→ Firward</div>
+		<div>↑ Scroll Up</div>
+		<div>↓ Scroll Down</div>
+		<div>o Confirm</div>
+	</div>
 
     <script>
         const video = document.getElementById("video");
