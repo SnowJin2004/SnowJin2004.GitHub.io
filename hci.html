@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Air Gesture Button Control</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #212121;
+            color: white;
+            overflow: hidden;
+        }
+
+        #video {
+            position: absolute;
+            transform: scaleX(-1);
+            opacity: 0.25;
+            max-width: 100%;
+            height: 100%;
+        }
+
+        #canvas {
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        #cursor {
+            position: absolute;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            background: #df0000;
+            pointer-events: none;
+        }
+
+        #ui {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 20px;
+        }
+
+        .button {
+            padding: 15px 25px;
+            background: #fff;
+            color: #212121;
+            border-radius: 5px;
+            font-size: 18px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .button:hover {
+            background: #f0f0f0;
+        }
+
+        .active {
+            background: #00df00;
+        }
+
+        #status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px 15px;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="video" autoplay playsinline></video>
+    <canvas id="canvas"></canvas>
+    <div id="cursor"></div>
+
+    <div id="ui">
+        <div id="btnBack" class="button">Back</div>
+        <div id="btnForward" class="button">Forward</div>
+        <div id="btnUp" class="button">Scroll Up</div>
+        <div id="btnDown" class="button">Scroll Down</div>
+        <div id="btnConfirm" class="button">Confirm</div>
+    </div>
+
+    <div id="status">Status: Idle</div>
+
+    <script>
+        const video = document.getElementById("video");
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        const cursor = document.getElementById("cursor");
+        const status = document.getElementById("status");
+
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        let drawing = false;
+        let path = [];
+        let prevX = 0, prevY = 0;
+		let idleTimeout = null;
+
+        const distance = (a, b) => Math.sqrt((a.x - b.x) ** 2 + (a.y - b.y) ** 2);
+
+        const setActiveButton = id => {
+            document.querySelectorAll(".button").forEach(b => b.classList.remove("active"));
+            document.getElementById(id).classList.add("active");
+        };
+
+		const showToast = message => {
+            const toast = document.createElement("div");
+            toast.className = "toast";
+            toast.innerText = message;
+            toastContainer.appendChild(toast);
+
+            setTimeout(() => {
+                toast.remove();
+            }, 1000);
+        };
+
+		const resetToIdle = () => {
+            status.innerText = "Status: Idle";
+            document.querySelectorAll(".button").forEach(b => b.classList.remove("active"));
+        };
+
+        function recognizeGesture() {
+            if (path.length < 8) {
+                status.innerText = "Status: Not Recognized";
+                return;
+            }
+
+            const start = path[0];
+            const end = path[path.length - 1];
+            const dx = end.x - start.x;
+            const dy = end.y - start.y;
+
+            // Horizontal
+            if (Math.abs(dx) > 150 && Math.abs(dy) < 80) {
+                if (dx > 0) {
+                    status.innerText = "Gesture: Forward";
+                    setActiveButton("btnForward");
+                } else {
+                    status.innerText = "Gesture: Back";
+                    setActiveButton("btnBack");
+                }
+                return;
+            }
+
+            // Vertical
+            if (Math.abs(dy) > 150 && Math.abs(dx) < 80) {
+                if (dy > 0) {
+                    status.innerText = "Gesture: Scroll Down";
+                    setActiveButton("btnDown");
+                    window.scrollBy(0, 300);
+                } else {
+                    status.innerText = "Gesture: Scroll Up";
+                    setActiveButton("btnUp");
+                    window.scrollBy(0, -300);
+                }
+                return;
+            }
+
+            // Circle
+            if (isCircle(path)) {
+                status.innerText = "Gesture: Confirm";
+                setActiveButton("btnConfirm");
+				return;
+            }
+
+			status.innerText = "Status: Not Recognized";
+        }
+
+        function isCircle(path) {
+            let minX = Infinity, maxX = -Infinity;
+            let minY = Infinity, maxY = -Infinity;
+
+            path.forEach(p => {
+                minX = Math.min(minX, p.x);
+                maxX = Math.max(maxX, p.x);
+                minY = Math.min(minY, p.y);
+                maxY = Math.max(maxY, p.y);
+            });
+
+            const width = maxX - minX;
+            const height = maxY - minY;
+
+            const start = path[0];
+            const end = path[path.length - 1];
+            const closeDist = Math.hypot(end.x - start.x, end.y - start.y);
+
+            if (closeDist > 100) return false;
+
+            let length = 0;
+            for (let i = 1; i < path.length; i++) {
+                length += Math.hypot(path[i].x - path[i - 1].x, path[i].y - path[i - 1].y);
+            }
+
+            return true;
+        }
+
+        function drawPath() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            if (path.length < 2) return;
+
+            ctx.beginPath();
+            ctx.moveTo(path[0].x, path[0].y);
+            for (let i = 1; i < path.length; i++) {
+                ctx.lineTo(path[i].x, path[i].y);
+            }
+            ctx.strokeStyle = "#00df00";
+            ctx.lineWidth = 4;
+            ctx.stroke();
+        }
+		
+		const hands = new Hands({
+            locateFile: file => `https://cdn.jsdelivr.net/npm/@mediapipe/hands/${file}`
+        });
+
+        hands.setOptions({
+            maxNumHands: 1,
+            modelComplexity: 1,
+            minDetectionConfidence: 0.7,
+            minTrackingConfidence: 0.7
+        });
+
+        hands.onResults(results => {
+            if (!results.multiHandLandmarks.length) return;
+
+            const hand = results.multiHandLandmarks[0];
+            const index = hand[8];
+            const thumb = hand[4];
+
+            const x = (1 - index.x) * window.innerWidth;
+            const y = index.y * window.innerHeight;
+
+            const smoothX = prevX * 0.7 + x * 0.3;
+            const smoothY = prevY * 0.7 + y * 0.3;
+
+            prevX = smoothX;
+            prevY = smoothY;
+
+            cursor.style.left = `${smoothX}px`;
+            cursor.style.top = `${smoothY}px`;
+
+            const pinch = distance(index, thumb);
+
+            if (pinch < 0.05) {
+                if (!drawing) {
+                    drawing = true;
+                    path = [];
+					clearTimeout(idleTimeout);
+                    status.innerText = "Drawing gesture...";
+                }
+                path.push({ x: smoothX, y: smoothY });
+            } else {
+                if (drawing) {
+                    drawing = false;
+                    recognizeGesture();
+                    path = [];
+					idleTimeout = setTimeout(resetToIdle, 1000);
+                }
+            }
+
+            drawPath();
+        });
+
+        if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+            alert("Camera API not supported");
+        } else {
+            const camera = new Camera(video, {
+                onFrame: async () => {
+                    await hands.send({ image: video });
+                },
+                width: 640,
+                height: 480
+            });
+            camera.start();
+        }
+    </script>
+</body>
+
+</html>
