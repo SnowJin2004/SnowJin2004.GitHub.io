@@ -27,8 +27,8 @@ fetch('../asset/airport.json')
 
 		function setAirportActive(iata) {
 			dynamicStyle.textContent = iata
-				? `.airport { font-weight: 350; color: var(--grey_1); }
-					.airport[data-airport-id="${iata}"] { font-weight: 450; color: inherit; }`
+				? `.airport { font-weight: 325; color: var(--grey_1); }
+					.airport[data-airport-id="${iata}"] { font-weight: 475; color: inherit; }`
 				: '';
 
 			// Update flight polyline transparency based on active airport
@@ -85,6 +85,7 @@ const airlineColors = {
 	"CA": "#d51b1b",
 	"CZ": "#008aca",
 	"FM": "#e6042e",
+	"FR": "#073590",
 	"HO": "#801c39",
 	"KL": "#00a1de",
 	"MU": "#d1161b",
@@ -103,8 +104,8 @@ fetch('../asset/flight.json')
 	.then(flights => {
 		function setFlightActive(flightId) {
 			dynamicStyle.textContent = flightId
-				? `.wikitable tr td:nth-child(2) { font-weight: 350; color: var(--grey_1); }
-                   .wikitable tr[data-flight-id="${flightId}"] td:nth-child(2) { font-weight: 450; color: inherit; }`
+				? `.wikitable tr td:nth-child(2) { font-weight: 325; color: var(--grey_1); }
+                   .wikitable tr[data-flight-id="${flightId}"] td:nth-child(2) { font-weight: 475; color: inherit; }`
 				: '';
 
 			Object.entries(flightPolylineMap).forEach(([id, { polyline }]) => {

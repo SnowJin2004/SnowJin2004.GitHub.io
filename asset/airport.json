@@ -24,6 +24,14 @@
 		"timezone": "UTC/UTC +1"
 	},
 	{
+		"iata": "EDI",
+		"icao": "EGPH",
+		"lat": 55.95,
+		"lng": -3.3725,
+		"name": "Edinburgh",
+		"timezone": "UTC/UTC +1"
+	},
+	{
 		"iata": "AMS",
 		"icao": "EHAM",
 		"lat": 52.308333,
@@ -47,6 +55,30 @@
 		"name": "Palma de Mallorca",
 		"timezone": "UTC +1",
 		"icon": "BCN"
+	},
+	{
+		"iata": "BVA",
+		"icao": "LFOB",
+		"lat": 49.454389,
+		"lng": 2.113556,
+		"name": "Paris/Beauvais",
+		"timezone": "UTC +2"
+	},
+	{
+		"iata": "CDG",
+		"icao": "LFPG",
+		"lat": 49.009722,
+		"lng": 2.547778,
+		"name": "Paris/Charles de Gaulle",
+		"timezone": "UTC +2"
+	},
+	{
+		"iata": "BUD",
+		"icao": "LHBP",
+		"lat": 47.439444,
+		"lng": 19.261944,
+		"name": "Budapest/Ferenc Liszt",
+		"timezone": "UTC +1"
 	},
 	{
 		"iata": "DPS",

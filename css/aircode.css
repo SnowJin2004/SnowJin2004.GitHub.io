@@ -77,6 +77,10 @@
 	background-image: url('../img/transp/air/airline/FM.svg');
 }
 
+.FR::before {
+	background-image: url('../img/transp/air/airline/FR.svg');
+}
+
 .HO::before {
 	background-image: url('../img/transp/air/airline/HO.svg');
 }
@@ -107,6 +111,10 @@
 
 .MU::before {
 	background-image: url('../img/transp/air/airline/MU.svg');
+}
+
+.MW::before {
+	background-image: url('../img/transp/air/airline/MW.svg');
 }
 
 .QF::before {
@@ -156,8 +164,20 @@
 	background-image: url('../img/transp/air/airport/BCN.svg');
 }
 
+.BUD::before {
+	background-image: url('../img/transp/air/airport/BUD.svg');
+}
+
+.BVA::before {
+	background-image: url('../img/transp/air/airport/BVA.svg');
+}
+
 .CAN::before {
 	background-image: url('../img/transp/air/airport/CAN.svg');
+}
+
+.CDG::before {
+	background-image: url('../img/transp/air/airport/CDG.svg');
 }
 
 .DPS::before {

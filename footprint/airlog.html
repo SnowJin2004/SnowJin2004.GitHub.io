@@ -5,15 +5,15 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>空中轨迹 | SNJ2004</title>
-	<link rel="stylesheet" href="../css/default.css">
-	<link rel="stylesheet" href="../css/wikipedia.css">
-	<link rel="stylesheet" href="../css/header.css">
-	<link rel="stylesheet" href="../css/crumb.css">
-	<link rel="stylesheet" href="../css/footprint.css">
-	<link rel="stylesheet" href="../css/aircode.css">
+	<link rel="stylesheet" href="/css/default.css">
+	<link rel="stylesheet" href="/css/wikipedia.css">
+	<link rel="stylesheet" href="/css/header.css">
+	<link rel="stylesheet" href="/css/crumb.css">
+	<link rel="stylesheet" href="/css/footprint.css">
+	<link rel="stylesheet" href="/css/aircode.css">
 	<style>
 		.leaflet-popup-content>* {
-			font-family: 'Roboto', 'Noto Sans', sans-serif;
+			font-family: "Inter Variable", "Inter", 'Noto Sans', sans-serif;
 		}
 
 		.active {
@@ -27,8 +27,8 @@
 	<script src="https://cdn.maptiler.com/maptiler-sdk-js/v3.2.0/maptiler-sdk.umd.min.js"></script>
 	<link href="https://cdn.maptiler.com/maptiler-sdk-js/v3.2.0/maptiler-sdk.css" rel="stylesheet" />
 	<script src="https://cdn.maptiler.com/leaflet-maptilersdk/v4.0.2/leaflet-maptilersdk.umd.min.js"></script>
-	<script src="../js/L.Polyline.SnakeAnim.js"></script>
-	<script src="../js/leaflet.antimeridian-src.js"></script>
+	<script src="/js/L.Polyline.SnakeAnim.js"></script>
+	<script src="/js/leaflet.antimeridian-src.js"></script>
 	<script>
 		function checkURL(url) {
 			fetch(url)
@@ -54,21 +54,21 @@
 		<nav>
 			<ul>
 				<li id="icon">
-					<img src="../img/Barrier.png">
-					<img src="../img/SNJ2004.svg">
+					<img src="/img/Barrier.png">
+					<img src="/img/SNJ2004.svg">
 				</li>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../rail.html">铁道</a></li>
-				<li><a href="../footprint.html">足迹</a></li>
-				<li><a href="../sakuhin.html">作品</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/rail.html">铁道</a></li>
+				<li><a href="/footprint.html">足迹</a></li>
+				<li><a href="/sakuhin.html">作品</a></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<div id="crumbs">
 			<ul>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../footprint.html">足迹</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/footprint.html">足迹</a></li>
 				<li><a href="">空中足迹</a></li>
 			</ul>
 		</div>
@@ -529,6 +529,63 @@
 								<div class="airport GLA" data-airport-id="GLA">格拉斯哥</div>
 							</td>
 						</tr>
+						<tr data-flight-id="FR1017-260314">
+							<td>
+								<div class="airline FR">FR</div>
+							</td>
+							<td>
+								<div class="airline FR">FR 1017</div>
+							</td>
+							<td>
+								<div class="airport EDI" data-airport-id="EDI">爱丁堡</div>
+							</td>
+							<td>
+								<div class="airport BUD" data-airport-id="BUD">布达佩斯/费伦茨·李斯特</div>
+							</td>
+						</tr>
+						<tr data-flight-id="FR1018-260316">
+							<td>
+								<div class="airline FR">FR</div>
+							</td>
+							<td>
+								<div class="airline FR">FR 1018</div>
+							</td>
+							<td>
+								<div class="airport BUD" data-airport-id="BUD">布达佩斯/费伦茨·李斯特</div>
+							</td>
+							<td>
+								<div class="airport EDI" data-airport-id="EDI">爱丁堡</div>
+							</td>
+						</tr>
+						<tr data-flight-id="EZY3241-260331">
+							<td>
+								<div class="airline U2">U2</div>
+							</td>
+							<td>
+								<div class="airline U2">EZY3241</div>
+							</td>
+							<td>
+								<div class="airport EDI" data-airport-id="EDI">爱丁堡</div>
+							</td>
+							<td>
+								<div class="airport CDG" data-airport-id="CDG">巴黎/夏尔·戴高乐</div>
+							</td>
+						</tr>
+						<tr data-flight-id="FR5592-260404">
+							<td>
+								<div class="airline MW">MW</div>
+							</td>
+							<td>
+								<div class="airline FR">FR 5592</div>
+							</td>
+							<td>
+								<div class="airport BVA" data-airport-id="BVA">巴黎/博韦</div>
+							</td>
+							<td>
+								<div class="airport EDI" data-airport-id="EDI">爱丁堡</div>
+							</td>
+						</tr>
+						
 					</tbody>
 				</table>
 			</div>
@@ -537,7 +594,7 @@
 			</div>
 		</div>
 	</main>
-	<script src="../js/airlog.js"></script>
+	<script src="/js/airlog.js"></script>
 </body>
 
 </html>
