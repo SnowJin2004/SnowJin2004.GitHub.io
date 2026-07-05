@@ -1,0 +1,270 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@100..900&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Mono:wght@100..900&display=swap');
+
+@import url('https://rsms.me/inter/inter.css');
+
+:root {
+	--theme_colour: #df0000;
+	--theme_colour_dark: #bb0101;
+	--text_colour: #202122;
+	--grey_1: #a2a9b1;
+	--grey_2: #eaecf0;
+	--grey_3: #f8f9fa;
+	--bg_colour: #f6f6f6;
+	--sec_color: #fff;
+	color-scheme: only light;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	background-color: var(--bg_colour);
+	margin: 0;
+	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+	font-size: 1em;
+	color: var(--text_colour);
+}
+
+a:hover, a:focus {
+	text-decoration: underline;
+}
+
+/* Navigation Bar */
+header {
+	position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+	background-color: var(--theme_colour);
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	left: 0;
+	right: 0;
+	overflow: hidden;
+	top: 0;
+	width: 100%;
+	height: 3.125rem;
+	z-index: 100;
+	display: -webkit-box;
+	display: -moz-box;
+	display: -ms-flexbox;
+	display: -webkit-flex;
+	display: flex;
+}
+
+nav li {
+	margin-bottom: 0;
+}
+
+nav li>* {
+	display: block;
+	color: #fff;
+	font-weight: 700;
+	font-size: 125%;
+	text-align: center;
+	box-sizing: border-box;
+	padding: 0.625rem 1rem;
+	text-decoration: none;
+	height: 100%;
+    align-content: center;
+}
+
+nav a:hover,
+nav a:focus,
+nav a:active {
+	color: #fff;
+}
+
+nav #icon {
+	display: inline-block;
+	width: 60px;
+}
+
+nav #icon>* {
+	background-color: #fff;
+	width: 3.125rem;
+	height: 3.125rem;
+	padding: 0;
+	margin: 0 0 0 10px;
+	transition: opacity 0.25s ease-in-out;
+	position: absolute;
+	display: inline;
+}
+
+nav #icon>*:nth-child(1) {
+	opacity: 1;
+}
+
+nav #icon>*:nth-child(2) {
+	opacity: 0;
+}
+
+nav #icon>*:nth-child(1):hover {
+	opacity: 0;
+}
+
+nav #icon>*:nth-child(2):hover {
+	opacity: 1;
+}
+
+nav #now {
+	background-color: var(--theme_colour_dark);
+}
+
+main {
+	padding: 20px 24px 24px 24px;
+}
+
+/* Crumbs */
+/* Special Thanks to: Martin */
+:root {
+	--line-height: 1.625em;
+}
+
+#crumbs {
+	margin-bottom: 1em;
+}
+
+#crumbs ul {
+	display: flex;
+	overflow-x: auto;
+	padding: 0;
+	margin: 0;
+}
+
+#crumbs ul li {
+	list-style-type: none;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 0 10px;
+	height: var(--line-height);
+	padding: 0 0.5em;
+	background-color: var(--grey_2);
+	position: relative;
+}
+
+#crumbs ul li:not(:last-child)::after {
+	content: '';
+	position: absolute;
+	width: calc(0.5 * var(--line-height) + 1px);
+	height: 100%;
+	background: var(--grey_2);
+	right: calc(-0.5 * var(--line-height));
+	z-index: 2;
+	clip-path: polygon(100% 50%, 1px 0, 0 0, 0 100%, 1px 100%);
+}
+
+#crumbs ul li:not(:last-child)::before {
+	content: '';
+	position: absolute;
+	width: calc(0.5 * var(--line-height) + 1px);
+	height: 100%;
+	background: var(--grey_2);
+	left: calc(-0.5 * var(--line-height));
+	z-index: 2;
+	clip-path: polygon(calc(100% - 1px) 50%, 0 0, 100% 0, 100% 100%, 0 100%);
+}
+
+#crumbs ul li:first-child::before {
+	background: var(--grey_1);
+	clip-path: circle(calc(0.5 * var(--line-height)) at right center);
+}
+
+#crumbs ul li:first-child::after {
+	background: var(--grey_1);
+}
+
+#crumbs ul li:first-child {
+	background-color: var(--grey_1);
+	color: #fff;
+	padding: 0 0.5em 0 0;
+	margin: 0 10px 0 calc(0.5 * var(--line-height));
+}
+
+#crumbs ul li:last-child {
+	background-color: transparent;
+	color: #000;
+}
+
+#crumbs ul li a {
+	color: inherit;
+	text-decoration: inherit;
+	display: block;
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+/* Multi-language */
+*:lang(zh-Hans) {
+	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+}
+
+*:lang(en) {
+	font-family: "Inter Variable", "Inter", 'Noto Sans', sans-serif;
+}
+
+*:lang(ja) {
+	font-family: 'Noto Sans JP', 'Noto Sans CJK JP', sans-serif;
+}
+
+.multilang {
+	font-size: 75%;
+}
+
+.multilang {
+	color: var(--grey_1);
+}
+
+span.multilang {
+	margin-left: 0.25em;
+}
+
+a>.multilang {
+	color: inherit;
+}
+
+ruby rt {
+	user-select: none;
+}
+
+.banner img {
+	max-width: 50%;
+}
+
+/* Mobile devices */
+@media (max-width: 480px) {
+	:root {
+		--rem: 24px;
+	}
+
+	main {
+		padding: 20px 10px 24px 10px;
+	}
+
+	nav ul {
+		height: 2.5rem;
+	}
+
+	nav li:not(#icon) * {
+		font-size: 100%;
+		padding: 0.5rem 0.75rem;
+	}
+
+	nav #icon img {
+		border-radius: 0 0 5px 5px;
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	}
+
+	#crumbs ul li {
+		max-width: 7em;
+	}
+}
