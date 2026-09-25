@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
   <symbol id="TN" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M26.84473,68.75v-31.59082h-10.74512v-5.91016h29.01221v5.91016h-10.74512v31.59082h-7.52197Z"/>
@@ -9,7 +9,7 @@
     </g>
   </symbol>
   <symbol id="TN01" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -21,7 +21,7 @@
     </g>
   </symbol>
   <symbol id="TN02" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -33,7 +33,7 @@
     </g>
   </symbol>
   <symbol id="TN03" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -45,7 +45,7 @@
     </g>
   </symbol>
   <symbol id="TN04" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -57,7 +57,7 @@
     </g>
   </symbol>
   <symbol id="TN05" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -69,7 +69,7 @@
     </g>
   </symbol>
   <symbol id="TN06" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -81,7 +81,7 @@
     </g>
   </symbol>
   <symbol id="TN07" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -93,7 +93,7 @@
     </g>
   </symbol>
   <symbol id="TN08" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -105,7 +105,7 @@
     </g>
   </symbol>
   <symbol id="TN09" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -117,7 +117,7 @@
     </g>
   </symbol>
   <symbol id="TN10" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -129,7 +129,7 @@
     </g>
   </symbol>
   <symbol id="TN11" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -141,7 +141,7 @@
     </g>
   </symbol>
   <symbol id="TN12" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -153,7 +153,7 @@
     </g>
   </symbol>
   <symbol id="TN13" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -165,7 +165,7 @@
     </g>
   </symbol>
   <symbol id="TN14" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -177,7 +177,7 @@
     </g>
   </symbol>
   <symbol id="TN15" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -189,7 +189,7 @@
     </g>
   </symbol>
   <symbol id="TN16" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -201,7 +201,7 @@
     </g>
   </symbol>
   <symbol id="TN17" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -213,7 +213,7 @@
     </g>
   </symbol>
   <symbol id="TN18" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -225,7 +225,7 @@
     </g>
   </symbol>
   <symbol id="TN19" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -237,7 +237,7 @@
     </g>
   </symbol>
   <symbol id="TN20" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -249,7 +249,7 @@
     </g>
   </symbol>
   <symbol id="TN21" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -261,7 +261,7 @@
     </g>
   </symbol>
   <symbol id="TN22" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -273,7 +273,7 @@
     </g>
   </symbol>
   <symbol id="TN23" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -285,7 +285,7 @@
     </g>
   </symbol>
   <symbol id="TN24" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -297,7 +297,7 @@
     </g>
   </symbol>
   <symbol id="TN25" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -309,7 +309,7 @@
     </g>
   </symbol>
   <symbol id="TN31" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -321,7 +321,7 @@
     </g>
   </symbol>
   <symbol id="TN32" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -333,7 +333,7 @@
     </g>
   </symbol>
   <symbol id="TN33" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -345,7 +345,7 @@
     </g>
   </symbol>
   <symbol id="TN34" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -357,7 +357,7 @@
     </g>
   </symbol>
   <symbol id="TN35" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -369,7 +369,7 @@
     </g>
   </symbol>
   <symbol id="TN36" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -381,7 +381,7 @@
     </g>
   </symbol>
   <symbol id="TN37" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -393,7 +393,7 @@
     </g>
   </symbol>
   <symbol id="TN38" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -405,7 +405,7 @@
     </g>
   </symbol>
   <symbol id="TN39" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -417,7 +417,7 @@
     </g>
   </symbol>
   <symbol id="TN40" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M36.1084,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -429,7 +429,7 @@
     </g>
   </symbol>
   <symbol id="TN51" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -441,7 +441,7 @@
     </g>
   </symbol>
   <symbol id="TN52" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -453,7 +453,7 @@
     </g>
   </symbol>
   <symbol id="TN53" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -465,7 +465,7 @@
     </g>
   </symbol>
   <symbol id="TN54" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -477,7 +477,7 @@
     </g>
   </symbol>
   <symbol id="TN55" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -489,7 +489,7 @@
     </g>
   </symbol>
   <symbol id="TN56" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -501,7 +501,7 @@
     </g>
   </symbol>
   <symbol id="TN57" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>
@@ -513,7 +513,7 @@
     </g>
   </symbol>
   <symbol id="TN58" viewBox="0 0 100 100">
-    <rect fill="#ea9813" width="100" height="100" rx="27.5" ry="27.5"/>
+    <rect fill="#f5a302" width="100" height="100" rx="27.5" ry="27.5"/>
     <rect fill="#fff" x="11.25" y="11.25" width="77.5" height="77.5" rx="16.25" ry="16.25"/>
     <g>
       <path fill="#231815" d="M43.26465,40v-18.95801h-6.44873v-3.54688h17.41064v3.54688h-6.44824v18.95801h-4.51367Z"/>

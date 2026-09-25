@@ -105,3 +105,51 @@ td>div {
 		/* aspect-ratio: 1/1; */
 	}
 }
+
+/* Container for the stack */
+.mapArea {
+	position: relative;
+	width: 100%;
+	height: 700px; /* Must have a height since children are absolute */
+	overflow: hidden;
+  }
+  
+  /* Individual Map Layers */
+  .imageBox {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	opacity: 0;            /* Hidden by default */
+	z-index: -1;           /* Move to back */
+	transition: opacity 0.2s ease-in-out; /* Smooth fade effect */
+  }
+  
+  /* Active State (controlled via JS) */
+  .imageBox.active {
+	opacity: 1;            /* Show */
+	z-index: 20;           /* Bring to front */
+  }
+  
+  /* Tab Styling (Grid Layout) */
+  .mapBtn {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+	gap: 10px;
+	list-style: none;
+	padding: 0;
+	margin-bottom: 20px;
+  }
+  
+  .mapBtn li {
+	cursor: pointer;
+	padding: 10px;
+	background: #eee;
+	text-align: center;
+  }
+  
+  .mapBtn li.on {
+	background: #df0000; /* Active tab color */
+	color: white;
+  }

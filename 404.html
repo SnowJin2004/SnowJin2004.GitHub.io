@@ -2,13 +2,15 @@
 <html>
 	<head>
 		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
 		<title>404 Not Found</title>
-		<link rel="stylesheet" href="/css/header.css">
+		<link rel="stylesheet" href="/css/main.css">
 		<style>
 			body {
 				margin: 0px;
-				font-family: 'Noto Sans CJK SC', 'Noto Sans SC', 'Roboto', sans-serif;
+				font-family: 'Noto Sans CJK SC', 'Noto Sans SC', "Inter Variable", "Inter", sans-serif;
 				font-size: 16px;
+				background-color: #f6f6f6;
 			}
 			
 			main {
@@ -36,6 +38,39 @@
 				font-size: 20px;
 				margin-top: 1em;
 			}
+
+			a.button {
+				display: inline-block;
+				padding: 0.5rem 0.75rem;
+				border: none;
+				border-radius: 3px;
+				cursor: pointer;
+				font-size: 80%;
+				font-family: inherit;
+				font-weight: bold;
+				text-align: center;
+				color: #fff; /* White text on theme color */
+				background-color: #df0000;
+				transition: background-color 0.3s, opacity 0.3s;
+			}
+
+			a.button:hover  {
+				background-color: color-mix(in srgb, #df0000 80%, #000); /* Slightly darker on hover */
+			}
+
+			a.button:disabled  {
+				opacity: 0.6;
+				cursor: not-allowed;
+				background-color: var(--grey_2);
+				color: var(--grey_1);
+			}
+
+			div.info {
+				background-color: #fff;
+				height: 15em;
+				padding: 1.5em;
+				text-align: left;
+			}
 		</style>
 	</head>
 	<body>
@@ -57,10 +92,12 @@
 		</header>
 		<main>
 			<h1>404</h1>
-			<div>
-				<p>Page Not Found</p>
-				<a href="javascript:history.back();">返回上一页</a>
+			<p>Page Not Found</p>
+			<div style="margin: 1em 0;">
+				<a class="button" href="javascript:history.back();">返回上一页</a>
+				<a class="button" href="/index.html">返回首页</a>
 			</div>
+			<div class="info">站名牌（<code>ekimeihyo.html</code>）及LED点阵屏近日已从“作品”（<code>sakuhin</code>）迁移至“铁道”（<code>rail</code>）下。</div>
 		</main>
 	</body>
 </html>

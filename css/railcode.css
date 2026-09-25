@@ -30,6 +30,14 @@ td>div {
 	background-image: url('../img/transp/rail/operator/CR.svg');
 }
 
+.CR-BJ>i::after {
+	background-image: url('../img/transp/rail/operator/CR-BJ.png');
+}
+
+.CR-NC>i::after {
+	background-image: url('../img/transp/rail/operator/CR-NC.png');
+}
+
 .CR-SH>i::after {
 	background-image: url('../img/transp/rail/operator/CR-SH.png');
 }
@@ -42,12 +50,20 @@ td>div {
 	background-image: url('../img/transp/rail/operator/NR.svg');
 }
 
+.NR-LF>i::after {
+	background-image: url('../img/transp/rail/operator/NR-LD.svg');
+}
+
 .NR-NT>i::after {
 	background-image: url('../img/transp/rail/operator/NR-NT.svg');
 }
 
 .NR-EM>i::after {
 	background-image: url('../img/transp/rail/operator/NR-EM.svg');
+}
+
+.NR-SN>i::after {
+	background-image: url('../img/transp/rail/operator/NR-SN.svg');
 }
 
 .NR-SR>i::after {

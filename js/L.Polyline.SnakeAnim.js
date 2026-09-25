@@ -1,47 +1,27 @@
-
-
-
-
-///// FIXME: Use path._rings instead of path._latlngs???
-///// FIXME: Panic if this._map doesn't exist when called.
-///// FIXME: Implement snakeOut()
-///// FIXME: Implement layerGroup.snakeIn() / Out()
-
+/**
+ * L.Polyline.SnakeAnim
+ * 仅解决缩放适配问题：通过比例追踪（Fraction Tracking）替代固定像素距离追踪
+ */
 
 L.Polyline.include({
 
-	// Hi-res timestamp indicating when the last calculations for vertices and
-	// distance took place.
-	_snakingTimestamp: 0,
-
-	// How many rings and vertices we've already visited
-	// Yeah, yeah, "rings" semantically only apply to polygons, but L.Polyline
-	// internally uses that nomenclature.
+	// 状态变量
 	_snakingRings: 0,
 	_snakingVertices: 0,
-
-	// Distance to draw (in screen pixels) since the last vertex
-	_snakingDistance: 0,
-
-	// Flag
+	_snakingFraction: 0, // 当前线段已完成的地理比例 (0-1)
 	_snaking: false,
 
-
-	/// TODO: accept a 'map' parameter, fall back to addTo() in case
-	/// performance.now is not available.
 	snakeIn: function(){
 
-		if (this._snaking) { return; }
+		if (this._snaking || !this._map) return;
 
-		if ( !('performance' in window) ||
-		     !('now' in window.performance) ||
-		     !this._map) {
+		if ( !('performance' in window) || !('now' in window.performance)) {
 			return;
 		}
 
 		this._snaking = true;
 		this._snakingTime = performance.now();
-		this._snakingVertices = this._snakingRings = this._snakingDistance = 0;
+		this._snakingVertices = this._snakingRings = this._snakingFraction = 0;
 
 		if (!this._snakeLatLngs) {
 			this._snakeLatLngs = L.LineUtil.isFlat(this._latlngs) ?
@@ -49,9 +29,8 @@ L.Polyline.include({
 				this._latlngs ;
 		}
 
-		// Init with just the first (0th) vertex in a new ring
-		// Twice because the first thing that this._snake is is chop the head.
-		this._latlngs = [[ this._snakeLatLngs[0][0], this._snakeLatLngs[0][0] ]];
+		// 初始化：只保留第一个顶点
+		this._latlngs = [[ this._snakeLatLngs[0][0] ]];
 
 		this._update();
 		this._snake();
@@ -62,64 +41,66 @@ L.Polyline.include({
 
 	_snake: function(){
 
+		if (!this._snaking || !this._map) return;
+
 		var now = performance.now();
-		var diff = now - this._snakingTime;	// In milliseconds
-		var forward = diff * this.options.snakingSpeed / 1000;	// In pixels
+		var diff = now - this._snakingTime;	// 毫秒
+		var forward = diff * this.options.snakingSpeed / 1000;	// 本帧应移动的像素距离
 		this._snakingTime = now;
 
-		// Chop the head from the previous frame
-		this._latlngs[ this._snakingRings ].pop();
+		// 移除上一帧生成的临时插值“蛇头”
+		if (this._latlngs[this._snakingRings].length > (this._snakingVertices + 1)) {
+			this._latlngs[this._snakingRings].pop();
+		}
 
 		return this._snakeForward(forward);
 	},
 
 	_snakeForward: function(forward) {
 
-		// If polyline has been removed from the map stop _snakeForward
 		if (!this._map) return;
-		// Calculate distance from current vertex to next vertex
-		var currPoint = this._map.latLngToContainerPoint(
-			this._snakeLatLngs[ this._snakingRings ][ this._snakingVertices ]);
-		var nextPoint = this._map.latLngToContainerPoint(
-			this._snakeLatLngs[ this._snakingRings ][ this._snakingVertices + 1 ]);
 
-		var distance = currPoint.distanceTo(nextPoint);
+		// 获取当前顶点和下一个顶点的屏幕像素坐标
+		var p1 = this._map.latLngToContainerPoint(this._snakeLatLngs[this._snakingRings][this._snakingVertices]);
+		var p2 = this._map.latLngToContainerPoint(this._snakeLatLngs[this._snakingRings][this._snakingVertices + 1]);
 
-// 		console.log('Distance to next point:', distance, '; Now at: ', this._snakingDistance, '; Must travel forward:', forward);
-// 		console.log('Vertices: ', this._latlngs);
+		var distance = p1.distanceTo(p2); // 当前缩放等级下的像素长度
 
-		if (this._snakingDistance + forward > distance) {
-			// Jump to next vertex
+		// 计算本帧移动的像素占总长的比例
+		var fractionStep = distance > 0 ? (forward / distance) : 1;
+		this._snakingFraction += fractionStep;
+
+		if (this._snakingFraction >= 1) {
+			// 超过当前段，跳到下一个顶点
+			this._latlngs[this._snakingRings].push(this._snakeLatLngs[this._snakingRings][this._snakingVertices + 1]);
 			this._snakingVertices++;
-			this._latlngs[ this._snakingRings ].push( this._snakeLatLngs[ this._snakingRings ][ this._snakingVertices ] );
+			
+			// 计算溢出的距离（用于下一段递归）
+			var overflowPixels = (this._snakingFraction - 1) * distance;
+			this._snakingFraction = 0;
 
-			if (this._snakingVertices >= this._snakeLatLngs[ this._snakingRings ].length - 1 ) {
+			if (this._snakingVertices >= this._snakeLatLngs[this._snakingRings].length - 1 ) {
 				if (this._snakingRings >= this._snakeLatLngs.length - 1 ) {
 					return this._snakeEnd();
 				} else {
 					this._snakingVertices = 0;
 					this._snakingRings++;
-					this._latlngs[ this._snakingRings ] = [
-						this._snakeLatLngs[ this._snakingRings ][ this._snakingVertices ]
-					];
+					this._latlngs[this._snakingRings] = [ this._snakeLatLngs[this._snakingRings][0] ];
 				}
 			}
 
-			this._snakingDistance -= distance;
-			return this._snakeForward(forward);
+			// 如果仍有剩余像素距离，继续递归
+			return this._snakeForward(overflowPixels);
 		}
 
-		this._snakingDistance += forward;
-
-		var percent = this._snakingDistance / distance;
-
-		var headPoint = nextPoint.multiplyBy(percent).add(
-			currPoint.multiplyBy( 1 - percent )
-		);
-
-		// Put a new head in place.
-		var headLatLng = this._map.containerPointToLatLng(headPoint);
-		this._latlngs[ this._snakingRings ].push(headLatLng);
+		// 根据比例进行地理插值
+		var pStart = this._snakeLatLngs[this._snakingRings][this._snakingVertices];
+		var pEnd = this._snakeLatLngs[this._snakingRings][this._snakingVertices + 1];
+		
+		var lat = pStart.lat + (pEnd.lat - pStart.lat) * this._snakingFraction;
+		var lng = pStart.lng + (pEnd.lng - pStart.lng) * this._snakingFraction;
+		
+		this._latlngs[this._snakingRings].push(L.latLng(lat, lng));
 
 		this.setLatLngs(this._latlngs);
 		this.fire('snake');
@@ -138,11 +119,8 @@ L.Polyline.include({
 
 
 L.Polyline.mergeOptions({
-	snakingSpeed: 200	// In pixels/sec
+	snakingSpeed: 200	// 像素/秒
 });
-
-
-
 
 
 L.LayerGroup.include({
@@ -152,21 +130,15 @@ L.LayerGroup.include({
 
 	snakeIn: function() {
 
-		if ( !('performance' in window) ||
-		     !('now' in window.performance) ||
-		     !this._map ||
-		     this._snaking) {
+		if ( !('performance' in window) || !('now' in window.performance) || !this._map || this._snaking) {
 			return;
 		}
-
 
 		this._snaking = true;
 		this._snakingLayers = [];
 		this._snakingLayersDone = 0;
-		var keys = Object.keys(this._layers);
-		for (var i in keys) {
-			var key = keys[i];
-			this._snakingLayers.push(this._layers[key]);
+		for (var id in this._layers) {
+			this._snakingLayers.push(this._layers[id]);
 		}
 		this.clearLayers();
 
@@ -174,9 +146,7 @@ L.LayerGroup.include({
 		return this._snakeNext();
 	},
 
-
 	_snakeNext: function() {
-
 
 		if (this._snakingLayersDone >= this._snakingLayers.length) {
 			this.fire('snakeend');
@@ -185,11 +155,10 @@ L.LayerGroup.include({
 		}
 
 		var currentLayer = this._snakingLayers[this._snakingLayersDone];
-
 		this._snakingLayersDone++;
 
 		this.addLayer(currentLayer);
-		if ('snakeIn' in currentLayer) {
+		if (currentLayer.snakeIn) {
 			currentLayer.once('snakeend', function(){
 				setTimeout(this._snakeNext.bind(this), this.options.snakingPause);
 			}, this);
@@ -198,21 +167,12 @@ L.LayerGroup.include({
 			setTimeout(this._snakeNext.bind(this), this.options.snakingPause);
 		}
 
-
 		this.fire('snake');
 		return this;
 	}
 
 });
 
-
 L.LayerGroup.mergeOptions({
 	snakingPause: 200
 });
-
-
-
-
-
-
-

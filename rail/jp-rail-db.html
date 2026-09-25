@@ -1,5 +1,5 @@
-<!doctype html>
-<html lang="zh-Hans">
+<!DOCTYPE html>
+<html lang="zh-CN">
 
 <head>
 	<meta charset="utf-8">
@@ -7,17 +7,157 @@
 	<title>日本铁道路线·站名数据库 | SNJ2004</title>
 	<style type="text/css">
 		body {
-			font-family: 'Roboto', 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
+			font-family: "Inter Variable", "Inter", 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
 			background-color: #f5f5f5;
 		}
 	</style>
-	<link rel="preconnect" href="https://rsms.me/">
-	<link rel="stylesheet" href="https://rsms.me/inter/inter.css">
-	<link rel="stylesheet" href="../css/default.css">
-	<link rel="stylesheet" href="../css/header.css">
-	<link rel="stylesheet" href="../css/crumb.css">
-	<link rel="stylesheet" href="../css/section.css">
-	<link rel="stylesheet" href="../css/rail-db.css">
+	<style type="text/css">
+		.fab-container {
+			position: fixed;
+			bottom: 30px;
+			right: 30px;
+			display: flex;
+			flex-direction: column-reverse;
+			align-items: center;
+			gap: 12px;
+			z-index: 1000;
+		}
+
+		/* 通用按钮样式 */
+		.fab-btn {
+			width: 50px;
+			height: 50px;
+			border-radius: 50%;
+			border: none;
+			background-color: var(--theme_colour);
+			color: var(--sec_color);
+			box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+			cursor: pointer;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+			position: relative;
+		}
+
+		/* 初始主按钮 */
+		.fab-main {
+			z-index: 2;
+		}
+
+		.fab-main svg {
+			transition: transform 0.3s;
+		}
+
+		/* 展开后的子按钮样式 */
+		.fab-sub {
+			width: 45px;
+			height: 45px;
+			opacity: 0;
+			transform: translateY(20px) scale(0.8);
+			pointer-events: none;
+			z-index: 1;
+			background-color: var(--sec_color);
+			color: var(--theme_colour);
+			border: 1px solid var(--grey_1);
+		}
+
+		/* 悬停或激活状态下的交互 */
+		.fab-container:hover .fab-sub,
+		.fab-container.active .fab-sub {
+			opacity: 1;
+			transform: translateY(0) scale(1);
+			pointer-events: auto;
+		}
+
+		.fab-container:hover .fab-main {
+			transform: scale(1.1);
+		}
+
+		.fab-container:hover .fab-main svg {
+			transform: rotate(135deg);
+		}
+
+		/* 按钮标签 */
+		.fab-label {
+			position: absolute;
+			right: 60px;
+			background: #333;
+			color: #fff;
+			padding: 4px 10px;
+			border-radius: 4px;
+			font-size: 12px;
+			white-space: nowrap;
+			opacity: 0;
+			pointer-events: none;
+			transition: opacity 0.2s;
+		}
+
+		.fab-sub:hover .fab-label {
+			opacity: 1;
+		}
+
+		/* 信息提示弹窗 (Modal) */
+		.modal-overlay {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background: rgba(0,0,0,0.5);
+			display: none;
+			align-items: center;
+			justify-content: center;
+			z-index: 2000;
+			backdrop-filter: blur(2px);
+		}
+
+		.modal-card {
+			background: var(--sec_color);
+			padding: 2rem;
+			border-radius: 8px;
+			max-width: 400px;
+			width: 90%;
+			box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+			position: relative;
+		}
+
+		.modal-card h3 {
+			margin-top: 0;
+			color: var(--theme_colour);
+			border-bottom: 2px solid var(--grey_2);
+			padding-bottom: 0.5rem;
+			margin-right: 20px; /* 为右上角按钮留位 */
+		}
+
+		/* 右上角关闭按钮 */
+		.modal-close-icon {
+			position: absolute;
+			top: 1rem;
+			right: 1rem;
+			background: none;
+			border: none;
+			color: var(--grey_1);
+			cursor: pointer;
+			padding: 5px;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			transition: color 0.2s;
+		}
+
+		.modal-close-icon:hover {
+			color: var(--theme_colour);
+		}
+
+		.modal-close-btn {
+			margin-top: 1.5rem;
+			width: 100%;
+		}
+	</style>
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/component.css">
+	<link rel="stylesheet" href="/css/rail-db.css">
 
 </head>
 
@@ -26,21 +166,22 @@
 		<nav>
 			<ul>
 				<li id="icon">
-					<img src="../img/Barrier.png">
-					<img src="../img/SNJ2004.svg">
+					<img src="/img/Barrier.png">
+					<img src="/img/SNJ2004.svg">
 				</li>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../rail.html">铁道</a></li>
-				<li><a href="../footprint.html">足迹</a></li>
-				<li><a href="../sakuhin.html">作品</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/rail.html">铁道</a></li>
+				<li><a href="/footprint.html">足迹</a></li>
+				<li><a href="/sakuhin.html">作品</a></li>
+				<li><a href="/toolbox.html">工具</a></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<div id="crumbs">
 			<ul>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../rail.html">铁道</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/rail.html">铁道</a></li>
 				<li><a href="">日本铁道路线·站名数据库(暂)</a></li>
 			</ul>
 		</div>
@@ -68,27 +209,113 @@
 		</article>
 	</main>
 
+	<div class="fab-container" id="fabContainer">
+        <!-- 主按钮 -->
+        <button class="fab-btn fab-main">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+        </button>
+        <!-- 返回页首 -->
+        <button class="fab-btn fab-sub" id="scrollTopBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+            <span class="fab-label">返回页首/Page top</span>
+        </button>
+        <!-- 信息提示 -->
+        <button class="fab-btn fab-sub" id="infoBtn">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+            <span class="fab-label">信息/Information</span>
+        </button>
+    </div>
+
+    <!-- 信息提示模态框 -->
+    <div class="modal-overlay" id="infoModal">
+        <div class="modal-card">
+			<button class="modal-close-icon" onclick="closeModal()" aria-label="关闭">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+            </button>
+            <h2>说明</h2>
+			<ol>
+				<li>
+					<div>标<span style="color: var(--grey_1);">*</span>译名表示为非官方自译站名。</div>
+					<div class="multilang" lang="ja"><span style="color: var(--grey_1);">*</span>が付いている駅名は非公式翻訳です。</div>
+					<div class="multilang" lang="en">Station names with <span style="color: var(--grey_1);">*</span> indicates a non-official translation.</div>
+				</li>
+				<li>
+					<div>中文（简体）与中文（繁体）译名有出入的，拼音按简体拼写。</div>
+					<div class="multilang" lang="ja">中国語（簡体字）と中国語（繁体字）の間に不一致がある場合、ピンインは簡体字の方によって綴られます。</div>
+					<div class="multilang" lang="en">Pīnyīn will be spelled according to the Chinese (Simplified) name in case of discrepancies between Simplified and Traditional Chinese.</div>
+				</li>
+				<li>
+					<div>发现错误或有建议想提出的，请通过首页上的<a href="/index.html#contact">联络方式</a>与我联络。</div>
+					<div class="multilang" lang="ja">誤りを見つけた場合やご提案がある場合は、ホームページ上の<a href="/index.html#contact">連絡先</a>までご連絡ください。</div>
+					<div class="multilang" lang="en">If you find any errors or have any suggestions, please contact me using the <a href="/index.html#contact">contact information</a> on the homepage.</div>
+				</li>
+			</ol>
+			<p>特别鸣谢/<span lang="en">Special thanks to</span>: _asakawa_</p>
+        </div>
+    </div>
+
 	<script type="module" src="../js/rail-db.js"></script>
 	<script>
         document.addEventListener('DOMContentLoaded', () => {
-		const tabs = document.querySelectorAll('.tab-link');
+            const tabs = document.querySelectorAll('.tab-link');
+            const fabContainer = document.getElementById('fabContainer');
+            const scrollTopBtn = document.getElementById('scrollTopBtn');
+            const infoBtn = document.getElementById('infoBtn');
+            const infoModal = document.getElementById('infoModal');
 
-		tabs.forEach(tab => {
-			tab.addEventListener('click', (e) => {
-				e.preventDefault();
+            // 选项卡切换逻辑
+            tabs.forEach(tab => {
+                tab.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    tabs.forEach(t => {
+                        t.classList.remove('active');
+                        t.setAttribute('tabindex', '-1');
+                    });
+                    e.currentTarget.classList.add('active');
+                    e.currentTarget.setAttribute('tabindex', '0');
+                });
+            });
 
-				// Deactivate all tabs
-				tabs.forEach(t => {
-					t.classList.remove('active');
-					t.setAttribute('tabindex', '-1');
-				});
+            // 1. 返回页首功能
+            scrollTopBtn.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+                // 点击后收起菜单
+                fabContainer.classList.remove('active');
+            });
 
-				// Activate the clicked tab
-				e.target.classList.add('active');
-				e.target.setAttribute('tabindex', '0');
-			});
-		});
-	});
+            // 2. 信息提示功能
+            infoBtn.addEventListener('click', () => {
+                infoModal.style.display = 'flex';
+                fabContainer.classList.remove('active');
+            });
+
+            // 3. 点击弹窗外部模糊背景关闭弹窗
+            infoModal.addEventListener('click', (e) => {
+                // 如果点击的是 overlay 本身而非其内部的 modal-card
+                if (e.target === infoModal) {
+                    closeModal();
+                }
+            });
+
+            // 点击主按钮（移动端适配，通过点击切换状态）
+            document.querySelector('.fab-main').addEventListener('click', (e) => {
+                e.stopPropagation();
+                fabContainer.classList.toggle('active');
+            });
+
+            // 点击页面其他地方收起按钮菜单
+            document.addEventListener('click', () => {
+                fabContainer.classList.remove('active');
+            });
+        });
+
+        // 关闭弹窗
+        function closeModal() {
+            document.getElementById('infoModal').style.display = 'none';
+        }
     </script>
 </body>
 

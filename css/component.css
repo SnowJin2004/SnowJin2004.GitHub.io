@@ -103,6 +103,15 @@ div.flex {
 
 /* Focus State */
 
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0.75rem 1rem;
+    background-color: var(--sec_color);
+    border-radius: 5px;
+}
+
 
 /* Button Styling (Submit/General) */
 button, input[type="submit"], a.button {
@@ -200,7 +209,7 @@ input {
 	cursor: pointer;
 	position: relative;
 	text-align: left;
-	padding: 0.5em 1.5em 0.5em 2px;
+	padding: 0.5em 1.5em 0.5em 0;
 }
 
 .accordion-btn:hover::after {
@@ -214,7 +223,7 @@ input {
 	mask-position: center;
 	position: absolute;
 	background-color: var(--text_colour);
-	right: 0;
+	right: 0.5em;
 	top: 0.75em;
 	bottom: auto;
 	width: 20px;
@@ -228,12 +237,8 @@ input {
 	background-color: var(--theme_colour);
 }
 
-.accordion-btn div {
-	padding: 0;
-	display: inline-table;
-	font-size: 1.25em;
-	margin: 0;
-	line-height: initial;
+.accordion-btn>h2 {
+	margin-bottom: 0;
 }
 
 .panel {
@@ -249,7 +254,7 @@ input {
 }
 
 .line-dot {
-	padding: 0;
+	padding-left: 2px;
 	display: inline-table;
 	font-size: 1.25em;
 	font-weight: 600;
@@ -279,6 +284,32 @@ input {
 	margin: 0 0.325em;
 	display: inline-block;
 	vertical-align: -3.25px;
+}
+
+/* 右上角关闭按钮 */
+.modal-close-icon {
+	position: absolute;
+	top: 1rem;
+	right: 1rem;
+	background: none;
+	border: none;
+	color: var(--grey_1);
+	cursor: pointer;
+	padding: 5px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: color 0.2s;
+}
+
+.modal-close-icon:hover {
+	color: var(--theme_colour);
+	background-color: initial;
+}
+
+.modal-close-btn {
+	margin-top: 1.5rem;
+	width: 100%;
 }
 
 

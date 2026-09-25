@@ -208,7 +208,7 @@ main {
 	font-family: 'Noto Sans SC', 'Noto Sans CJK SC', sans-serif;
 }
 
-*:lang(en) {
+*:lang(en), *:lang(fr) {
 	font-family: "Inter Variable", "Inter", 'Noto Sans', sans-serif;
 }
 

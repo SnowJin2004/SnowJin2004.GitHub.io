@@ -84,6 +84,7 @@ const airlineColors = {
 	"BA": "#0032a0",
 	"CA": "#d51b1b",
 	"CZ": "#008aca",
+	"EI": "#006472",
 	"FM": "#e6042e",
 	"FR": "#073590",
 	"HO": "#801c39",
@@ -152,18 +153,18 @@ fetch('../asset/flight.json')
 				setFlightActive(flightId);
 			});
 
-			// polyline.on('click', () => {
-			// 	if (map.getZoom() <= 3) {
-			// 		polyline.setStyle({ snakingSpeed: 200 });
-			// 		polyline.snakeIn();
-			// 	} else if (map.getZoom() <= 4) {
-			// 		polyline.setStyle({ snakingSpeed: 400 });
-			// 		polyline.snakeIn();
-			// 	} else if (map.getZoom() <= 5) {
-			// 		polyline.setStyle({ snakingSpeed: 600 });
-			// 		polyline.snakeIn();
-			// 	}
-			// });
+			polyline.on('click', () => {
+				// if (map.getZoom() <= 3) {
+				// 	polyline.setStyle({ snakingSpeed: 200 });
+				// 	polyline.snakeIn();
+				// } else if (map.getZoom() <= 4) {
+				// 	polyline.setStyle({ snakingSpeed: 400 });
+				// 	polyline.snakeIn();
+				// } else if (map.getZoom() <= 5) {
+				// 	polyline.setStyle({ snakingSpeed: 600 });
+				// 	polyline.snakeIn();
+				// }
+			});
 		});
 
 		document.querySelectorAll('.wikitable tr[data-flight-id]').forEach(row => {

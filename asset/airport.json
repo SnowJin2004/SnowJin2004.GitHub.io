@@ -1,5 +1,21 @@
 [
 	{
+		"iata": "BHD",
+		"icao": "EGAC",
+		"lat": 54.618056,
+		"lng": -5.8725,
+		"name": "Belfast/City",
+		"timezone": "UTC +1"
+	},
+	{
+		"iata": "SOU",
+		"icao": "EGHI",
+		"lat": 50.950278,
+		"lng": -1.356667,
+		"name": "Southampton",
+		"timezone": "UTC +1"
+	},
+	{
 		"iata": "LGW",
 		"icao": "EGKK",
 		"lat": 51.148056,

@@ -47,7 +47,7 @@
 
 .badge {
 	height: 30px;
-	min-width: 30px;
+	width: 30px;
 	border-radius: 0.25em;
 	background: var(--grey_2);
 	align-items: center;
@@ -56,51 +56,6 @@
 	font-weight: 600 !important;
 	font-size: 16px;
 	text-align: center;
-}
-
-.accordion section {
-	padding: 0.5rem 1rem;
-}
-
-.accordion-btn {
-	display: flex;
-	font-size: 1rem;
-	align-items: center;
-	gap: 12px;
-	background: #fff;
-	border: none;
-	cursor: pointer;
-	position: relative;
-	font-weight: 700;
-	text-align: left;
-	padding: 0.5em 1.5em 0.5em 2px;
-}
-
-.accordion-btn span:not(:last-child)::after {
-	content: "";
-	width: 0.125em;
-	height: 1.125em;
-	background-color: var(--grey_1);
-	background-color: rgba(from var(--line_colour) r g b / 0.625);
-	margin: 0 0.325em;
-	display: inline-block;
-	vertical-align: -3.25px;
-}
-
-.accordion-btn::after {
-	content: '';
-	mask: url(../img/icon/right.svg);
-    mask-repeat: no-repeat;
-    mask-position: center;
-	position: absolute;
-	background-color: var(--text_colour);
-	right: 0;
-	top: 0.75em;
-	bottom: auto;
-	width: 20px;
-	height: 1.5em;
-	background-size: 1em;
-	transition: .25s cubic-bezier(0.45, 0.05, 0.55, 0.95);
 }
 
 .accordion-btn:hover::after {
@@ -112,32 +67,14 @@
 	background-color: var(--line_colour);
 }
 
-.accordion-btn div {
-	padding: 0;
-	display: inline-table;
-	font-size: 1.25em;
-	font-weight: 700;
-	margin: 0;
-	line-height: initial;
-}
-
-.accordion-btn svg,
-.accordion-btn img {
-	height: 1.5em;
-	width: 1.5em;
-	vertical-align: top;
-}
-
-.accordion-btn span {
-	vertical-align: bottom;
-	line-height: 1.5em;
-	color: var(--line_colour);
-}
-
 .panel {
 	max-height: 0;
-	overflow: auto hidden;
+	overflow: hidden;
 	transition: max-height 0.3s ease-in-out;
+}
+
+.panel>.table-container {
+	overflow: auto hidden;
 }
 
 .panel table,
@@ -157,7 +94,6 @@
 
 .panel th,
 .panel td {
-	/* padding: 0.2em 0.4em */
 	padding: 0.5em 0.75em
 }
 
@@ -209,7 +145,7 @@
 
 .panel table *:lang(en),
 .accordion-btn *:lang(en) {
-	font-family: "Inter Variable", "Inter", "Roboto", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
+	font-family: "Inter Variable", "Inter", "Noto Sans JP", "Noto Sans CJK JP", sans-serif;
 }
 
 .panel table *:lang(zh-Hans),
@@ -242,7 +178,7 @@ td span.full {
 }
 
 td.en span.full {
-	font-family: "Inter Variable", "Inter", "Roboto", "Noto Sans JP", "Noto Sans CJK JP Regular";
+	font-family: "Inter Variable", "Inter", "Noto Sans JP", "Noto Sans CJK JP Regular";
 }
 
 
@@ -302,32 +238,28 @@ td.set::after {
 	width: 0;
 }
 
-.panel::-webkit-scrollbar {
+.panel>.table-container::-webkit-scrollbar {
 	height: 0.5rem;
 	width: 0.5rem;
 	position: absolute;
 	bottom: 0;
 }
 
-.panel::-webkit-scrollbar-track {
+.panel>.table-container::-webkit-scrollbar-track {
 	background: var(--grey_2);
 }
 
-.panel::-webkit-scrollbar-thumb {
+.panel>.table-container::-webkit-scrollbar-thumb {
 	background: var(--grey_1);
 }
 
-.panel::-webkit-scrollbar-thumb:hover {
+.panel>.table-container::-webkit-scrollbar-thumb:hover {
 	background: var(--line_colour);
 }
 
 @media (min-width: 480px) {
 	.accordion-btn *:lang(en) {
 		line-height: 27.5px;
-	}
-
-	.accordion-btn svg {
-		margin-right: 0.5em;
 	}
 
 	.panel table tr:hover,
@@ -344,52 +276,8 @@ td.set::after {
 		--rem: 24px;
 	}
 
-	.accordion section {
-		padding: 0.125rem 0.25rem;
-	}
-
-	.accordion-btn {
-		padding: 0.5rem 0.5rem 0.5rem 0.25rem;
-	}
-
-	.accordion-btn div svg,
-	.accordion-btn div img {
-		font-size: 1.75rem;
-		float: left;
-	}
-
-	.accordion-btn div span:nth-of-type(1) {
-		display: block;
-		margin-left: 3rem;
-		margin-right: 20px;
-		font-size: 1.5rem;
-		line-height: 1.75rem;
-	}
-
-	.accordion-btn div span:nth-of-type(2) {
-		display: block;
-		margin-left: 3rem;
-		margin-right: 20px;
-		font-size: 0.875rem;
-		line-height: 0.875rem;
-	}
-
-	.accordion-btn::after {
-		top: 0.75em;
-		right: 7.5px;
-	}
-
 	.panel table td:not(:first-child) {
 		position: initial;
-	}
-
-	.accordion-btn div span:nth-of-type(1)::after,
-	.accordion-btn div span:nth-of-type(2)::after {
-		content: none;
-	}
-
-	.accordion-btn div span:nth-of-type(n+3) {
-		display: none;
 	}
 
 	.panel table:not(:has(td:first-child svg)) td:first-child {
@@ -400,7 +288,7 @@ td.set::after {
 		padding: 0.5em 0.75em;
 	}
 
-	.panel::-webkit-scrollbar {
+	.panel>.table-container::-webkit-scrollbar {
 		height: 0.25rem;
 		width: 0.25rem;
 	}

@@ -29,7 +29,7 @@
 	background-color: var(--line_colour);
 	padding: 0;
 	margin: 0;
-	font-family: "Roboto", "Noto Sans CJK SC";
+	font-family: "Inter Variable", "Inter", "Noto Sans CJK SC";
 	font-size: 1.25em;
 	line-height: 1.5em;
 }

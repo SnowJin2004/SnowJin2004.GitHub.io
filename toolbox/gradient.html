@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>坡度转换 | SNJ2004</title>
+    <link rel="stylesheet" href="/css/main.css">
+    
+    <link rel="stylesheet" href="/css/wikipedia.css">
+    
+    
+    <link rel="stylesheet" href="/css/component.css">
+    <style>
+        section {
+            margin: 1.25rem auto;
+            padding: 1.5rem;
+            background-color: var(--sec_color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+            border-radius: 8px;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .input-group {
+            margin-bottom: 1.25rem;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .input-group label {
+            /* font-weight: bold; */
+            margin-bottom: 0.4rem;
+            font-size: 0.9rem;
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* 下拉框样式优化 */
+        /* .unit-select {
+            padding: 0.5rem 0.2rem;
+            border: 1px solid var(--grey_1);
+            border-radius: 5px;
+            background: var(--grey_3);
+            cursor: pointer;
+            color: var(--text_colour);
+            font-weight: bold;
+        } */
+
+        .unit-tag {
+            font-size: 0.85rem;
+            color: var(--grey_1);
+        }
+
+        button {
+            background-color: var(--theme_colour);
+            color: white;
+            border: none;
+            padding: 0.6rem 1.2rem;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+
+        button:hover {
+            background-color: var(--theme_dark);
+        }
+
+        button.outline {
+            background-color: transparent;
+            border: 1px solid var(--theme_colour);
+            color: var(--theme_colour);
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li id="icon">
+                    <img src="/img/Barrier.png">
+                    <img src="/img/SNJ2004.svg">
+                </li>
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/rail.html">铁道</a></li>
+                <li><a href="/footprint.html">足迹</a></li>
+                <li><a href="/sakuhin.html">作品</a></li>
+                <li><a href="/toolbox.html">工具</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div id="crumbs">
+            <ul>
+                <li><a href="/index.html">首页</a></li>
+                <li><a href="/toolbox.html">工具</a></li>
+                <li><a href="">坡度转换</a></li>
+            </ul>
+        </div>
+        <article class="main">
+            <section>
+                <h1>坡度转换</h1>
+                <h2>坡度</h2>
+                <div class="grid-container">
+                    <div class="input-group">
+                        <label for="input-angle">角度</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="input-angle" step="0.5">
+                            <span class="unit-tag">°</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-percent">百/千分比</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="input-percent" step="1">
+                            <select id="unit-type" class="unit-select">
+                                <option value="100">%</option>
+                                <option value="1000">‰</option>
+                            </select>
+                        </div>
+                    </div>
+    
+                    <div class="input-group">
+                        <label for="input-ratio">比例</label>
+                        <div class="input-wrapper">
+                            <span class="unit-tag">1:</span>
+                            <input type="number" id="input-ratio" step="0.5">
+                        </div>
+                    </div>
+                </div>
+                <h2>尺寸</h2>
+                <div class="grid-container">
+                    <div class="input-group">
+                        <label for="input-rise">垂直高度 (h)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="input-rise" step="0.1">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-run">水平距离 (d)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="input-run" step="0.1">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+                    <div class="input-group">
+                        <label for="input-hyp">斜边长度 (s)</label>
+                        <div class="input-wrapper">
+                            <input type="number" id="input-hyp" step="0.1">
+                            <span class="unit-tag">m</span>
+                        </div>
+                    </div>
+                    <div class="input-group" style="justify-content: flex-end; flex-direction: row; align-items: flex-end;">
+                        <button class="outline" onclick="resetAll()">重置</button>
+                    </div>
+                </div>
+            </section>
+        </article>
+
+        <script>
+            const inputs = {
+                angle: document.getElementById('input-angle'),
+                percent: document.getElementById('input-percent'),
+                ratio: document.getElementById('input-ratio'),
+                rise: document.getElementById('input-rise'),
+                run: document.getElementById('input-run'),
+                hyp: document.getElementById('input-hyp')
+            };
+
+            const unitType = document.getElementById('unit-type');
+            let baseRise = 1;
+
+            // 监听输入
+            Object.keys(inputs).forEach(key => {
+                inputs[key].addEventListener('input', (e) => {
+                    calculateFrom(key, parseFloat(e.target.value));
+                });
+            });
+
+            // 监听单位切换
+            unitType.addEventListener('change', () => {
+                const val = parseFloat(inputs.percent.value);
+                if (!isNaN(val)) {
+                    // 如果从%切到‰，数值*10；反之/10
+                    if (unitType.value === "1000") {
+                        inputs.percent.value = (val * 10).toFixed(1);
+                    } else {
+                        inputs.percent.value = (val / 10).toFixed(2).replace(/\.?0+$/, "");
+                    }
+                }
+            });
+
+            function calculateFrom(source, val) {
+                if (isNaN(val) || val <= 0) {
+                    Object.keys(inputs).forEach(key => { if (key !== source) inputs[key].value = ""; });
+                    return;
+                }
+
+                if (source === 'ratio' && val <= 0) {
+                    alert("比例坡度必须大于 0");
+                    return;
+                }
+
+                if (source === 'hyp' && val <= parseFloat(inputs.rise.value)) {
+                    alert("斜边长度必须大于垂直高度");
+                    return;
+                }
+
+                if (source === 'hyp' && h >= s) {
+                    alert("斜边长度必须大于垂直高度");
+                    inputs.hyp.value = "";
+                    return;
+                }
+
+                let angleDeg, h, d, s;
+                const currentUnitFactor = parseFloat(unitType.value);
+
+                switch (source) {
+                    case 'angle':
+                        angleDeg = val;
+                        h = baseRise;
+                        d = h / Math.tan(angleDeg * Math.PI / 180);
+                        s = h / Math.sin(angleDeg * Math.PI / 180);
+                        break;
+                    case 'percent':
+                        // 根据当前选择的单位（100或1000）计算
+                        angleDeg = Math.atan(val / currentUnitFactor) * 180 / Math.PI;
+                        h = baseRise;
+                        d = h / (val / currentUnitFactor);
+                        s = Math.sqrt(h * h + d * d);
+                        break;
+                    case 'ratio':
+                        angleDeg = Math.atan(1 / val) * 180 / Math.PI;
+                        h = baseRise;
+                        d = val * h;
+                        s = Math.sqrt(h * h + d * d);
+                        break;
+                    case 'rise':
+                        h = val;
+                        d = parseFloat(inputs.run.value) || 1;
+                        angleDeg = Math.atan(h / d) * 180 / Math.PI;
+                        s = Math.sqrt(h * h + d * d);
+                        break;
+                    case 'run':
+                        d = val;
+                        h = parseFloat(inputs.rise.value) || (d * Math.tan((parseFloat(inputs.angle.value) || 0) * Math.PI / 180));
+                        if (h === 0 && !inputs.rise.value) h = 1;
+                        angleDeg = Math.atan(h / d) * 180 / Math.PI;
+                        s = Math.sqrt(h * h + d * d);
+                        break;
+                    case 'hyp':
+                        s = val;
+                        h = parseFloat(inputs.rise.value) || (s * Math.sin((parseFloat(inputs.angle.value) || 0) * Math.PI / 180));
+                        if (h >= s) h = s * 0.7;
+                        angleDeg = Math.asin(h / s) * 180 / Math.PI;
+                        d = Math.sqrt(s * s - h * h);
+                        break;
+                }
+
+                updateAllFields(angleDeg, h, d, s, source);
+            }
+
+            function updateAllFields(deg, h, d, s, exclude) {
+                const rad = deg * Math.PI / 180;
+                const currentUnitFactor = parseFloat(unitType.value);
+
+                const results = {
+                    angle: deg,
+                    percent: Math.tan(rad) * currentUnitFactor,
+                    ratio: 1 / Math.tan(rad),
+                    rise: h,
+                    run: d,
+                    hyp: s
+                };
+
+                for (let key in results) {
+                    if (key !== exclude) {
+                        let val = results[key];
+                        if (key === 'ratio') {
+                            inputs[key].value = isFinite(val) ? val.toFixed(3) : "∞";
+                        } else if (key === 'percent') {
+                            // 动态格式化：如果是千分比保留1位，百分比保留4位（去尾0）
+                            const precision = currentUnitFactor === 1000 ? 1 : 4;
+                            inputs[key].value = isFinite(val) ? val.toFixed(precision).replace(/\.?0+$/, "") : "";
+                        } else {
+                            inputs[key].value = isFinite(val) ? val.toFixed(4).replace(/\.?0+$/, "") : "";
+                        }
+                    }
+                }
+            }
+
+            function resetAll() {
+                Object.values(inputs).forEach(i => i.value = "");
+            }
+        </script>
+
+</body>
+
+</html>

@@ -11,14 +11,117 @@
 			background-color: #f5f5f5;
 		}
 	</style>
-	<link rel="stylesheet" href="../css/default.css">
-	<link rel="stylesheet" href="../css/wikipedia.css">
-	<link rel="stylesheet" href="../css/header.css">
-	<link rel="stylesheet" href="../css/crumb.css">
-	<link rel="stylesheet" href="../css/section.css">
+	<link rel="stylesheet" href="/css/main.css">
+	<link rel="stylesheet" href="/css/wikipedia.css">
+	<link rel="stylesheet" href="/css/component.css">
 	<style>
 		td {
 			vertical-align: text-top;
+		}
+
+		/* 保持原有结构样式 */
+		main section {
+			margin: 1.25rem auto;
+			padding: 1.25rem;
+			background-color: var(--sec_color);
+			box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			border-radius: 7.5px;
+		}
+
+		/* 轮播图容器设定 */
+		main section.sakuhin-thumbnail {
+			padding: 0;
+			overflow: hidden;
+			position: relative;
+			/* 为绝对定位控制按钮提供参照 */
+		}
+
+		main section:first-child {
+			margin-top: 0;
+		}
+
+		/* --- 新增：轮播图内部样式 --- */
+
+		/* 图片轨道：横向排列 */
+		.carousel-track {
+			display: flex;
+			transition: transform 0.3s ease-in-out;
+			width: 100%;
+		}
+
+		/* 保证每张图片铺满容器宽度 */
+		.carousel-track>img {
+			display: block;
+			width: 100%;
+			max-width: 100%;
+			flex-shrink: 0;
+			object-fit: contain;
+		}
+
+		/* 切换按钮 */
+		.carousel-btn {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			background: rgba(0, 0, 0, 0.4);
+			color: #fff;
+			border: none;
+			padding: 0.5rem 0.75rem;
+			cursor: pointer;
+			border-radius: 4px;
+			z-index: 2;
+			user-select: none;
+		}
+
+		.carousel-btn.prev {
+			left: 10px;
+		}
+
+		.carousel-btn.next {
+			right: 10px;
+		}
+
+		.carousel-btn.next::after {
+			content: '';
+			mask: url(../img/icon/right.svg);
+			mask-repeat: no-repeat;
+			mask-position: center;
+			position: absolute;
+			background-color: var(--text_colour);
+			right: 0;
+			top: 0.75em;
+			bottom: auto;
+			width: 20px;
+			height: 1.5em;
+			background-size: 1em;
+		}
+
+		.carousel-btn:hover {
+			background: rgba(0, 0, 0, 0.7);
+		}
+
+		/* 底部指示点 */
+		.carousel-dots {
+			position: absolute;
+			bottom: 10px;
+			left: 50%;
+			transform: translateX(-50%);
+			display: flex;
+			gap: 8px;
+			z-index: 2;
+		}
+
+		.carousel-dots .dot {
+			width: 8px;
+			height: 8px;
+			background: rgba(0, 0, 0, 0.5);
+			border-radius: 50%;
+			cursor: pointer;
+			transition: background-color 0.2s;
+		}
+
+		.carousel-dots .dot.active {
+			background: #000;
 		}
 	</style>
 </head>
@@ -28,29 +131,33 @@
 		<nav>
 			<ul>
 				<li id="icon">
-					<img src="../img/Barrier.png">
-					<img src="../img/SNJ2004.svg">
+					<img src="/img/Barrier.png">
+					<img src="/img/SNJ2004.svg">
 				</li>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../rail.html">铁道</a></li>
-				<li><a href="../footprint.html">足迹</a></li>
-				<li><a href="../sakuhin.html">作品</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/rail.html">铁道</a></li>
+				<li><a href="/footprint.html">足迹</a></li>
+				<li><a href="/sakuhin.html">作品</a></li>
+				<li><a href="/toolbox.html">工具</a></li>
 			</ul>
 		</nav>
 	</header>
 	<main>
 		<div id="crumbs">
 			<ul>
-				<li><a href="../index.html">首页</a></li>
-				<li><a href="../sakuhin.html">作品</a></li>
-				<li><a href="../sakuhin.html#routemap">路线图</a></li>
+				<li><a href="/index.html">首页</a></li>
+				<li><a href="/sakuhin.html">作品</a></li>
+				<li><a href="/sakuhin.html#routemap">路线图</a></li>
 				<li><a href="">齐齐玩服务器 腰果交通 地铁连结路线图</a></li>
 			</ul>
 		</div>
 		<article class="main">
-			<div class="sakuhin-thubnail">
-				<img src="img/routemap/Metrolink.png" />
-			</div>
+			<section class="sakuhin-thumbnail">
+				<img src="/img/routemap/Metrolink-white.png" />
+			</section>
+			<section class="sakuhin-thumbnail">
+				<img src="/img/routemap/Metrolink-2026-white.png" />
+			</section>
 		</article>
 	</main>
 </body>

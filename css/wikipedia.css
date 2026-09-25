@@ -47,6 +47,11 @@ h2 {
 	font-size: 1.5em;
 }
 
+h2:first-child {
+	margin-top: 0;
+	padding-top: 0;
+}
+
 h3 {
 	font-size: 1.2em;
 	margin-top: 0.3em;
@@ -67,10 +72,6 @@ a {
 
 a:active {
 	color: #faa700;
-}
-
-a:hover, a:focus {
-	text-decoration: underline;
 }
 
 a[target="_blank"]::after, a.fw::after {
@@ -295,18 +296,54 @@ blockquote {
 	border: 0 !important;
 }
 
-@media (max-width: 720px) {
-	
+figure {
+    border: 1px solid var(--border-color-subtle, #c8ccd1);
+    border-bottom: 0;
+    background-color: var(--background-color-interactive-subtle, #f8f9fa);
+    color: var(--color-base, #202122);
+	display: table;
+    text-align: center;
+    border-collapse: collapse;
+    line-height: 0;
+}
 
-	/* Your list style preference for mobile */
+figure > img {
+	max-width: calc(100% - (2 * 3px) - (2 * 1px));
+	background-color: var(--background-color-base-fixed, #fff);
+    color: var(--color-base-fixed, #202122);
+	border: 1px solid var(--border-color-subtle, #c8ccd1);
+	margin: 3px;
+	vertical-align: middle;
+	width: 20em;
+}
+
+figure > figcaption {
+    border: 1px solid var(--border-color-subtle, #c8ccd1);
+    border-top: 0;
+    font-size: 88.4%;
+	display: table-caption;
+    caption-side: bottom;
+    background-color: inherit;
+    line-height: 1.4em;
+    word-break: break-word;
+    text-align: start;
+    padding: 0 6px 6px 6px;
+}
+
+.example {
+	background-color: var(--grey_3);
+    color: var(--text_colour);
+    margin: 1em 0;
+	padding: 0.25em;
+    border: 1px solid var(--grey_1);
+}
+
+@media (max-width: 720px) {
 	ul {
 		list-style-type: disc;
 		list-style-image: none;
 	}
-}
 
-/* Mobile devices */
-@media (max-width: 720px) {
 	h1, h2, h3, h4, h5, h6 {
 		line-height: 1.375;
 		word-wrap: break-word;
@@ -342,5 +379,35 @@ blockquote {
 	.wikitable>*>tr>td {
 		padding: 0.2em;
 		border: 1px solid var(--grey_1);
+	}
+
+	figure {
+		margin: 0.6em auto;
+		display: table;
+		border-collapse: collapse;
+		border: unset;
+		background-color: unset;
+	}
+
+	figure > img {
+		max-width: 100% !important;
+		height: auto !important;
+		animation: fadeInImage 300ms ease-in;
+		vertical-align: middle;
+		background-color: unset;
+		border: unset;
+		margin: unset;
+		width: unset;
+	}
+
+	figure > figcaption {
+		display: table-caption;
+		caption-side: bottom;
+		margin: 0.5em 0 0;
+		font-size: 0.8125rem;
+		line-height: 1.5;
+		padding: 0 !important;
+		/* color: #54595d; */
+		border: unset;
 	}
 }
